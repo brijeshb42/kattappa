@@ -1,9 +1,11 @@
 ## LegoBlocks
 
-A block based Rich Text editor. It uses:
-    * [ReactJS](http://facebook.github.io/react/) for its UI.
-    * [Quill](http://quilljs.com) for rich text editing support.
-    * [fetch](https://github.com/github/fetch) for ajax calls to server (used when image files are required to be uploaded).
+A block based Rich Text editor.
+
+It uses:
+* [ReactJS](http://facebook.github.io/react/) for its UI.
+* [Quill](http://quilljs.com) for rich text editing support.
+* [fetch](https://github.com/github/fetch) for ajax calls to server (used when image files are required to be uploaded).
 
 ### Installation
 * Use `bower install legoblocks`.

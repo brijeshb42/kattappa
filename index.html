@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LegoBlocks - A block based Rich text editor.</title>
+    <link rel="stylesheet" type="text/css" href="dist/legoblocks.vendor.css">
+    <link rel="stylesheet" type="text/css" href="dist/legoblocks.css">
+</head>
+<body style="max-width: 600px; margin: auto">
+    <h2>Click the + button</h2>
+    <div id="editor-render"></div>
+    <script type="text/javascript" src="dist/legoblocks.vendor.js"></script>
+    <script type="text/javascript" src="dist/legoblocks.js"></script>
+    <script type="text/javascript">
+    var editor = React.createElement(LegoBlocks.Editor, {
+        onSave: function(blocks) {
+            console.log(blocks);
+        }
+    });
+    React.render(editor, document.getElementById('editor-render'));
+    </script>
+</body>
+</html>

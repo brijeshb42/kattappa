@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LegoBlocks - A block based Rich text editor.</title>
+
+    <!-- build:css legoblocks.vendor.css -->
+    <link rel="stylesheet" type="text/css" href="./bower_components/quill/dist/quill.base.css">
+    <link rel="stylesheet" type="text/css" href="./bower_components/quill/dist/quill.snow.css">
+    <!-- endbuild -->
+
+    <link rel="stylesheet" type="text/css" href="dist/legoblocks.css">
+
+</head>
+<body>
+
+<!-- build:jsv legoblocks.vendor.js -->
+<script src="bower_components/react/react-with-addons.js"></script>
+<script src="bower_components/quill/dist/quill.js"></script>
+<script src="bower_components/fetch/fetch.js"></script>
+<!-- endbuild -->
+
+<!-- build:js legoblocks.js -->
+<script src="./src/js/script.js"></script>
+<script src="./src/js/block.text.jsx"></script>
+<script src="./src/js/block.quote.jsx"></script>
+<script src="./src/js/block.h2.jsx"></script>
+<script src="./src/js/block.hr.jsx"></script>
+<script src="./src/js/droppable.jsx"></script>
+<script src="./src/js/block.img.jsx"></script>
+<script src="./src/js/block.ul.jsx"></script>
+<script src="./src/js/block.ol.jsx"></script>
+<script src="./src/js/block.embed.jsx"></script>
+<script src="./src/js/block.embed.instagram.jsx"></script>
+<script src="./src/js/block.embed.youtube.jsx"></script>
+<script src="./src/js/block.embed.vimeo.jsx"></script>
+<script src="./src/js/toolbar.jsx"></script>
+<script src="./src/js/quill.jsx"></script>
+<script src="./src/js/components.jsx"></script>
+<!-- endbuild -->
+
+<!-- build:jse legoblocks.embed.js -->
+<script src="./src/js/block.embed.twitter.jsx"></script>
+<!-- endbuild -->
+</body>
+</html>

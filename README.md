@@ -10,9 +10,9 @@ It is available in the `window` as `LegoBlocks`.
 
 * Load dependencies in your html:
     * CSS:
-        * `<link rel="stylesheet" type="text/css" href="bower_components/quill/dist/quill.base.css">
+        * `<link rel="stylesheet" type="text/css" href="bower_components/quill/dist/quill.base.css">`
         * (A bundled quill css comes with `LegoBlocks`. If you don't use bower, you can directly use:
-            * <link rel="stylesheet" type="text/css" href="legoblocks.vendor.css">)
+            * `<link rel="stylesheet" type="text/css" href="legoblocks.vendor.css">`)
         * `<link rel="stylesheet" type="text/css" href="legoblocks.css">`. (Used for basic styling of the blocks. You can extend to be what you want.)
     * Javascript:
         * `<script type="text/javascript" src="bower_components/react/react-with-addons.min.js"></script>`

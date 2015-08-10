@@ -5,6 +5,10 @@ A block based Rich Text editor. It uses:
     * [Quill](http://quilljs.com) for rich text editing support.
     * [fetch](https://github.com/github/fetch) for ajax calls to server (used when image files are required to be uploaded).
 
+### Installation
+* Use `bower install legoblocks`.
+* Or Download the latest release [here](https://github.com/brijeshb42/legoblocks/releases/latest).
+
 ### Usage
 It is available in the `window` as `LegoBlocks`.
 

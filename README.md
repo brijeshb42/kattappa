@@ -136,4 +136,4 @@ React.render(editor, document.getElementById('editor-ui'));
 * Better handling of `Return` key press when inside one of the `Text` blocks. (Text, Quote, H2, UL, OL)
 * If a Twitter embed block is rearranged to make it go upwards, the rendered part disappears from the UI.
 
-### Made while working for [http://scroll.in](http://scroll.in)
+### Made while working @ [http://scroll.in](http://scroll.in)

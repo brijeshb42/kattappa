@@ -34,5 +34,9 @@
     "./dist/legoblocks.js",
     "./dist/legoblocks.css",
     "./dist/legoblocks.embed.js"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brijeshb42/legoblocks.git"
+  }
 }

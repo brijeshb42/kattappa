@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+  <link rel="stylesheet" type="text/css" href="{{ site.url }}/dist/legoblocks.vendor.css">
+  <link rel="stylesheet" type="text/css" href="{{ site.url }}/dist/legoblocks.css">
+  <link rel="stylesheet" type="text/css" href="{{ site.url }}/static/custom.css">
+
+  <body>
+    {% include header.html %}
+    <div class="mui-container">
+    {{ content }}
+    </div>
+
+  {% include footer.html %}
+  <script src="{{ site.url }}/dist/legoblocks.vendor.js"></script>
+  <script src="{{ site.url }}/dist/legoblocks.js"></script>
+  <script>
+  var editor = React.createElement(LegoBlocks.Editor, {
+    onSave: function(blocks) {
+      console.log(blocks);
+      alert('Check console for blocks data');
+    }
+  });
+  React.render(editor, document.getElementById("editor-ui"));
+  </script>
+  {% if site.ga_id %}
+      {% include analytics.html %}
+  {% endif %}
+</body>
+</html>

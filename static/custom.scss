@@ -1,0 +1,38 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+@import "mui";
+
+.legob-savebtn {
+    @extend  .mui-btn;
+    @extend  .mui-btn-danger;
+}
+
+.legob-listing {
+    .legob-toolbar {
+        button:first-child {
+            @extend  .mui-btn;
+            @extend  .mui-btn-floating;
+        }
+
+        button {
+            @extend  .mui-btn;
+            @extend  .mui-btn-danger;
+        }
+    }
+}
+
+.legob-control-toolbar {
+    button {
+        @extend  .mui-btn;
+        @extend  .mui-btn-floating;
+        @extend  .mui-btn-floating-mini;
+    }
+}
+
+.legob-droppable {
+    @extend .mui-panel;
+    padding: 30px 0;
+}

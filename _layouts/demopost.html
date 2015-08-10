@@ -1,0 +1,21 @@
+---
+layout: demo
+---
+
+<div class="home mui-row">
+  <div class="mui-col-md-8">
+    <article class="mui-panel">
+      <div class="bg-holder {% if page.color %}bg-{{ page.color }}{% endif %}" style="{% if page.cover %}background:url({{page.cover}}) no-repeat center center{% endif %}">
+        <h2 class="post-list-title">
+          <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+        </h2>
+        {% if page.cover %}<div class="img-overlay"></div>{% endif %}
+        <a href="{{ page.url | prepend: site.url }}" class="overlay"></a>
+      </div>
+      <div class="post-data">
+        {{content}}
+      </div>
+    </article>
+  </div>
+  {% include sidebar.html %}
+</div>

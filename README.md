@@ -91,13 +91,13 @@ React.render(editor, document.getElementById('editor-ui'));
 * If you want the image to also be uploaded to the server, you can do this:
     * Change the value of `UploadUrl` to your server's endpoint
         * `LegoBlocks.Block.Image.UploadUrl = '/upload_image`
-    * If `UploadUrl` is provided, the `Image` block expects a `json` reponse from the server of the following format:
-        ```json
-        {
-            "type": "success",
-            "message": "http://absoluteurl.to/the/uploaded/image.jpg"
-        }
-        ```
+    * If `UploadUrl` is provided, the `Image` block will send a POST request to the url with `image` key having the selected image file and it expects a `json` reponse from the server of the following format:
+```json
+{
+    "type": "success",
+    "message": "http://absoluteurl.to/the/uploaded/image.jpg"
+}
+```
 #### Goodies
 * `LegoBlocks` supports the following embeds out of the box:
     * Instagram

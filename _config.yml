@@ -6,6 +6,8 @@ description: "A block based rich text editor made using React"
 keywords: "react, editor, block, trevor"
 url: "http://bitwiser.in/legoblocks" # the base hostname & protocol for your site
 baseurl: "http://bitwiser.in/legoblocks" # the subpath of your site, e.g. /blog/
+# url: ""
+# baseurl: ""
 markdown: kramdown
 highlighter: pygments
 sass:

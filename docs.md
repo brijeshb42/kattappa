@@ -26,8 +26,50 @@ title: Using LegoBlocks
     * First create an `editor` instance.
     * Then mount it to the desired DOM node.
 
+### For creating a new list of Blocks
+
+* The editor accepts a `onSave` prop that will be passed the list of `blocks` created by the user. You can then handle the list of blocks as you like inside your function.
+
 {% highlight javascript %}
-var editor = React.createElement(LegoBlocks.Editor);
+function onSave(blocks) {
+    console.log(blocks);
+    // save the blocks on the server.
+}
+
+var editor = React.createElement(LegoBlocks.Editor, {
+    onSave: onSave
+});
+React.render(editor, document.getElementById('editor-ui'));
+{% endhighlight %}
+
+### For already existing blocks (i.e, already saved on server)
+
+* The editor instance accepts 3 props:
+    * `blockUrl`: The url endpoint to fetch a particular set of blocks. For ex: url can be `/article/ID`.
+    * `processData`: The function is then passed the json `response` from the `blockUrl`. It is supposed to return just the array of blocks out of the `response` object. Before returning the array, make sure each block contains a unique `key`.
+    * `onSave`: This function is called whenever `Save` button is clicked.
+
+{% highlight javascript %}
+var blockUrl = "/blocks.json";
+function processData(json) {
+    for(var i=0; i < json.length; i++) {
+        if(!json[i].key) {
+            json[i].key = LegoBlocks.uuid()
+        }
+    }
+    return json;
+}
+
+function onSave(blocks) {
+    console.log(blocks);
+    // save the blocks on the server.
+}
+
+var editor = React.createElement(LegoBlocks.Editor, {
+    blockUrl: blockUrl,
+    processData: processData,
+    onSave: onSave
+});
 React.render(editor, document.getElementById('editor-ui'));
 {% endhighlight %}
 
@@ -35,42 +77,6 @@ The editor has a `Save` button when there are 1 or more blocks. To get the curre
 
 {% highlight javascript %}
 var editor = React.createElement(LegoBlocks.Editor, {
-    onSave: function(blocks) {
-        console.log('This is the list of current blocks.');
-        console.log(blocks);
-    }
-});
-React.render(editor, document.getElementById('editor-ui'));
-{% endhighlight %}
-
-If you already have a list of blocks (that may have been previously saved on the server):
-
-* You can first fetch the block list from the server.
-* Pass the list to the editor instance as a React `prop`.
-* Make sure each block has a `key` key. This is used by React and facilitates easy manipulation of position (up, down or remove block).
-* If the blocks don't have a `key`, you can just generate keys for each of them in the browser using the utility function provided `LegoBlocks.uuid()`.
-* The `key` functionality applies to each of the items in `UL` or `OL`.
-
-{% highlight javascript %}
-var blocks = function() {
-    var blocks = [];
-    // fetch from server, and assign it to blocks.
-    for(var i=0; i < blocks.length; i++) {
-        if(!blocks[i].key) {
-            blocks[i].key = LegoBlocks.uuid();
-        }
-        if(blocks[i].type === LegoBlocks.Blocks.UL.Name || blocks[i].type === LegoBlocks.Blocks.OL.Name) {
-            for(var j = 0; j < blocks[i].content.length; j++) {
-                if(!blocks[i].content[j].key) {
-                    blocks[i].content[j].key = LegoBlocks.uuid();
-                }
-            }
-        }
-    }
-    return blocks;
-};
-var editor = React.createElement(LegoBlocks.Editor, {
-    blocks: blocks,
     onSave: function(blocks) {
         console.log('This is the list of current blocks.');
         console.log(blocks);

@@ -1,6 +1,6 @@
 /**
  * Legoblocks - A block based rich text editor with support of Images, embeds( Youtube, twitter, etc)
- * @version v0.1.1
+ * @version v0.1.2
  * @link https://github.com/brijeshb42/legoblocks
  * @license MIT
  */

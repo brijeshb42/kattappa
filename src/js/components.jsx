@@ -12,10 +12,39 @@
       return initialState;
     },
 
+    getDefaultProps: function() {
+      return {
+        blockUrl: ''
+      };
+    },
+
     componentDidMount: function() {
-      if(this.props.blocks) {
-        this.setState({
-          blocks: this.props.blocks
+      var self = this;
+      if(this.props.blockUrl !== '') {
+        fetch(self.props.blockUrl, {
+          credentials: 'same-origin',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        }).then(function(response) {
+          if (response.status >= 200 && response.status < 300) {
+            return response.json();
+          } else {
+            var error = new Error(response.statusText);
+            error.response = response;
+            throw error;
+          }
+        }).then(function(json) {
+          if(self.props.processData) {
+            self.setState({
+              blocks: self.props.processData(json)
+            });
+          } else {
+            console.warn('Provide a function to process blocks.');
+          }
+        }).catch(function(e) {
+          console.error(e);
         })
       }
     },

@@ -1,6 +1,6 @@
 {
   "name": "Legoblocks",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, twitter, etc)",
   "main": "gulpfile.js",
   "devDependencies": {

@@ -51,4 +51,10 @@ gulp.task("usemin", ['less'], function() {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task("default", ["usemin"]);
+gulp.task("watch", ["usemin"], function() {
+    gulp.watch("src/js/*.js*", ["usemin"]);
+    gulp.watch("src/css/*.less", ["usemin"])
+});
+
+gulp.task("prod", ["usemin"]);
+gulp.task("default", ["watch"]);

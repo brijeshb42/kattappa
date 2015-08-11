@@ -61,6 +61,7 @@
     checkContent: function(ok) {
       if(ok) {
         this.props.onContentChanged(this.props.position, this.state.url);
+      } else if(this.props.content === this.state.url) {
       } else {
         this.setState({
           loaded: false
@@ -110,17 +111,3 @@
   window.LegoBlocks = APP;
 
 })(window);
-
-/*
-vimeo: {
-      regex: /(?:http[s]?:\/\/)?(?:www.)?vimeo\.co(?:.+(?:\/)([^\/].*)+$)/,
-      html: "<iframe src=\"<%= protocol %>//player.vimeo.com/video/<%= remote_id %>?title=0&byline=0\" width=\"580\" height=\"320\" frameborder=\"0\"></iframe>"
-    },
-    youtube: {
-      regex: /^.*(?:(?:youtu\.be\/)|(?:youtube\.com)\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*)/,
-      html: "<iframe src=\"<%= protocol %>//www.youtube.com/embed/<%= remote_id %>\" width=\"580\" height=\"320\" frameborder=\"0\" allowfullscreen></iframe>"
-    }
-*/
-
-//React.render(<LegoBlocks.Instagram url="https://instagram.com/p/6H5rZHkOEF/?taken-by=thedesistuff" />, document.getElementById('editor-content'));
-//React.render(<LegoBlocks.Blocks.Embed.React content="" />, document.getElementById('editor-content'));

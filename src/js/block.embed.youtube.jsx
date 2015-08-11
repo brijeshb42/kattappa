@@ -57,7 +57,7 @@
         );
       }
       return (
-        <div className="legob-embed">Invalid instagram URL.</div>
+        <div className="legob-embed">Invalid youtube URL.</div>
       );
     }
   });

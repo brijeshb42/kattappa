@@ -1,0 +1,42 @@
+{
+  "name": "Legoblocks",
+  "version": "0.1.0",
+  "authors": [
+    "Brijesh Bittu <brijeshb42@gmail.com>"
+  ],
+  "description": "A block based rich text editor with support of Images, embeds( Youtube, twitter, etc)",
+  "keywords": [
+    "react",
+    "sir-trevor",
+    "block",
+    "editor",
+    "cms"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "dist.html",
+    "gulpfile.js"
+  ],
+  "dependencies": {
+    "react": "~0.13.3",
+    "quill": "~0.20.0",
+    "fetch": "~0.9.0"
+  },
+  "main": [
+    "./dist/legoblocks.js",
+    "./dist/legoblocks.css",
+    "./dist/legoblocks.embed.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brijeshb42/legoblocks.git"
+  }
+}

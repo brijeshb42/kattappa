@@ -7,6 +7,8 @@ title: Legoblocks - A block based rich text editor.
 
 A block based Rich Text editor.
 
+<a href="//bitwiser.in/legoblocks/demo.html" class="mui-btn mui-btn-primary mui-btn-lg">Demo</a>
+
 It uses:
 
 * [ReactJS](http://facebook.github.io/react/) for its UI.

@@ -4,6 +4,8 @@ color: teal
 title: Using LegoBlocks
 ---
 
+<a href="//bitwiser.in/legoblocks/demo.html" class="mui-btn mui-btn-primary mui-btn-lg">Demo</a>
+
 #### Load dependencies in your html:
 * CSS:
     * `<link rel="stylesheet" type="text/css" href="bower_components/quill/dist/quill.base.css">`

@@ -1,11 +1,11 @@
 # Site settings
 ## Change the values as needed.
-title: Katappa
+title: Kattappa
 email: brijeshb42@gmail.com
 description: "A block based rich text editor made using React"
 keywords: "react, editor, block, trevor"
-url: "http://bitwiser.in/katappa" # the base hostname & protocol for your site
-baseurl: "http://bitwiser.in/katappa" # the subpath of your site, e.g. /blog/
+url: "http://bitwiser.in/kattappa" # the base hostname & protocol for your site
+baseurl: "http://bitwiser.in/kattappa" # the subpath of your site, e.g. /blog/
 #url: ""
 #baseurl: ""
 markdown: kramdown
@@ -15,7 +15,7 @@ sass:
   style: :compressed
 links:
   twitter: brijeshb42
-  github: brijeshb42/katappa/
+  github: brijeshb42/kattappa/
 exclude:
   - bower_components
   - README.md

@@ -1,13 +1,13 @@
 ---
 layout: pagepost
-title: Katappa - A block based rich text editor.
+title: Kattappa - A block based rich text editor.
 ---
 
-## Katappa
+## Kattappa
 
 A block based Rich Text editor.
 
-<a href="//bitwiser.in/katappa/demo.html" class="mui-btn mui-btn-primary mui-btn-lg">Demo</a>
+<a href="//bitwiser.in/kattappa/demo.html" class="mui-btn mui-btn-primary mui-btn-lg">Demo</a>
 
 It uses:
 
@@ -17,12 +17,12 @@ It uses:
 
 ### Installation
 
-* Use `bower install katappa`.
-* Or Download the latest release [here](https://github.com/brijeshb42/katappa/releases/latest).
+* Use `bower install kattappa`.
+* Or Download the latest release [here](https://github.com/brijeshb42/kattappa/releases/latest).
 
 #### Goodies
 
-* `Katappa` supports the following embeds out of the box:
+* `Kattappa` supports the following embeds out of the box:
     * Instagram
     * Youtube
     * Vimeo

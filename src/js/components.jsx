@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
 
   var initialState = {
     blocks: []
@@ -113,7 +113,7 @@
       var rndr = blocks.map(function(block, index) {
 
         return (
-          React.createElement("div", {key: block.key, className: "legob-container"},
+          React.createElement("div", {key: block.key, className: "katapcontainer"},
             self.getToolbar(index),
             React.createElement(APP.Blocks[block.type].React, {
               ref: 'block'+index, 
@@ -139,16 +139,16 @@
     render: function() {
       if(this.state.blocks.length > 0) {
         return (
-          <div className='legob-listing'>
+          <div className='kataplisting'>
             <button
               onClick={this.passBlocks}
-              className="legob-savebtn">Save</button>
+              className="katapsavebtn">Save</button>
             {this.renderBlocks()}
           </div>
         );
       }
       return (
-        <div className='legob-listing'>
+        <div className='kataplisting'>
           {this.renderBlocks()}
         </div>
       );
@@ -156,7 +156,7 @@
   });
   
   APP.Editor = Editor;
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 
 })(window);
 

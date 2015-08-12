@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
   var T = React.PropTypes;
 
   var ExtraEnter = "<div><br></div>";
@@ -208,5 +208,5 @@
 
   APP.QuillComponent = QuillComponent;
 
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 })(window);

@@ -1,6 +1,6 @@
 (function(window) {
 
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
   var Types = APP.Blocks.Embed.Types || {};
 
   var Instagram = React.createClass({
@@ -46,7 +46,7 @@
     render: function() {
       if(this.state.valid) {
         return (
-          <div className="legob-embed legob-instagram">
+          <div className="katapembed katapinstagram">
           <iframe
           src={'//instagram.com/p/'+this.state.id+'/embed'}
           frameBorder={0}
@@ -55,7 +55,7 @@
           );
       }
       return (
-        <div className="legob-embed">Invalid instagram URL.</div>
+        <div className="katapembed">Invalid instagram URL.</div>
         );
     }
   });
@@ -63,5 +63,5 @@
   Types.instagram = Instagram;
   
   APP.Blocks.Embed.Types = Types
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 })(window);

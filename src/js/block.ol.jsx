@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
 
   var Action = APP.Action;
 
@@ -79,7 +79,7 @@
 
     render: function() {
       return (
-        <ol className="legob-list">
+        <ol className="kataplist">
         {this.renderListItem()}
         </ol>
       );
@@ -107,6 +107,6 @@
     }
   };
 
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 
 })(window);

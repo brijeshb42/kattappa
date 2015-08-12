@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
 
   var UploadUrl = "";
 
@@ -54,7 +54,7 @@
     render: function() {
       if(this.props.content === "") {
         return (
-          <div className="legob-image">
+          <div className="katapimage">
             <APP.Droppable
               onDrop={this.handleImage}>
               <p>{this.state.message}</p>
@@ -63,7 +63,7 @@
         );
       } else {
         return (
-          <div className="legob-image">
+          <div className="katapimage">
             <img src={this.props.content} />
           </div>
         );
@@ -86,6 +86,6 @@
       return (content === '');
     }
   };
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 
 })(window);

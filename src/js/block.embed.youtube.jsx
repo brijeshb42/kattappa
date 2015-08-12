@@ -1,6 +1,6 @@
 (function(window) {
 
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
   var Types = APP.Blocks.Embed.Types || {};
 
   var Youtube = React.createClass({
@@ -46,7 +46,7 @@
     render: function() {
       if(this.state.valid) {
         return (
-          <div className="legob-embed legob-youtube">
+          <div className="katapembed katapyoutube">
           <iframe
             src={'//youtube.com/embed/'+this.state.id}
             frameBorder={0}
@@ -57,7 +57,7 @@
         );
       }
       return (
-        <div className="legob-embed">Invalid youtube URL.</div>
+        <div className="katapembed">Invalid youtube URL.</div>
       );
     }
   });
@@ -65,5 +65,5 @@
   Types.youtu = Youtube;
   
   APP.Blocks.Embed.Types = Types
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 })(window);

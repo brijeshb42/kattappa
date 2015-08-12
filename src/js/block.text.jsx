@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
 
   var BlockText = React.createClass({
 
@@ -13,7 +13,7 @@
 
     render: function() {
       return (
-        <div className="legob-text">
+        <div className="kataptext">
           <APP.QuillComponent
             content={this.props.content}
             captureReturn={this.captureReturn}
@@ -36,6 +36,6 @@
       return (content.replace(/(<([^>]+)>)/ig,'') === '');
     }
   };
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 
 })(window);

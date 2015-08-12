@@ -1,5 +1,5 @@
 {
-  "name": "Legoblocks",
+  "name": "Katappa",
   "version": "0.1.2",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, twitter, etc)",
   "main": "gulpfile.js",
@@ -27,10 +27,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brijeshb42/legoblocks.git"
+    "url": "https://github.com/brijeshb42/katappa.git"
   },
   "bugs": {
-    "url": "https://github.com/brijeshb42/legoblocks/issues"
+    "url": "https://github.com/brijeshb42/katappa/issues"
   },
-  "homepage": "https://github.com/brijeshb42/legoblocks"
+  "homepage": "https://github.com/brijeshb42/katappa"
 }

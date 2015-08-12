@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
 
   var Action = APP.Action;
   var blocks = APP.Blocks;
@@ -36,7 +36,7 @@
       if(!this.state.visible) {
         return (
           <div
-            className="legob-toolbar"
+            className="kataptoolbar"
             onClick={this.toggleState}>
             <button title="Add block">+</button>
           </div>
@@ -44,7 +44,7 @@
       }
       return (
         <div
-          className="legob-toolbar"
+          className="kataptoolbar"
           onClick={this.toggleState}>
           <button title="Close">&times;</button>
           {this.state.types.map(function(typ, pos) {
@@ -88,7 +88,7 @@
       if(this.props.onlyRemove) {
         return (
           <div
-            className="legob-control-toolbar"
+            className="katapcontrol-toolbar"
             onClick={this.handleClick}>
             <button title="Remove" data-action={Action.REMOVE} key={Action.REMOVE}>&times;</button>
           </div>
@@ -110,7 +110,7 @@
       }
       return (
         <div
-          className="legob-control-toolbar"
+          className="katapcontrol-toolbar"
           onClick={this.handleClick}>
           {buttons}
         </div>
@@ -124,6 +124,6 @@
 
   APP.Toolbar = Toolbar;
   APP.BlockControl = BlockControl;
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 
 })(window);

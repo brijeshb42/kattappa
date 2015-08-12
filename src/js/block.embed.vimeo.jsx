@@ -1,6 +1,6 @@
 (function(window) {
 
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
   var Types = APP.Blocks.Embed.Types || {};
 
   var Vimeo = React.createClass({
@@ -46,7 +46,7 @@
     render: function() {
       if(this.state.valid) {
         return (
-          <div className="legob-embed legob-vimeo">
+          <div className="katapembed katapvimeo">
           <iframe
             src={'//player.vimeo.com/video/'+this.state.id}
             frameBorder={0}
@@ -57,7 +57,7 @@
         );
       }
       return (
-        <div className="legob-embed">Invalid vimeo URL.</div>
+        <div className="katapembed">Invalid vimeo URL.</div>
       );
     }
   });
@@ -65,5 +65,5 @@
   Types.vimeo = Vimeo;
   
   APP.Blocks.Embed.Types = Types
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 })(window);

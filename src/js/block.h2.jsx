@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
 
   var items = [
     {
@@ -24,7 +24,7 @@
 
     render: function() {
       return (
-        <h2 className="legob-h2">
+        <h2 className="kataph2">
           <APP.QuillComponent
             content={this.props.content}
             captureReturn={this.captureReturn}
@@ -48,7 +48,7 @@
 
     render: function() {
       return (
-        <h3 className="legob-h3">
+        <h3 className="kataph3">
           <APP.QuillComponent
             content={this.props.content}
             captureReturn={this.captureReturn}
@@ -72,7 +72,7 @@
 
     render: function() {
       return (
-        <h4 className="legob-h4">
+        <h4 className="kataph4">
           <APP.QuillComponent
             content={this.props.content}
             captureReturn={this.captureReturn}
@@ -125,6 +125,6 @@
   //     return false;
   //   }
   // };
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 
 })(window);

@@ -1,6 +1,6 @@
 (function(window) {
 
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
   var Types = APP.Blocks.Embed.Types || {};
 
   var oEmbedUrl = '/tweet?url=';
@@ -100,19 +100,19 @@
       if(this.state.valid) {
         if(this.state.html === '') {
           return (
-            <div className="legob-embed legob-twitter">
+            <div className="katapembed kataptwitter">
             {this.state.message}
             </div>
           );
         }
         return (
           <div
-            className="legob-embed legob-twitter"
+            className="katapembed kataptwitter"
             dangerouslySetInnerHTML={{__html: this.state.html}} />
         );
       }
       return (
-        <div className="legob-embed">Invalid twitter URL.</div>
+        <div className="katapembed">Invalid twitter URL.</div>
       );
     }
   });
@@ -120,5 +120,5 @@
   Types.twitter = Twitter;
   
   APP.Blocks.Embed.Types = Types
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 })(window);

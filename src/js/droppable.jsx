@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
 
   var Droppable = React.createClass({
     getInitialState: function() {
@@ -16,7 +16,7 @@
     },
 
     getClassName: function() {
-      return 'legob-droppable '+(this.props.className || this.state.className);
+      return 'katapdroppable '+(this.props.className || this.state.className);
     },
 
     componentDidMount: function() {
@@ -30,7 +30,7 @@
       var effectAllowed = e.dataTransfer.effectAllowed;
       if (effectAllowed === 'all' || effectAllowed === 'uninitialized') {
         this.setState({
-          className: 'legob-drop-active'
+          className: 'katapdrop-active'
         });
       }
       if (this.props.onDragOver) {
@@ -95,5 +95,5 @@
   });
 
   APP.Droppable = Droppable;
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 })(window);

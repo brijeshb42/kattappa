@@ -1,11 +1,11 @@
 (function(window) {
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
 
   var HR = React.createClass({
 
     render: function() {
       return (
-        <hr className="legob-hr" />
+        <hr className="kataphr" />
       );
     }
   });
@@ -22,6 +22,6 @@
       return true;
     }
   };
-  window.LegoBlocks = APP;
+  window.Katappa = APP;
 
 })(window);

@@ -12,7 +12,7 @@
     throw new Error('Quill is required for this project to function.');
   }
 
-  var APP = window.LegoBlocks || {};
+  var APP = window.Katappa || {};
 
   APP.BlockStructure = {
     Text: '',
@@ -55,8 +55,6 @@
 
   APP.Blocks = {};
 
-  window.LegoBlocks = APP;
-
   var QuillEnterHandler = function(quill, options) {
     //console.log('init enter handler');
     this.quill = quill;
@@ -85,5 +83,7 @@
   };
 
   Quill.registerModule('enterHandler', QuillEnterHandler);
+
+  window.Katappa = APP;
 
 })(window);

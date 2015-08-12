@@ -1,6 +1,6 @@
 {
-  "name": "Legoblocks",
-  "version": "0.1.1",
+  "name": "Katappa",
+  "version": "0.2.0",
   "authors": [
     "Brijesh Bittu <brijeshb42@gmail.com>"
   ],
@@ -31,12 +31,12 @@
     "fetch": "~0.9.0"
   },
   "main": [
-    "./dist/legoblocks.js",
-    "./dist/legoblocks.css",
-    "./dist/legoblocks.embed.js"
+    "./dist/katappa.js",
+    "./dist/katappa.css",
+    "./dist/katappa.embed.js"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/brijeshb42/legoblocks.git"
+    "url": "git://github.com/brijeshb42/katappa.git"
   }
 }

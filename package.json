@@ -1,6 +1,6 @@
 {
   "name": "Kattappa",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, twitter, etc)",
   "main": "gulpfile.js",
   "devDependencies": {

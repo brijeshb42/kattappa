@@ -4,10 +4,10 @@ title: Katappa
 email: brijeshb42@gmail.com
 description: "A block based rich text editor made using React"
 keywords: "react, editor, block, trevor"
-#url: "http://bitwiser.in/katappa" # the base hostname & protocol for your site
-#baseurl: "http://bitwiser.in/katappa" # the subpath of your site, e.g. /blog/
-url: ""
-baseurl: ""
+url: "http://bitwiser.in/katappa" # the base hostname & protocol for your site
+baseurl: "http://bitwiser.in/katappa" # the subpath of your site, e.g. /blog/
+#url: ""
+#baseurl: ""
 markdown: kramdown
 highlighter: pygments
 sass:

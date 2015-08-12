@@ -1,6 +1,6 @@
 (function(window) {
 
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
   var Types = APP.Blocks.Embed.Types || {};
 
   var Youtube = React.createClass({
@@ -65,5 +65,5 @@
   Types.youtu = Youtube;
   
   APP.Blocks.Embed.Types = Types
-  window.Katappa = APP;
+  window.Kattappa = APP;
 })(window);

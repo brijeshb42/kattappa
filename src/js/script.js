@@ -12,7 +12,7 @@
     throw new Error('Quill is required for this project to function.');
   }
 
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
 
   APP.BlockStructure = {
     Text: '',
@@ -84,6 +84,6 @@
 
   Quill.registerModule('enterHandler', QuillEnterHandler);
 
-  window.Katappa = APP;
+  window.Kattappa = APP;
 
 })(window);

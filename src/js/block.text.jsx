@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
 
   var BlockText = React.createClass({
 
@@ -36,6 +36,6 @@
       return (content.replace(/(<([^>]+)>)/ig,'') === '');
     }
   };
-  window.Katappa = APP;
+  window.Kattappa = APP;
 
 })(window);

@@ -1,5 +1,5 @@
 {
-  "name": "Katappa",
+  "name": "Kattappa",
   "version": "0.1.2",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, twitter, etc)",
   "main": "gulpfile.js",
@@ -27,10 +27,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brijeshb42/katappa.git"
+    "url": "https://github.com/brijeshb42/kattappa.git"
   },
   "bugs": {
-    "url": "https://github.com/brijeshb42/katappa/issues"
+    "url": "https://github.com/brijeshb42/kattappa/issues"
   },
-  "homepage": "https://github.com/brijeshb42/katappa"
+  "homepage": "https://github.com/brijeshb42/kattappa"
 }

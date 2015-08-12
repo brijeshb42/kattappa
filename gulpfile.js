@@ -33,7 +33,7 @@ gulp.task("less", function() {
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(minifyCss())
-        .pipe(rename("katappa.css"))
+        .pipe(rename("kattappa.css"))
         .pipe(sourcemaps.write('./maps'))
         .pipe(header(banner, {pkg: pkg}))
         .pipe(gulp.dest('dist'));

@@ -1,6 +1,6 @@
 (function(window) {
 
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
   var Types = APP.Blocks.Embed.Types || {};
 
   var Vimeo = React.createClass({
@@ -65,5 +65,5 @@
   Types.vimeo = Vimeo;
   
   APP.Blocks.Embed.Types = Types
-  window.Katappa = APP;
+  window.Kattappa = APP;
 })(window);

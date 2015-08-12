@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
 
   var Action = APP.Action;
   var blocks = APP.Blocks;
@@ -124,6 +124,6 @@
 
   APP.Toolbar = Toolbar;
   APP.BlockControl = BlockControl;
-  window.Katappa = APP;
+  window.Kattappa = APP;
 
 })(window);

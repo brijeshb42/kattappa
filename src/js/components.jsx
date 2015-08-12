@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
 
   var initialState = {
     blocks: []
@@ -156,7 +156,7 @@
   });
   
   APP.Editor = Editor;
-  window.Katappa = APP;
+  window.Kattappa = APP;
 
 })(window);
 

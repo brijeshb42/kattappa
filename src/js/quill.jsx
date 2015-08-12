@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
   var T = React.PropTypes;
 
   var ExtraEnter = "<div><br></div>";
@@ -208,5 +208,5 @@
 
   APP.QuillComponent = QuillComponent;
 
-  window.Katappa = APP;
+  window.Kattappa = APP;
 })(window);

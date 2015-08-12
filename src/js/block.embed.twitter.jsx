@@ -1,6 +1,6 @@
 (function(window) {
 
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
   var Types = APP.Blocks.Embed.Types || {};
 
   var oEmbedUrl = '/tweet?url=';
@@ -120,5 +120,5 @@
   Types.twitter = Twitter;
   
   APP.Blocks.Embed.Types = Types
-  window.Katappa = APP;
+  window.Kattappa = APP;
 })(window);

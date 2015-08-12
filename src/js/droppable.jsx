@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
 
   var Droppable = React.createClass({
     getInitialState: function() {
@@ -95,5 +95,5 @@
   });
 
   APP.Droppable = Droppable;
-  window.Katappa = APP;
+  window.Kattappa = APP;
 })(window);

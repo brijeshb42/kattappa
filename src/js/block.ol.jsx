@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
 
   var Action = APP.Action;
 
@@ -107,6 +107,6 @@
     }
   };
 
-  window.Katappa = APP;
+  window.Kattappa = APP;
 
 })(window);

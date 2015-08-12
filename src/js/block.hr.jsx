@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
 
   var HR = React.createClass({
 
@@ -22,6 +22,6 @@
       return true;
     }
   };
-  window.Katappa = APP;
+  window.Kattappa = APP;
 
 })(window);

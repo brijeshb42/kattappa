@@ -1,5 +1,5 @@
 (function(window) {
-  var APP = window.Katappa || {};
+  var APP = window.Kattappa || {};
 
   var UploadUrl = "";
 
@@ -86,6 +86,6 @@
       return (content === '');
     }
   };
-  window.Katappa = APP;
+  window.Kattappa = APP;
 
 })(window);

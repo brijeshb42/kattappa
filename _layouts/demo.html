@@ -2,8 +2,8 @@
 <html>
 
   {% include head.html %}
-  <link rel="stylesheet" type="text/css" href="{{ site.url }}/dist/legoblocks.vendor.css">
-  <link rel="stylesheet" type="text/css" href="{{ site.url }}/dist/legoblocks.css">
+  <link rel="stylesheet" type="text/css" href="{{ site.url }}/dist/katappa.vendor.css">
+  <link rel="stylesheet" type="text/css" href="{{ site.url }}/dist/katappa.css">
   <link rel="stylesheet" type="text/css" href="{{ site.url }}/static/custom.css">
 
   <body>
@@ -13,20 +13,20 @@
     </div>
 
   {% include footer.html %}
-  <script src="{{ site.url }}/dist/legoblocks.vendor.js"></script>
-  <script src="{{ site.url }}/dist/legoblocks.js"></script>
+  <script src="{{ site.url }}/dist/katappa.vendor.js"></script>
+  <script src="{{ site.url }}/dist/katappa.js"></script>
   <script>
   var blockUrl = "{{ site.url }}/blocks.json";
   function processData(data) {
     console.log(data);
     for(var i=0; i<data.length; i++) {
       if(!data[i].key) {
-        data[i].key = LegoBlocks.uuid();
+        data[i].key = Katappa.uuid();
       }
     }
     return data;
   }
-  var editor = React.createElement(LegoBlocks.Editor, {
+  var editor = React.createElement(Katappa.Editor, {
     blockUrl: blockUrl,
     processData: processData,
     onSave: function(blocks) {

@@ -5,12 +5,12 @@
 
 @import "mui";
 
-.legob-savebtn {
+.katap-savebtn {
     @extend  .mui-btn;
     @extend  .mui-btn-danger;
 }
 
-.legob-listing {
+.katap-listing {
     .legob-toolbar {
         button:first-child {
             @extend  .mui-btn;
@@ -24,7 +24,7 @@
     }
 }
 
-.legob-control-toolbar {
+.katap-control-toolbar {
     button {
         @extend  .mui-btn;
         @extend  .mui-btn-floating;
@@ -32,7 +32,7 @@
     }
 }
 
-.legob-droppable {
+.katap-droppable {
     @extend .mui-panel;
     padding: 30px 0;
 }

@@ -1,23 +1,23 @@
 ---
 layout: page
 color: teal
-title: Using LegoBlocks
+title: Using Katappa
 ---
 
-<a href="//bitwiser.in/legoblocks/demo.html" class="mui-btn mui-btn-primary mui-btn-lg">Demo</a>
+<a href="//bitwiser.in/katappa/demo.html" class="mui-btn mui-btn-primary mui-btn-lg">Demo</a>
 
 #### Load dependencies in your html:
 * CSS:
     * `<link rel="stylesheet" type="text/css" href="bower_components/quill/dist/quill.base.css">`
-    * (A bundled quill css comes with `LegoBlocks`. If you don't use bower, you can directly use:
-        * `<link rel="stylesheet" type="text/css" href="legoblocks.vendor.css">`)
-    * `<link rel="stylesheet" type="text/css" href="legoblocks.css">`. (Used for basic styling of the blocks. You can extend these to be what you want.)
+    * (A bundled quill css comes with `Katappa`. If you don't use bower, you can directly use:
+        * `<link rel="stylesheet" type="text/css" href="katappa.vendor.css">`)
+    * `<link rel="stylesheet" type="text/css" href="katappa.css">`. (Used for basic styling of the blocks. You can extend these to be what you want.)
 * Javascript:
     * `<script type="text/javascript" src="bower_components/react/react-with-addons.min.js"></script>`
     * `<script type="text/javascript" src="bower_components/quill/dist/quill.min.js"></script>`
     * `<script src="bower_components/fetch/fetch.js"></script>`
-    * (Or you can just include `<script src="legoblocks.vendor.js"></script>` instead of the above 3).
-    * `<script type="text/javascript" src="legoblocks.js"></script>`
+    * (Or you can just include `<script src="katappa.vendor.js"></script>` instead of the above 3).
+    * `<script type="text/javascript" src="katappa.js"></script>`
 
 * Html:
     * `<div id="editor-ui"></div>`
@@ -36,7 +36,7 @@ function onSave(blocks) {
     // save the blocks on the server.
 }
 
-var editor = React.createElement(LegoBlocks.Editor, {
+var editor = React.createElement(Katappa.Editor, {
     onSave: onSave
 });
 React.render(editor, document.getElementById('editor-ui'));
@@ -54,7 +54,7 @@ var blockUrl = "/blocks.json";
 function processData(json) {
     for(var i=0; i < json.length; i++) {
         if(!json[i].key) {
-            json[i].key = LegoBlocks.uuid()
+            json[i].key = Katappa.uuid()
         }
     }
     return json;
@@ -65,7 +65,7 @@ function onSave(blocks) {
     // save the blocks on the server.
 }
 
-var editor = React.createElement(LegoBlocks.Editor, {
+var editor = React.createElement(Katappa.Editor, {
     blockUrl: blockUrl,
     processData: processData,
     onSave: onSave
@@ -76,7 +76,7 @@ React.render(editor, document.getElementById('editor-ui'));
 The editor has a `Save` button when there are 1 or more blocks. To get the current block content, you can pass a callback function `onSave` as a React `prop` that will be called whenever `Save` button is clicked. This callback receives the current `blocks` array.
 
 {% highlight javascript %}
-var editor = React.createElement(LegoBlocks.Editor, {
+var editor = React.createElement(Katappa.Editor, {
     onSave: function(blocks) {
         console.log('This is the list of current blocks.');
         console.log(blocks);
@@ -90,7 +90,7 @@ React.render(editor, document.getElementById('editor-ui'));
 * By default, the image block just renders the image using `createObjectURL`.
 * If you want the image to also be uploaded to the server, you can do this:
     * Change the value of `UploadUrl` to your server's endpoint
-        * `LegoBlocks.Block.Image.UploadUrl = '/upload_image';`
+        * `Katappa.Block.Image.UploadUrl = '/upload_image';`
     * If `UploadUrl` is provided, the `Image` block will send a POST request to the url with `image` key having the selected image file and it expects a `json` reponse from the server of the following format:
 
 {% highlight javascript %}
@@ -102,11 +102,11 @@ React.render(editor, document.getElementById('editor-ui'));
 
 #### Goodies
 
-* `LegoBlocks` supports the following embeds out of the box:
+* `Katappa` supports the following embeds out of the box:
     * Instagram
     * Youtube
     * Vimeo
-* Also has Twitter embed in `legoblocks.embed.js`. But this also has a dependency on server.
+* Also has Twitter embed in `katappa.embed.js`. But this also has a dependency on server.
 * The Twitter embed expects:
     * The server to implement a `/tweet` endpoint that will be called with the `url=url_to_twitter_status` query string.
     * The response from the server should be a json with the following structure:

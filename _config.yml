@@ -1,13 +1,13 @@
 # Site settings
 ## Change the values as needed.
-title: LegoBlocks
+title: Katappa
 email: brijeshb42@gmail.com
 description: "A block based rich text editor made using React"
 keywords: "react, editor, block, trevor"
-url: "http://bitwiser.in/legoblocks" # the base hostname & protocol for your site
-baseurl: "http://bitwiser.in/legoblocks" # the subpath of your site, e.g. /blog/
-# url: ""
-# baseurl: ""
+#url: "http://bitwiser.in/katappa" # the base hostname & protocol for your site
+#baseurl: "http://bitwiser.in/katappa" # the subpath of your site, e.g. /blog/
+url: ""
+baseurl: ""
 markdown: kramdown
 highlighter: pygments
 sass:
@@ -15,15 +15,13 @@ sass:
   style: :compressed
 links:
   twitter: brijeshb42
-  github: brijeshb42/legoblocks/
+  github: brijeshb42/katappa/
 exclude:
   - bower_components
   - README.md
   - bower.json
   - src
   - package.json
-  - css
-  - js
 full_name: Brijesh
 
 ##set this to enable disqus commenting

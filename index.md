@@ -1,13 +1,13 @@
 ---
 layout: pagepost
-title: Legoblocks - A block based rich text editor.
+title: Katappa - A block based rich text editor.
 ---
 
-## LegoBlocks
+## Katappa
 
 A block based Rich Text editor.
 
-<a href="//bitwiser.in/legoblocks/demo.html" class="mui-btn mui-btn-primary mui-btn-lg">Demo</a>
+<a href="//bitwiser.in/katappa/demo.html" class="mui-btn mui-btn-primary mui-btn-lg">Demo</a>
 
 It uses:
 
@@ -17,12 +17,12 @@ It uses:
 
 ### Installation
 
-* Use `bower install legoblocks`.
-* Or Download the latest release [here](https://github.com/brijeshb42/legoblocks/releases/latest).
+* Use `bower install katappa`.
+* Or Download the latest release [here](https://github.com/brijeshb42/katappa/releases/latest).
 
 #### Goodies
 
-* `LegoBlocks` supports the following embeds out of the box:
+* `Katappa` supports the following embeds out of the box:
     * Instagram
     * Youtube
     * Vimeo

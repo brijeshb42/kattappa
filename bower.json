@@ -23,7 +23,10 @@
     "test",
     "tests",
     "dist.html",
-    "gulpfile.js"
+    "gulpfile.js",
+    "src",
+    "package.json",
+    "bower.json"
   ],
   "dependencies": {
     "react": "~0.13.3",

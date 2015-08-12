@@ -46,7 +46,7 @@
     render: function() {
       if(this.state.valid) {
         return (
-          <div className="katapembed katapvimeo">
+          <div className="katap-embed katap-vimeo">
           <iframe
             src={'//player.vimeo.com/video/'+this.state.id}
             frameBorder={0}
@@ -57,7 +57,7 @@
         );
       }
       return (
-        <div className="katapembed">Invalid vimeo URL.</div>
+        <div className="katap-embed">Invalid vimeo URL.</div>
       );
     }
   });

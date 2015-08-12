@@ -16,7 +16,7 @@
     },
 
     getClassName: function() {
-      return 'katapdroppable '+(this.props.className || this.state.className);
+      return 'katap-droppable '+(this.props.className || this.state.className);
     },
 
     componentDidMount: function() {
@@ -30,7 +30,7 @@
       var effectAllowed = e.dataTransfer.effectAllowed;
       if (effectAllowed === 'all' || effectAllowed === 'uninitialized') {
         this.setState({
-          className: 'katapdrop-active'
+          className: 'katap-drop-active'
         });
       }
       if (this.props.onDragOver) {

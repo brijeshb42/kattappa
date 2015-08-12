@@ -83,7 +83,7 @@
         return this.renderBlock();
       } else {
         return (
-          <div className="katapembed">
+          <div className="katap-embed">
             <input
               ref="input"
               type="text"

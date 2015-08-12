@@ -79,7 +79,7 @@
 
     render: function() {
       return (
-        <ol className="kataplist">
+        <ol className="katap-list">
         {this.renderListItem()}
         </ol>
       );

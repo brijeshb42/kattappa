@@ -46,7 +46,7 @@
     render: function() {
       if(this.state.valid) {
         return (
-          <div className="katapembed katapyoutube">
+          <div className="katap-embed katap-youtube">
           <iframe
             src={'//youtube.com/embed/'+this.state.id}
             frameBorder={0}
@@ -57,7 +57,7 @@
         );
       }
       return (
-        <div className="katapembed">Invalid youtube URL.</div>
+        <div className="katap-embed">Invalid youtube URL.</div>
       );
     }
   });

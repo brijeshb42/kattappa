@@ -22,7 +22,7 @@
 
     render: function() {
       return (
-        <blockquote className="kataptext">
+        <blockquote className="katap-text">
           <APP.QuillComponent
             content={this.props.content}
             captureReturn={this.captureReturn}

@@ -13,7 +13,7 @@
 
     render: function() {
       return (
-        <div className="kataptext">
+        <div className="katap-text">
           <APP.QuillComponent
             content={this.props.content}
             captureReturn={this.captureReturn}

@@ -79,7 +79,7 @@
 
     render: function() {
       return (
-        <ul className="kataplist">
+        <ul className="katap-list">
         {this.renderListItem()}
         </ul>
       );

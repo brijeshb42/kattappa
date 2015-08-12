@@ -54,7 +54,7 @@
     render: function() {
       if(this.props.content === "") {
         return (
-          <div className="katapimage">
+          <div className="katap-image">
             <APP.Droppable
               onDrop={this.handleImage}>
               <p>{this.state.message}</p>
@@ -63,7 +63,7 @@
         );
       } else {
         return (
-          <div className="katapimage">
+          <div className="katap-image">
             <img src={this.props.content} />
           </div>
         );

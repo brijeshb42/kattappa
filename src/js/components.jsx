@@ -113,7 +113,7 @@
       var rndr = blocks.map(function(block, index) {
 
         return (
-          React.createElement("div", {key: block.key, className: "katapcontainer"},
+          React.createElement("div", {key: block.key, className: "katap-container"},
             self.getToolbar(index),
             React.createElement(APP.Blocks[block.type].React, {
               ref: 'block'+index, 
@@ -139,16 +139,16 @@
     render: function() {
       if(this.state.blocks.length > 0) {
         return (
-          <div className='kataplisting'>
+          <div className='katap-listing'>
             <button
               onClick={this.passBlocks}
-              className="katapsavebtn">Save</button>
+              className="katap-savebtn">Save</button>
             {this.renderBlocks()}
           </div>
         );
       }
       return (
-        <div className='kataplisting'>
+        <div className='katap-listing'>
           {this.renderBlocks()}
         </div>
       );

@@ -36,7 +36,7 @@
       if(!this.state.visible) {
         return (
           <div
-            className="kataptoolbar"
+            className="katap-toolbar"
             onClick={this.toggleState}>
             <button title="Add block">+</button>
           </div>
@@ -44,7 +44,7 @@
       }
       return (
         <div
-          className="kataptoolbar"
+          className="katap-toolbar"
           onClick={this.toggleState}>
           <button title="Close">&times;</button>
           {this.state.types.map(function(typ, pos) {
@@ -88,7 +88,7 @@
       if(this.props.onlyRemove) {
         return (
           <div
-            className="katapcontrol-toolbar"
+            className="katap-control-toolbar"
             onClick={this.handleClick}>
             <button title="Remove" data-action={Action.REMOVE} key={Action.REMOVE}>&times;</button>
           </div>
@@ -110,7 +110,7 @@
       }
       return (
         <div
-          className="katapcontrol-toolbar"
+          className="katap-control-toolbar"
           onClick={this.handleClick}>
           {buttons}
         </div>

@@ -100,19 +100,19 @@
       if(this.state.valid) {
         if(this.state.html === '') {
           return (
-            <div className="katapembed kataptwitter">
+            <div className="katap-embed katap-twitter">
             {this.state.message}
             </div>
           );
         }
         return (
           <div
-            className="katapembed kataptwitter"
+            className="katap-embed katap-twitter"
             dangerouslySetInnerHTML={{__html: this.state.html}} />
         );
       }
       return (
-        <div className="katapembed">Invalid twitter URL.</div>
+        <div className="katap-embed">Invalid twitter URL.</div>
       );
     }
   });

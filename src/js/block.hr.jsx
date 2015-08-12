@@ -5,7 +5,7 @@
 
     render: function() {
       return (
-        <hr className="kataphr" />
+        <hr className="katap-hr" />
       );
     }
   });

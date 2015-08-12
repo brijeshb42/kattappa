@@ -46,7 +46,7 @@
     render: function() {
       if(this.state.valid) {
         return (
-          <div className="katapembed katapinstagram">
+          <div className="katap-embed katap-instagram">
           <iframe
           src={'//instagram.com/p/'+this.state.id+'/embed'}
           frameBorder={0}
@@ -55,7 +55,7 @@
           );
       }
       return (
-        <div className="katapembed">Invalid instagram URL.</div>
+        <div className="katap-embed">Invalid instagram URL.</div>
         );
     }
   });

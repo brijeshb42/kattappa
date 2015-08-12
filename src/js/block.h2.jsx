@@ -24,7 +24,7 @@
 
     render: function() {
       return (
-        <h2 className="kataph2">
+        <h2 className="katap-h2">
           <APP.QuillComponent
             content={this.props.content}
             captureReturn={this.captureReturn}
@@ -48,7 +48,7 @@
 
     render: function() {
       return (
-        <h3 className="kataph3">
+        <h3 className="katap-h3">
           <APP.QuillComponent
             content={this.props.content}
             captureReturn={this.captureReturn}
@@ -72,7 +72,7 @@
 
     render: function() {
       return (
-        <h4 className="kataph4">
+        <h4 className="katap-h4">
           <APP.QuillComponent
             content={this.props.content}
             captureReturn={this.captureReturn}

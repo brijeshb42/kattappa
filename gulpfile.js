@@ -45,8 +45,8 @@ gulp.task("usemin", ['less'], function() {
             css: [less(), minifyCss()],
             html: [],
             jsv: ['concat'],
-            js: [sourcemaps.init(), babel(), sourcemaps.write('./maps'), header(banner, {pkg: pkg})],
-            jse: [sourcemaps.init(), babel(), sourcemaps.write('./maps'), header(banner, {pkg: pkg})]
+            js: [sourcemaps.init(), babel(), uglify({mangle: false}), sourcemaps.write('./maps'), header(banner, {pkg: pkg})],
+            jse: [sourcemaps.init(), babel(), uglify({mangle: false}), sourcemaps.write('./maps'), header(banner, {pkg: pkg})]
         }))
         .pipe(gulp.dest('dist'));
 });

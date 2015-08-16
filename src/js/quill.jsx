@@ -48,7 +48,7 @@
     },
 
     enterPressed: function() {
-      console.log(this.editor.getSelection());
+      //console.log(this.editor.getSelection());
       if(this.props.enterPressed) {
         this.props.enterPressed();
       }
@@ -90,13 +90,8 @@
     },
 
     onEditorChange: function(value, delta, source) {
-      //console.log(value+" - val");
-      //console.log(value);
       if(value.indexOf(ExtraEnter) > 0) {
         value = value.replace(ExtraEnter, "");
-        //this.state.editor.setHTML(value.replace(/(<([^>]+)>)/ig,""));
-        //this.state.editor.setHTML(value.replace(/(<(?!\/?(em|b|i|u|strong)[ >])[^>]*>)/ig,""));
-        //console.log(value);
         this.state.editor.setHTML(value);
         this.state.editor.setSelection(1, 1);
       }
@@ -106,14 +101,6 @@
     },
 
     captureReturn: function() {
-      // var sel = this.state.editor.getSelection();
-      // var len = this.state.editor.getLength();
-      // console.log(sel);
-      // console.log(len);
-      // if(sel.start === sel.end && sel.start < len) {
-      //   return;
-      // }
-      // console.log();
       if(this.props.captureReturn) {
         this.props.captureReturn();
       }
@@ -154,7 +141,6 @@
     },
 
     componentDidMount: function() {
-      //console.log(this.props);
       var editor = this.createEditor(
         this.getEditorElement(),
         this.getEditorConfig()
@@ -162,7 +148,6 @@
       this.setState({editor:editor});
       editor.focus();
       editor.setHTML(this.props.content);
-      //window.edi = editor;
     },
 
     renderItems: function(item, index) {

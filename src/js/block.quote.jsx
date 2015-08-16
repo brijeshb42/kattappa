@@ -17,14 +17,32 @@
     },
 
     onContentChanged: function(content) {
+      var content = {
+        content: content,
+        credit: this.props.content.credit
+      };
+      this.props.onContentChanged(this.props.position, content);
+    },
+
+    onCreditChange: function(e) {
+      var content = {
+        content: this.props.content.content,
+        credit: e.target.value
+      };
       this.props.onContentChanged(this.props.position, content);
     },
 
     render: function() {
       return (
         <blockquote className="katap-text">
+          <input
+            className="katap-blockquote-credit"
+            type="text"
+            placeholder="Credit"
+            onChange={this.onCreditChange}
+            value={this.props.content.credit} />
           <APP.QuillComponent
-            content={this.props.content}
+            content={this.props.content.content}
             captureReturn={this.captureReturn}
             onContentChanged={this.onContentChanged} />
         </blockquote>
@@ -39,7 +57,10 @@
     React: BlockQuote,
     Icon: '',
     Empty: function() {
-      return '';
+      return {
+        content: '',
+        credit: ''
+      };
     },
     Description: 'Block Quote',
     isEmpty: function(content) {

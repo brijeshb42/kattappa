@@ -8,9 +8,9 @@
     throw new Error('React is required for this project to function.');
   }
   React.initializeTouchEvents(true);
-  if(!Quill) {
-    throw new Error('Quill is required for this project to function.');
-  }
+  // if(!Quill) {
+  //   throw new Error('Quill is required for this project to function.');
+  // }
 
   var APP = window.Kattappa || {};
 

@@ -83,7 +83,7 @@
 
   });
   
-  //APP.BlockTypes.Text = 'Text';
+  APP.BlockTypes.Text = 'Text';
   APP.Blocks.H2 = {
     Name: 'H2',
     React: H2,

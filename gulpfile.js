@@ -1,0 +1,10 @@
+require('./gulp')([
+    'clean',
+    'browserify',
+    'less',
+    'watch',
+    'html',
+    'browserify-vendor',
+    'default',
+    'npm'
+]);

@@ -8,25 +8,26 @@ It uses:
 * [fetch](https://github.com/github/fetch) for ajax calls to server (used when image files are required to be uploaded).
 
 ### Installation
-* Use `bower install kattappa`.
+* For `browserify` users:
+    * `npm install kattappa`.
+    * `var Kattappa = require('kattappa');`
+
+* To directly use in browser:
+    * `bower install kattappa`.
+    * CSS:
+        * `<link rel="stylesheet" type="text/css" href="bower_components/quill/dist/quill.base.css">`
+        * `<link rel="stylesheet" type="text/css" href="bower_components/quill/dist/quill.snow.css">`
+        * `<link rel="stylesheet" type="text/css" href="kattappa.css">`. (Used for basic styling of the blocks. You can extend these to be what you want.)
+    * Javascript:
+        * `<script type="text/javascript" src="bower_components/react/react-with-addons.min.js"></script>`
+        * `<script type="text/javascript" src="bower_components/quill/dist/quill.min.js"></script>`
+        * `<script src="bower_components/fetch/fetch.js"></script>`
+        * `<script type="text/javascript" src="kattappa.js"></script>`
+
 * Or Download the latest release [here](https://github.com/brijeshb42/kattappa/releases/latest).
 
 ### Usage
-It is available in the `window` as `Kattappa`.
-
-#### Load dependencies in your html:
-* CSS:
-    * `<link rel="stylesheet" type="text/css" href="bower_components/quill/dist/quill.base.css">`
-    * (A bundled quill css comes with `Kattappa`. If you don't use bower, you can directly use:
-        * `<link rel="stylesheet" type="text/css" href="kattappa.vendor.css">`)
-    * `<link rel="stylesheet" type="text/css" href="kattappa.css">`. (Used for basic styling of the blocks. You can extend these to be what you want.)
-* Javascript:
-    * `<script type="text/javascript" src="bower_components/react/react-with-addons.min.js"></script>`
-    * `<script type="text/javascript" src="bower_components/quill/dist/quill.min.js"></script>`
-    * `<script src="bower_components/fetch/fetch.js"></script>`
-    * (Or you can just include `<script src="kattappa.vendor.js"></script>` instead of the above 3).
-    * `<script type="text/javascript" src="kattappa.js"></script>`
-
+It is available in the `window` global as `Kattappa`.
 * Html:
     * `<div id="editor-ui"></div>`
 

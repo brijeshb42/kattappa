@@ -36,7 +36,7 @@ module.exports = function() {
         .pipe(source(exit))
         .pipe(buffer())
         .pipe(util.isProd() ? buffer() : gutil.noop())
-        .pipe(util.isProd() ? uglify({mangle: false}) : gutil.noop())
+        .pipe(util.isProd() ? uglify({mangle: true}) : gutil.noop())
         .pipe(gulp.dest(util.assetDest + 'js'))
         .pipe(livereload());
 };

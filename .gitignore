@@ -53,6 +53,15 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules
 
+
+#  "browserify": {
+#    "transform": [ "browserify-shim" ]
+#  },
+#  "browserify-shim": {
+#    "react": "global:React",
+#    "three": "global:THREE"
+#  }
+
 # Debug log from npm
 npm-debug.log
 _site

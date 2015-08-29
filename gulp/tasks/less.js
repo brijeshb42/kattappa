@@ -10,7 +10,7 @@ var gulp            = require('gulp'),
     util            = require('../utils');
 
 
-var src = util.assetSrc + 'less/[^_]*.less';
+var src = util.assetSrc + '*.less';
 
 var dest = util.assetDest + 'css';
 
@@ -28,5 +28,5 @@ module.exports = function() {
         .pipe(util.isProd() ? autoPrefixer(apConfig) : gutil.noop())
         .pipe(util.isProd() ? minifyCss() : gutil.noop())
         .pipe(gulp.dest(dest))
-        .pipe(livereload());
+        .pipe(util.isProd() ? gutil.noop() : livereload());
 };

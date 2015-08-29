@@ -14,7 +14,7 @@ module.exports = function() {
     //     port: 5000,
     //     root: util.dest
     // });
-    gulp.watch(util.assetSrc + 'less/*.less', ['less']);
+    gulp.watch(util.assetSrc + '*.less', ['less']);
     gulp.watch(util.assetSrc + '**/*.js', ['browserify']);
     gulp.watch(util.src + '**//*.html', ['html']);
 };

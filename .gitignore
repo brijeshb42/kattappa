@@ -54,12 +54,13 @@ build/Release
 node_modules
 
 
-#  "browserify": {
+# "browserify": {
 #    "transform": [ "browserify-shim" ]
 #  },
 #  "browserify-shim": {
 #    "react": "global:React",
-#    "three": "global:THREE"
+#    "quill": "global:Quill",
+#    "isomorphic-fetch": "global:fetch"
 #  }
 
 # Debug log from npm

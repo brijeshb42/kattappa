@@ -1,5 +1,5 @@
 var gulp        = require('gulp');
 
 module.exports = function() {
-    gulp.start('html', 'less', 'browserify', 'watch', 'browserify-vendor');
+    gulp.start('html', 'less', 'watch', 'browserify-vendor', 'browserify');
 };

@@ -42,6 +42,7 @@ React.render(editor, document.getElementById('editor-ui'));
 
 To get the content of the blocks, you can access the `getBlocks()` method of the editor by adding a `ref` to the editor instance and then call its `getBlocks` method.
 
+```javascript
 var App = React.createClass({
     getBlocks: function() {
         console.log(this.refs.editor.getBlocks());

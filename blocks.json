@@ -8,6 +8,14 @@
     "data": "<div><b>This</b> is a text block.</div>"
 },
 {
+    "type": "hr",
+    "data": ""
+},
+{
+    "type": "embed",
+    "data": "https://vine.co/v/eI99wHx3JWV"
+},
+{
     "type": "embed",
     "data": "https://www.youtube.com/watch?v=li5E_Q33z9Y"
 },

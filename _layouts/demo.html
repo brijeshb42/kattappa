@@ -14,12 +14,13 @@
     </div>
 
   {% include footer.html %}
-  <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/quill/0.20.0/quill.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/fetch/0.9.0/fetch.min.js"></script>
   <script src="{{ site.url }}/dist/js/kattappa.js"></script>
   <script>
   var blockUrl = "{{ site.url }}/blocks.json";
+  var KEditor = Kattappa.Editor;
   function processData(data) {
     console.log(data);
     for(var i=0; i<data.length; i++) {
@@ -37,7 +38,66 @@
       alert('Check console for blocks data');
     }
   });
-  React.render(editor, document.getElementById("editor-ui"));
+  var App = React.createClass({
+    getInitialState: function() {
+      return {
+        loading: true,
+        blocks: []
+      };
+    },
+
+    componentDidMount: function() {
+      var self = this;
+      fetch("{{ site.url }}/blocks.json")
+      .then(function(resp) {
+        return resp.json();
+      })
+      .then(function(json) {
+        var b = [];
+        for(var i=0; i< json.length; i++) {
+          json[i].key = Kattappa.uuid();
+          b.push(json[i]);
+        }
+        console.log(b);
+        self.setState({
+          loading: false,
+          blocks: b
+        });
+      })
+    },
+
+    setBlocks: function() {
+      return this.state.blocks;
+    },
+
+    save: function() {
+      console.log(this.refs.kattappa.getBlocks());
+    },
+
+    render: function() {
+      console.log(this.setBlocks())
+      if(this.state.loading) {
+        return React.createElement('div', null, 'Loading...');
+      }
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'button',
+          { onClick: this.save },
+          'Save'
+        ),
+        React.createElement(Kattappa.Editor, {
+          ref: 'kattappa',
+          //availableBlocks: Blocks,
+          //EmbedTypes: EmbedTypes,
+          //UploadUrl: '/upload_img',
+          getBlocks: this.setBlocks })
+      );
+    }
+  });
+  var app = React.createElement(App);
+  React.render(app, document.getElementById("editor-ui"));
   </script>
   {% if site.ga_id %}
       {% include analytics.html %}

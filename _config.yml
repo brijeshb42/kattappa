@@ -20,7 +20,8 @@ exclude:
   - bower_components
   - README.md
   - bower.json
-  - src
+  - lib
+  - npm
   - package.json
 full_name: Brijesh
 

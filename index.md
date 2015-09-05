@@ -26,6 +26,7 @@ It uses:
     * Instagram
     * Youtube
     * Vimeo
+    * Vine
 
 * Current Blocks:
     - [x] Text
@@ -35,10 +36,10 @@ It uses:
     - [x] Ordered List
     - [x] Unordered List
     - [x] Embeds
-        - [x] Twitter (has dependency on server)
         - [x] Instagram
         - [x] Vimeo
         - [x] Youtube
+        - [x] Vine
 
 * Extra features:
     * Blocks can be rearranged.

@@ -14,7 +14,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "gulp",
+    "lib",
+    "gulpfile.js"
   ],
   "dependencies": {
     "react": "~0.13.3",

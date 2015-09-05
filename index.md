@@ -16,8 +16,22 @@ It uses:
 * [fetch](https://github.com/github/fetch) for ajax calls to server (used when image files are required to be uploaded).
 
 ### Installation
+* For `browserify` users:
+    * `npm install kattappa`.
+    * `var Kattappa = require('kattappa');`
 
-* Use `bower install kattappa`.
+* To directly use in browser:
+    * `bower install kattappa`.
+    * CSS:
+        * `<link rel="stylesheet" type="text/css" href="bower_components/quill/dist/quill.base.css">`
+        * `<link rel="stylesheet" type="text/css" href="bower_components/quill/dist/quill.snow.css">`
+        * `<link rel="stylesheet" type="text/css" href="bower_components/kattappakattappa.css">`. (Used for basic styling of the blocks. You can extend these to be what you want.)
+    * Javascript:
+        * `<script type="text/javascript" src="bower_components/react/react-with-addons.min.js"></script>`
+        * `<script type="text/javascript" src="bower_components/quill/dist/quill.min.js"></script>`
+        * `<script src="bower_components/fetch/fetch.js"></script>`
+        * `<script type="text/javascript" src="kattappa.js"></script>`
+
 * Or Download the latest release [here](https://github.com/brijeshb42/kattappa/releases/latest).
 
 #### Goodies

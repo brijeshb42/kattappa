@@ -2,8 +2,9 @@
 <html>
 
   {% include head.html %}
-  <link rel="stylesheet" type="text/css" href="{{ site.url }}/dist/kattappa.vendor.css">
-  <link rel="stylesheet" type="text/css" href="{{ site.url }}/dist/kattappa.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/quill/0.20.0/quill.base.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/quill/0.20.0/quill.snow.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ site.url }}/dist/css/kattappa.css">
   <link rel="stylesheet" type="text/css" href="{{ site.url }}/static/custom.css">
 
   <body>
@@ -13,8 +14,10 @@
     </div>
 
   {% include footer.html %}
-  <script src="{{ site.url }}/dist/kattappa.vendor.js"></script>
-  <script src="{{ site.url }}/dist/kattappa.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/quill/0.20.0/quill.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fetch/0.9.0/fetch.min.js"></script>
+  <script src="{{ site.url }}/dist/js/kattappa.js"></script>
   <script>
   var blockUrl = "{{ site.url }}/blocks.json";
   function processData(data) {

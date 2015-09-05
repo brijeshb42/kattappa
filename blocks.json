@@ -1,18 +1,18 @@
 [
 {
-    "type": "H2",
-    "content": "<div>Hello World</div>"
+    "type": "h2",
+    "data": "<div>Hello World</div>"
 },
 {
-    "type": "Text",
-    "content": "<div><b>This</b> is a text block.</div>"
+    "type": "text",
+    "data": "<div><b>This</b> is a text block.</div>"
 },
 {
-    "type": "Embed",
-    "content": "https://www.youtube.com/watch?v=li5E_Q33z9Y"
+    "type": "embed",
+    "data": "https://www.youtube.com/watch?v=li5E_Q33z9Y"
 },
 {
-    "type": "Embed",
-    "content": "https://instagram.com/p/6N47G1wqci/?taken-by=discoverychannel"
+    "type": "embed",
+    "data": "https://instagram.com/p/6N47G1wqci/?taken-by=discoverychannel"
 }
 ]

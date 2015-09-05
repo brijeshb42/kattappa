@@ -20,24 +20,7 @@
   <script src="{{ site.url }}/dist/js/kattappa.js"></script>
   <script>
   var blockUrl = "{{ site.url }}/blocks.json";
-  var KEditor = Kattappa.Editor;
-  function processData(data) {
-    console.log(data);
-    for(var i=0; i<data.length; i++) {
-      if(!data[i].key) {
-        data[i].key = Kattappa.uuid();
-      }
-    }
-    return data;
-  }
-  var editor = React.createElement(Kattappa.Editor, {
-    blockUrl: blockUrl,
-    processData: processData,
-    onSave: function(blocks) {
-      console.log(blocks);
-      alert('Check console for blocks data');
-    }
-  });
+
   var App = React.createClass({
     getInitialState: function() {
       return {
@@ -58,7 +41,6 @@
           json[i].key = Kattappa.uuid();
           b.push(json[i]);
         }
-        console.log(b);
         self.setState({
           loading: false,
           blocks: b
@@ -75,7 +57,6 @@
     },
 
     render: function() {
-      console.log(this.setBlocks())
       if(this.state.loading) {
         return React.createElement('div', null, 'Loading...');
       }

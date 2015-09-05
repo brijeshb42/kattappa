@@ -62,6 +62,7 @@ React.render(<App />, document.getElementById('editor-ui'));
 ```
 
 If you already have a list of blocks (that may have been previously saved on the server):
+
     * You can first fetch the block list from the server.
     * Pass the function that returns the `blocks` fetched.
     * Make sure each block has a `key` key. This is used by React and facilitates easy manipulation of position (up, down or remove block).

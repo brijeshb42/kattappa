@@ -112,19 +112,15 @@ var App = React.createClass({
     render: function() {
       console.log(this.setBlocks())
       if(this.state.loading) {
-        return React.createElement('div', null, 'Loading...');
+        return <div>Loading...</div>;
       }
-      return React.createElement(
-        'div',
-        null,
-        React.createElement(
-          'button',
-          { onClick: this.save },
-          'Save'
-        ),
-        React.createElement(Kattappa.Editor, {
-          ref: 'kattappa',
-          getBlocks: this.setBlocks })
+      return (
+        <div>
+          <button onClick={this.save}>Save</button>
+          <Kattappa.Editor
+            ref="kattappa"
+            getBlocks={this.setBlocks} />
+        </div>
       );
     }
 });

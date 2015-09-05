@@ -2,6 +2,7 @@ var gulp            = require('gulp'),
     gutil           = require('gulp-util'),
     source          = require('vinyl-source-stream'),
     livereload      = require('gulp-livereload'),
+    header          = require('gulp-header'),
     uglify          = require('gulp-uglify'),
     sourceMaps      = require('gulp-sourcemaps'),
     buffer          = require('vinyl-buffer'),
@@ -37,6 +38,7 @@ module.exports = function() {
         .pipe(buffer())
         .pipe(util.isProd() ? buffer() : gutil.noop())
         .pipe(util.isProd() ? uglify({mangle: true}) : gutil.noop())
+        .pipe(util.isProd() ? header(util.banner, { pkg : util.pkg }) : gutil.noop())
         .pipe(gulp.dest(util.assetDest + 'js'))
         .pipe(livereload());
 };

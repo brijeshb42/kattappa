@@ -13,6 +13,16 @@ function isProd() {
     return env === PROD;
 }
 
+var pkg = require('../../package.json');
+var banner = ['/**',
+  ' * <%= pkg.name %> - <%= pkg.description %>',
+  ' * @author v<%= pkg.author %>',
+  ' * @version v<%= pkg.version %>',
+  ' * @link <%= pkg.homepage %>',
+  ' * @license <%= pkg.license %>',
+  ' */',
+  ''].join('\n');
+
 module.exports = {
     env: ((gutil.env.task && gutil.env.task.indexOf('prod')>-1) ? PROD : DEV),
     dev: DEV,
@@ -22,5 +32,7 @@ module.exports = {
     isDev: isDev,
     isProd: isProd,
     assetSrc: './lib/',
-    assetDest: './dist/'
+    assetDest: './dist/',
+    banner: banner,
+    pkg: pkg
 };

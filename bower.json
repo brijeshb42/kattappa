@@ -1,0 +1,24 @@
+{
+  "name": "legoblocks",
+  "version": "0.3.7",
+  "homepage": "https://github.com/brijeshb42/kattappa",
+  "authors": [
+    "Brijesh Bittu <brijeshb42@gmail.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.13.3",
+    "fetch": "~0.9.0",
+    "quill": "~0.20.0"
+  }
+}

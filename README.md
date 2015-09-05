@@ -172,3 +172,5 @@ React.render(app, document.getElementById("editor-ui"));
 * Add instructions to create custom blocks.
 
 ### Made while working @ [http://scroll.in](http://scroll.in)
+
+Currently being used in our internal CMS.

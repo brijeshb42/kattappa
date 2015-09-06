@@ -39,14 +39,14 @@ It is available in the `window` global as `Kattappa`.
     * First create an `editor` instance.
     * Then mount it to the desired DOM node.
 
-```javascript
+{% highlight javascript %}
 var editor = React.createElement(Kattappa.Editor);
 React.render(editor, document.getElementById('editor-ui'));
-```
+{% endhighlight %}
 
 To get the content of the blocks, you can access the `getBlocks()` method of the editor by adding a `ref` to the editor instance and then call its `getBlocks` method.
 
-```javascript
+{% highlight javascript %}
 var App = React.createClass({
     getBlocks: function() {
         console.log(this.refs.editor.getBlocks());
@@ -63,7 +63,7 @@ var App = React.createClass({
 });
 
 React.render(<App />, document.getElementById('editor-ui'));
-```
+{% endhighlight %}
 
 If you already have a list of blocks (that may have been previously saved on the server):
 
@@ -73,7 +73,7 @@ If you already have a list of blocks (that may have been previously saved on the
 * If the blocks don't have a `key`, you can just generate keys for each of them in the browser using the utility function provided `Kattappa.uuid()`.
 * The `key` functionality applies to each of the items in `UL` or `OL` also.
 
-```javascript
+{% highlight javascript %}
 
 var blockUrl = "/blocks.json";
 
@@ -130,7 +130,7 @@ var App = React.createClass({
 });
 var app = React.createElement(App);
 React.render(app, document.getElementById("editor-ui"));
-```
+{% endhighlight %}
 
 #### Image upload
 * By default, the image block just renders the image using `createObjectURL`.
@@ -138,12 +138,13 @@ React.render(app, document.getElementById("editor-ui"));
     * Provide a `prop`, `UploadUrl` with the URL to your server's upload endpoint, to the **Editor** instance.
         * ```<Kattappa.Editor UploadUrl="/upload_image" />```
     * If `UploadUrl` is provided, the `Image` block will send a POST request to the url with `image` key having the selected image file and it expects a `json` reponse from the server of the following format:
-```json
+{% highlight json %}
 {
     "type": "success",
     "message": "http://absoluteurl.to/the/uploaded/image.jpg"
 }
-```
+{% endhighlight %}
+
 #### Goodies
 * `Kattappa` supports the following embeds out of the box:
     * Instagram

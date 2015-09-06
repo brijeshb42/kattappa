@@ -46,6 +46,7 @@ React.render(editor, document.getElementById('editor-ui'));
 
 To get the content of the blocks, you can access the `getBlocks()` method of the editor by adding a `ref` to the editor instance and then call its `getBlocks` method.
 
+```javascript
 var App = React.createClass({
     getBlocks: function() {
         console.log(this.refs.editor.getBlocks());
@@ -65,11 +66,12 @@ React.render(<App />, document.getElementById('editor-ui'));
 ```
 
 If you already have a list of blocks (that may have been previously saved on the server):
-    * You can first fetch the block list from the server.
-    * Pass the function that returns the `blocks` fetched.
-    * Make sure each block has a `key` key. This is used by React and facilitates easy manipulation of position (up, down or remove block).
-    * If the blocks don't have a `key`, you can just generate keys for each of them in the browser using the utility function provided `Kattappa.uuid()`.
-    * The `key` functionality applies to each of the items in `UL` or `OL` also.
+
+* You can first fetch the block list from the server.
+* Pass the function that returns the `blocks` fetched.
+* Make sure each block has a `key` key. This is used by React and facilitates easy manipulation of position (up, down or remove block).
+* If the blocks don't have a `key`, you can just generate keys for each of them in the browser using the utility function provided `Kattappa.uuid()`.
+* The `key` functionality applies to each of the items in `UL` or `OL` also.
 
 ```javascript
 
@@ -114,19 +116,15 @@ var App = React.createClass({
     render: function() {
       console.log(this.setBlocks())
       if(this.state.loading) {
-        return React.createElement('div', null, 'Loading...');
+        return <div>Loading...</div>;
       }
-      return React.createElement(
-        'div',
-        null,
-        React.createElement(
-          'button',
-          { onClick: this.save },
-          'Save'
-        ),
-        React.createElement(Kattappa.Editor, {
-          ref: 'kattappa',
-          getBlocks: this.setBlocks })
+      return (
+        <div>
+          <button onClick={this.save}>Save</button>
+          <Kattappa.Editor
+            ref="kattappa"
+            getBlocks={this.setBlocks} />
+        </div>
       );
     }
 });

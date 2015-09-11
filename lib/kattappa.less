@@ -1,5 +1,14 @@
 @quill-border-color: #1987C7;
 
+.katap-clearfix {
+    &:after { 
+        content: " ";
+        display: block; 
+        height: 0; 
+        clear: both;
+    }
+}
+
 .katap-savebtn {
     background: #fff;
     border: 1px solid #0088cc;
@@ -44,8 +53,22 @@
     border: 1px solid #ccc;
 }
 
+.katap-toolbar-wrapper {
+    //overflow: auto;
+
+    .katap-splitter {
+        //float: right;
+        //width: 20px;
+        //height: 20px;
+        //border-radius: 10px;
+        background: none;
+        border: 1px solid #eee;
+        color: #eee;
+    }
+}
+
 .katap-control-toolbar {
-    overflow: auto;
+    //overflow: auto;
     opacity: 0;
     transition: opacity 0.2s ease-in;
 
@@ -83,6 +106,24 @@
             margin-left: auto!important;
             margin-right: auto!important;
             min-height: 0!important;
+        }
+    }
+}
+
+.katap-text {
+    padding: 10px;
+    .katap-medium-editor {
+        p {
+            margin: 0;
+        }
+        &:focus {
+            outline: none;
+        }
+        blockquote {
+            border-left: 3px solid #333;
+            padding: 10px;
+            margin: 10px 0;
+            font-style: italic;
         }
     }
 }

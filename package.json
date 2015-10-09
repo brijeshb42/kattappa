@@ -1,6 +1,6 @@
 {
   "name": "kattappa",
-  "version": "0.3.11",
+  "version": "0.4.0",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, Instagram, Vine, Vimeo etc)",
   "main": "./npm/index.js",
   "scripts": {
@@ -49,6 +49,19 @@
     "isomorphic-fetch": "^2.1.1",
     "medium-editor": "^5.7.0",
     "quill": "^0.20.0",
-    "react": "^0.13.3"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "react": "global:React",
+    "quill": "global:Quill",
+    "isomorphic-fetch": "global:fetch",
+    "medium-editor": "global:MediumEditor",
+    "react-dom": "global:ReactDOM"
   }
 }

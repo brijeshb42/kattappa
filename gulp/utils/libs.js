@@ -12,5 +12,6 @@ module.exports = {
   'es6-promise': 'es6-promise',
   'quill': 'quill',
   'isomorphic-fetch': 'isomorphic-fetch',
-  'medium-editor': 'medium-editor'
+  'medium-editor': 'medium-editor',
+  'react-dom': 'react-dom'
 };

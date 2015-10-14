@@ -37,10 +37,15 @@
         }
     }
 
+    // .katap-toolbar {
+    //     transition: opacity 0.2s ease-in;
+    //     //opacity: 0;
+    // }
+
     blockquote {
         margin: 0;
-        border: 1px solid #7da5ff;
-        border-left: 10px solid #FF8294;
+        //border: 1px solid #7da5ff;
+        border-left: 5px solid #eee;
     }
 
     &:hover {
@@ -50,9 +55,9 @@
     }
 }
 
-.katap-block {
-    border: 1px solid #ccc;
-}
+// .katap-block {
+//     border: 1px solid #ccc;
+// }
 
 .katap-toolbar-wrapper {
     //overflow: auto;
@@ -71,14 +76,16 @@
 .katap-control-toolbar {
     //overflow: auto;
     opacity: 0;
-    transition: opacity 0.2s ease-in;
+    //transition: opacity 0.2s ease-in;
 
     button {
         float: right;
         background: #fff;
-        border: 1px solid #29A7DC;
+        border: 1px solid #888;
         color: #222;
         height: 20px;
+        border-radius: 10px;
+        font-size: 0.6em;
         margin-right: 2px;
         text-align: center;
         width: 20px;
@@ -90,9 +97,18 @@
 }
 
 .katap-embed {
+    p {
+        text-transform: capitalize;
+    }
     input[type=text] {
+        border: 1px solid #ccc;
         box-sizing: border-box;
         width: 100%;
+
+        &:focus {
+            border-color: #08c;
+            outline: none;
+        }
     }
     iframe {
         width: 100%;
@@ -101,6 +117,9 @@
         iframe {
             min-height: 400px;
         }
+    }
+    &.katap-facebook {
+        text-align: center;
     }
     &.katap-twitter {
         iframe {
@@ -112,11 +131,19 @@
 }
 
 .katap-text {
-    padding: 10px;
+    //padding: 10px;
+    //min-height: 200px;
+
     .katap-medium-editor {
-        p {
-            margin: 0;
+        font-size: 1.1em;
+
+        a {
+            color: #f1622b;
         }
+
+        // p {
+        //     margin: 0;
+        // }
         &:focus {
             outline: none;
         }
@@ -149,11 +176,26 @@
 }
 
 .katap-listing {
-    .katap-toolbar {
+    //height: 500px;
+    //overflow-y: scroll;
+    //overflow-x: hidden;
+    color: #222;
+    margin-top: 20px;
+    padding-bottom: 60px;
+    font-size: 1.1em;
 
-        button {
-            border: 1px solid #29A7DC;
+    .katap-toolbar {
+        margin-left: -15px;
+        text-align: left;
+
+        button:first-child {
+            border: 1px solid #888;
             background: #fff;
+            width: 20px;
+            border-radius: 10px;
+            height: 20px;
+            font-size: 0.6em;
+            text-align: center;
         }
     }
 }

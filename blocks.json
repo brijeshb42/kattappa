@@ -16,8 +16,22 @@
     "data": "https://vine.co/v/hgh7zb0hlax"
 },
 {
+    "type": "quote",
+    "data": {
+        "content": "<p>Get your facts first, then you can distort them as you please.</p>",
+        "credit": "Mark Twain"
+    }
+},
+{
     "type": "embed",
     "data": "https://www.youtube.com/watch?v=li5E_Q33z9Y"
+},
+{
+    "type":"image",
+    "data":{
+        "url":"https://images.unsplash.com/photo-1443479579455-1860f114bf77?q=80&fm=jpg&s=dc7000360dec6e5368d1ed3e4d0b38ae",
+        "subtext":"By Paula Porto"
+    }
 },
 {
     "type": "embed",

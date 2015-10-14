@@ -9,7 +9,7 @@
 // module.exports = dep;
 module.exports = {
   'react': 'react',
-  'es6-promise': 'es6-promise',
+  //'es6-promise': 'es6-promise',
   'quill': 'quill',
   'isomorphic-fetch': 'isomorphic-fetch',
   'medium-editor': 'medium-editor',

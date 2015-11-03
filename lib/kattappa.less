@@ -17,13 +17,18 @@
     //border: 1px solid @quill-border-color;
     margin-bottom: 10px;
 
+    .katap-markdown-body {
+        outline: none;
+    }
+
     .katap-h2, .katap-h3, .katap-h4 {
         margin: 0;
     }
 
     .katap-h2 {
-        .ql-editor {
-            font-size: 3em;
+        .katap-medium-editor {
+            font-size: 1.5em;
+            outline: none;
         }
     }
     .katap-h3 {
@@ -59,6 +64,12 @@
 //     border: 1px solid #ccc;
 // }
 
+.katap-list {
+    .katap-medium-editor {
+        outline: none;
+    }
+}
+
 .katap-toolbar-wrapper {
     //overflow: auto;
 
@@ -74,7 +85,7 @@
 }
 
 .katap-control-toolbar {
-    //overflow: auto;
+    overflow: auto;
     opacity: 0;
     //transition: opacity 0.2s ease-in;
 

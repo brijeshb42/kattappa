@@ -14,7 +14,6 @@
     border: 1px solid #0088cc;
 }
 .katap-container {
-    //border: 1px solid @quill-border-color;
     margin-bottom: 10px;
 
     .katap-markdown-body {
@@ -42,14 +41,8 @@
         }
     }
 
-    // .katap-toolbar {
-    //     transition: opacity 0.2s ease-in;
-    //     //opacity: 0;
-    // }
-
     blockquote {
         margin: 0;
-        //border: 1px solid #7da5ff;
         border-left: 5px solid #eee;
     }
 
@@ -60,24 +53,19 @@
     }
 }
 
-// .katap-block {
-//     border: 1px solid #ccc;
-// }
-
 .katap-list {
     .katap-medium-editor {
         outline: none;
     }
+
+    li {
+        margin-bottom: 10px;
+    }
 }
 
 .katap-toolbar-wrapper {
-    //overflow: auto;
 
     .katap-splitter {
-        //float: right;
-        //width: 20px;
-        //height: 20px;
-        //border-radius: 10px;
         background: none;
         border: 1px solid #eee;
         color: #eee;
@@ -87,7 +75,6 @@
 .katap-control-toolbar {
     overflow: auto;
     opacity: 0;
-    //transition: opacity 0.2s ease-in;
 
     button {
         float: right;
@@ -109,6 +96,7 @@
 
 .katap-embed {
     p {
+        word-break: break-all;
         text-transform: capitalize;
     }
     input[type=text] {
@@ -142,8 +130,6 @@
 }
 
 .katap-text {
-    //padding: 10px;
-    //min-height: 200px;
 
     .katap-medium-editor {
         font-size: 1.1em;
@@ -152,9 +138,6 @@
             color: #f1622b;
         }
 
-        // p {
-        //     margin: 0;
-        // }
         &:focus {
             outline: none;
         }
@@ -178,7 +161,6 @@
     font-size: 2em;
     line-height: 40px;
     margin: 5px;
-    //padding: 40px 0;
     text-align: center;
 
     &.katap-drop-active {
@@ -187,9 +169,6 @@
 }
 
 .katap-listing {
-    //height: 500px;
-    //overflow-y: scroll;
-    //overflow-x: hidden;
     color: #222;
     margin-top: 20px;
     padding-bottom: 60px;
@@ -264,17 +243,17 @@
 }
 
 
-.ql-container {
-    padding: 0px;
+// .ql-container {
+//     padding: 0px;
 
-    .ql-editor {
-        font-size: 18px;
-    }
+//     .ql-editor {
+//         font-size: 18px;
+//     }
 
-    &:focus {
-        outline: 1px solid @quill-border-color;
-    }
-}
+//     &:focus {
+//         outline: 1px solid @quill-border-color;
+//     }
+// }
 
 .katap-toolbar {
     padding: 5px 0;

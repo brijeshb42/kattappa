@@ -1,6 +1,6 @@
 {
   "name": "kattappa",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, Instagram, Vine, Vimeo etc)",
   "main": "./npm/index.js",
   "scripts": {
@@ -48,7 +48,6 @@
     "es6-promise": "^3.0.2",
     "isomorphic-fetch": "^2.1.1",
     "medium-editor": "^5.10.0",
-    "quill": "^0.20.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   }

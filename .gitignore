@@ -59,7 +59,6 @@ node_modules
 #  },
 #  "browserify-shim": {
 #    "react": "global:React",
-#    "quill": "global:Quill",
 #    "isomorphic-fetch": "global:fetch",
 #    "medium-editor": "global:MediumEditor",
 #    "react-dom": "global:ReactDOM"

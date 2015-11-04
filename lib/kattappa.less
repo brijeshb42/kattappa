@@ -29,6 +29,9 @@
             font-size: 1.5em;
             outline: none;
         }
+        p {
+            margin: 0;
+        }
     }
     .katap-h3 {
         .ql-editor {
@@ -53,10 +56,17 @@
     }
 }
 
-.katap-list {
+.katap-listing {
     .katap-medium-editor {
         outline: none;
+
+        p {
+            margin: 0;
+        }
     }
+}
+
+.katap-list {
 
     li {
         margin-bottom: 10px;
@@ -72,9 +82,9 @@
     }
 }
 
-.katap-control-toolbar {
-    overflow: auto;
-    opacity: 0;
+.katap-control-toolbar, .katap-list-block-control {
+    //overflow: auto;
+    //opacity: 0;
 
     button {
         float: right;
@@ -92,6 +102,11 @@
             outline: 1px solid #ccc;
         }
     }
+}
+
+.katap-control-toolbar {
+    overflow: auto;
+    opacity: 0;
 }
 
 .katap-embed {
@@ -242,19 +257,11 @@
     }
 }
 
-
-// .ql-container {
-//     padding: 0px;
-
-//     .ql-editor {
-//         font-size: 18px;
-//     }
-
-//     &:focus {
-//         outline: 1px solid @quill-border-color;
-//     }
-// }
-
+.katap-list-block-control {
+    button {
+        float: right;
+    }
+}
 .katap-toolbar {
     padding: 5px 0;
     text-align: center;

@@ -27,7 +27,8 @@
       }
    },
    {
-      "type":"hr"
+      "type":"hr",
+      "data": ""
    },
    {
       "type":"ol",

@@ -21,13 +21,15 @@
       "type":"embed",
       "data":{
          "url":"https://www.youtube.com/watch?v=xyz",
+         "subtext": "",
          "oembed":{
 
          }
       }
    },
    {
-      "type":"hr"
+      "type":"hr",
+      "data": ""
    },
    {
       "type":"ol",

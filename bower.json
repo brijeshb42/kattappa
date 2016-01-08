@@ -20,8 +20,8 @@
     "gulpfile.js"
   ],
   "dependencies": {
-    "react": "~0.13.3",
-    "fetch": "~0.9.0",
-    "quill": "~0.20.0"
+    "react": "~0.14.6",
+    "medium-editor": "~5.12.0",
+    "fetch": "~0.10.1"
   }
 }

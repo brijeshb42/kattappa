@@ -72,4 +72,4 @@ bower_components/
 css/
 js/
 npm/
-dist/js/*.vendor.js
+dist/

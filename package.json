@@ -1,6 +1,6 @@
 {
   "name": "kattappa",
-  "version": "0.4.12",
+  "version": "0.4.13",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, Instagram, Vine, Vimeo etc)",
   "main": "./npm/index.js",
   "scripts": {

@@ -7,7 +7,8 @@
       "type":"image",
       "data":{
          "url":"http://example.com/image/url.jpg",
-         "subtext":"Describe the image"
+         "subtext": "Describe the image",
+         "hyperlink": ""
       }
    },
    {

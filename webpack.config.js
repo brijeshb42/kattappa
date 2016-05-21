@@ -9,7 +9,7 @@ var ENV_DEV = 'development';
 var ENV_PROD = 'production';
 var ENV_TEST = 'test';
 
-var BUILD_DIR = path.resolve(__dirname, 'dist', 'static');
+var BUILD_DIR = path.resolve(__dirname, 'dist');
 var APP_DIR = path.resolve(__dirname, 'src');
 
 var env = process.env.NODE_ENV || ENV_DEV;
@@ -19,6 +19,15 @@ var isProd = env === ENV_PROD;
 var isTest = env === ENV_TEST;
 
 console.log(env);
+
+var pkg = require('./package.json');
+var banner = [
+  pkg.name,
+  'Version - ' + pkg.version,
+  'Author - ' + pkg.author
+].join('\n');
+
+var bannerPlugin = new webpack.BannerPlugin(banner);
 
 var definePlugin = new webpack.DefinePlugin({
   __DEV__: env === ENV_DEV,
@@ -31,16 +40,13 @@ var commonsPlugin = new webpack.optimize.CommonsChunkPlugin({
   name: 'common',
   minChunks: 3,
 });
-// var vendorBase = new webpack.optimize.CommonsChunkPlugin("vendor-base", "vendor-base.js", Infinity);
-var vendorPlugin = new webpack.optimize.CommonsChunkPlugin({
-  names: ['vendor-react', 'vendor-base'],
-  minChunks: Infinity,
-  filename: '[name].js'
-});
 
-// var htmlWebpackPlugin = new HtmlWebpackPlugin({
-//   title: 'Flockr',
-// });
+var vendorPlugin = new webpack.optimize.CommonsChunkPlugin({
+  names: ['vendor-base', 'vendor-react'],
+  minChunks: Infinity,
+  filename: '[name].js',
+  children: true
+ });
 
 var hashJsonPlugin = function() {
   this.plugin("done", function(stats) {
@@ -51,18 +57,20 @@ var hashJsonPlugin = function() {
 };
 
 function getPlugins(env) {
-  var plugins = [definePlugin, vendorPlugin, commonsPlugin]; //, htmlWebpackPlugin];
+  var plugins = [definePlugin];
   if (env !== ENV_PROD) {
-    // plugins.push(new webpack.HotModuleReplacementPlugin());
+    plugins.push(commonsPlugin);
+    plugins.push(vendorPlugin);
     plugins.push(new webpack.NoErrorsPlugin());
   } else {
     plugins.push(new ExtractTextPlugin('style.css'));
     plugins.push(hashJsonPlugin);
     plugins.push(new webpack.optimize.DedupePlugin());
-    // plugins.push(new webpack.optimize.UglifyJsPlugin({
-    //   output: {comments: false},
-    //   mangle: true,
-    // }));
+    plugins.push(new webpack.optimize.UglifyJsPlugin({
+      output: {comments: false},
+      mangle: true,
+    }));
+    plugins.push(bannerPlugin);
   }
   return plugins;
 }
@@ -77,7 +85,10 @@ function getEntry(env) {
     ]
   };
   var entries = [];
-  if (env !== ENV_PROD) {
+  if (env === ENV_PROD) {
+    entry = {};
+    entry.style = ['./kattappa.scss'];
+  } else  {
     entries.push('webpack-dev-server/client?http://localhost:8080/');
     entries.push('webpack/hot/only-dev-server');
     entry.script = ['./script'];
@@ -116,15 +127,15 @@ function getLoaders(env) {
 }
 
 
-module.exports = {
+var config = {
   context: APP_DIR,
   debug: true,
-  devtool: env === ENV_PROD  ? 'source-map' : 'cheap-module-eval-source-map',
+  devtool: env === ENV_PROD  ? '' : 'cheap-module-eval-source-map',
   entry: getEntry(env),
   target: 'web',
   output: {
     path: BUILD_DIR,
-    publicPath: '/static/',
+    publicPath: '',
     filename: '[name].js',
     sourceMapFile: '[file].map',
     library: [libraryName],
@@ -141,39 +152,44 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true
-  },
-  // externals: [
-  //   {
-  //     react: {
-  //       root: 'React',
-  //       commonjs2: 'react',
-  //       commonjs: 'react',
-  //       amd: 'react'
-  //     }
-  //   },
-  //   {
-  //     'react-dom': {
-  //       root: 'ReactDOM',
-  //       commonjs2: 'react-dom',
-  //       commonjs: 'react-dom',
-  //       amd: 'react-dom'
-  //     }
-  //   },
-  //   {
-  //     'medium-editor': {
-  //       root: 'MediumEditor',
-  //       commonjs2: 'medium-editor',
-  //       commonjs: 'medium-editor',
-  //       amd: 'medium-editor'
-  //     }
-  //   },
-  //   {
-  //     'isomorphic-fetch': {
-  //       root: 'fetch',
-  //       commonjs2: 'isomorphic-fetch',
-  //       commonjs: 'isomorphic-fetch',
-  //       amd: 'isomorphic-fetch'
-  //     }
-  //   }
-  // ]
+  }
 };
+
+if (env === ENV_PROD) {
+  config.externals = [
+    {
+      react: {
+        root: 'React',
+        commonjs2: 'react',
+        commonjs: 'react',
+        amd: 'react'
+      }
+    },
+    {
+      'react-dom': {
+        root: 'ReactDOM',
+        commonjs2: 'react-dom',
+        commonjs: 'react-dom',
+        amd: 'react-dom'
+      }
+    },
+    {
+      'medium-editor': {
+        root: 'MediumEditor',
+        commonjs2: 'medium-editor',
+        commonjs: 'medium-editor',
+        amd: 'medium-editor'
+      }
+    },
+    {
+      'isomorphic-fetch': {
+        root: 'fetch',
+        commonjs2: 'isomorphic-fetch',
+        commonjs: 'isomorphic-fetch',
+        amd: 'isomorphic-fetch'
+      }
+    }
+  ];
+}
+
+module.exports = config;

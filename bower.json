@@ -1,12 +1,13 @@
 {
   "name": "legoblocks",
-  "version": "0.3.7",
   "homepage": "https://github.com/brijeshb42/kattappa",
   "authors": [
     "Brijesh Bittu <brijeshb42@gmail.com>"
   ],
   "moduleType": [
-    "globals"
+    "amd",
+    "globals",
+    "node"
   ],
   "license": "MIT",
   "ignore": [
@@ -22,7 +23,7 @@
   "dependencies": {
     "react": "~0.14.6",
     "react-dom": "~0.14.6",
-    "medium-editor": "~5.12.0",
+    "medium-editor": "~5.17.0",
     "fetch": "~0.10.1"
   }
 }

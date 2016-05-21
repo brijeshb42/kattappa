@@ -53,18 +53,8 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules
 
-
-#  "browserify": {
-#    "transform": [ "browserify-shim" ]
-#  },
-#  "browserify-shim": {
-#    "react": "global:React",
-#    "isomorphic-fetch": "global:fetch",
-#    "medium-editor": "global:MediumEditor",
-#    "react-dom": "global:ReactDOM"
-#  }
-
 # Debug log from npm
+lib/
 npm-debug.log
 _site
 bower_components/
@@ -72,5 +62,6 @@ bower_components/
 css/
 js/
 npm/
-dist/
+dist/index.html
+dist/style.js
 hash.json

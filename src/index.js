@@ -7,11 +7,11 @@ import MediumComponent from './components/medium';
 import DroppableComponent from './components/droppable';
 
 module.exports = {
-  Editor: Editor,
-  Blocks: Blocks,
-  uuid: uuid,
-  BaseEmbed: BaseEmbed,
-  MediumComponent: MediumComponent,
-  DroppableComponent: DroppableComponent,
-  UrlRegex: UrlRegex
+  Editor,
+  Blocks,
+  uuid,
+  BaseEmbed,
+  MediumComponent,
+  DroppableComponent,
+  UrlRegex
 };

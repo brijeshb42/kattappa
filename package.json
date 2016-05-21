@@ -4,7 +4,10 @@
   "description": "A block based rich text editor with support of Images, embeds( Youtube, Instagram, Vine, Vimeo etc)",
   "main": "./npm/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production webpack",
+    "npm": "./node_modules/.bin/babel ./src -d npm --ignore 'script.js'",
+    "dev": "./node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 8080 --devtool eval --content-base dist/ --progress --colors --hot"
   },
   "repository": {
     "type": "git",
@@ -23,32 +26,38 @@
     "url": "https://github.com/brijeshb42/kattappa/issues"
   },
   "homepage": "https://github.com/brijeshb42/kattappa",
-  "devDependencies": {
-    "babelify": "^6.1.3",
-    "browserify": "^11.0.1",
-    "browserify-shim": "^3.8.10",
-    "del": "^1.2.1",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-babel": "^5.2.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-connect": "^2.2.0",
-    "gulp-header": "^1.7.1",
-    "gulp-less": "^3.0.3",
-    "gulp-livereload": "^3.8.0",
-    "gulp-minify-css": "^1.2.0",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-uglify": "^1.2.0",
-    "gulp-usemin": "^0.3.11",
-    "gulp-util": "^3.0.6",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
-  },
   "dependencies": {
     "es6-promise": "^3.0.2",
     "isomorphic-fetch": "^2.1.1",
     "medium-editor": "^5.16.1",
     "react": "^0.14.6",
     "react-dom": "^0.14.6"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^3.7.0",
+    "react-hot-loader": "^1.3.0",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "babel": {
+    "env": {
+      "production": {
+        "plugins": [
+          "transform-react-constant-elements",
+          "transform-react-inline-elements"
+        ]
+      }
+    }
   }
 }

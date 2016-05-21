@@ -1,0 +1,56 @@
+body {
+    font-size: 16px;
+}
+
+#editor-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+.katap-toolbar /*,.katap-control-toolbar*/ {
+    button {
+        background: none;
+        background-color: #eee;
+        color: #222;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        margin-right: 4px;
+        margin-bottom: 2px;
+        font-size: 0.8em;
+
+        &:hover {
+            border-color: #08c;
+            color: #08c;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:first-child {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            color: #222;
+        }
+    }
+}
+
+.katap-block {
+    .katap-splitter {
+        font-size: 0.7em;
+    }
+    .katap-medium-editor {
+        margin-top: 10px;
+    }
+}
+
+.katap-control-toolbar {
+    float: right;
+    display: inline-block;
+}
+
+.medium-editor-placeholder:after {
+    font-style: normal;
+    color: #eee;
+}

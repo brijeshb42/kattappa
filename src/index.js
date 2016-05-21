@@ -1,4 +1,3 @@
-//import Quill from 'quill';
 import {uuid, UrlRegex} from './utils';
 
 import Editor from './editor';

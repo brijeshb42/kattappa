@@ -13,7 +13,7 @@ var initialState = {
   blocks: []
 };
 
-class Editor extends React.Component {
+export default class Editor extends React.Component {
 
   constructor(props) {
     super(props);
@@ -226,5 +226,3 @@ Editor.defaultProps = {
   rteBlock: RteBlock,
   splitter: splitterString
 };
-
-export default Editor;

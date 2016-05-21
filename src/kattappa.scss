@@ -1,4 +1,4 @@
-@quill-border-color: #1987C7;
+$quill-border-color: #1987C7;
 
 .katap-clearfix {
     &:after { 
@@ -196,19 +196,24 @@
     margin-top: 20px;
     padding-bottom: 60px;
     font-size: 1.1em;
+}
 
-    .katap-toolbar {
-        margin-left: -15px;
-        text-align: left;
+.katap-toolbar {
+    margin-left: -15px;
+    text-align: left;
 
-        button:first-child {
-            border: 1px solid #888;
-            background: #fff;
-            width: 20px;
-            border-radius: 10px;
-            height: 20px;
-            font-size: 0.6em;
-            text-align: center;
+    button:first-child {
+        border: 1px solid #888;
+        background: #fff;
+        width: 20px;
+        border-radius: 10px;
+        height: 20px;
+        font-size: 0.6em;
+        text-align: center;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
         }
     }
 }
@@ -233,7 +238,7 @@
     font-size: 1em;
 
     &:focus {
-        outline: 1px solid @quill-border-color;
+        outline: 1px solid $quill-border-color;
     }
 }
 
@@ -270,7 +275,4 @@
         float: right;
     }
 }
-.katap-toolbar {
-    padding: 5px 0;
-    text-align: center;
-}
+

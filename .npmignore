@@ -1,15 +1,18 @@
-lib/
-gulp/
+src/
 bower_components/
 node_modules/
 dist/
-gulpfile.js
-index.html
 
 npm-debug.log
+hash.json
+.babelrc
+.gitignore
+bower.json
 _site
 .sass-*
 css/
 js/
 *.html
 script.js*
+webpack.config.js
+sample.json

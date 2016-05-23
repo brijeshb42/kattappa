@@ -2,6 +2,7 @@ import React from 'react';
 
 import options from '../utils/editoroptions';
 import BlockText from './text';
+import TextComponent from '../components/medium';
 
 class BlockQuote extends BlockText.React {
 
@@ -32,7 +33,6 @@ class BlockQuote extends BlockText.React {
   }
 
   render() {
-    var TextComponent = this.props.rteBlock;
     return (
       <blockquote className="katap-block katap-text">
         <TextComponent

@@ -23,8 +23,19 @@ function getBlocks() {
   return initBlock;
 }
 
+function onChange(position, content) {
+  initBlock[position].data = content;
+}
+
 function onSave(blocks) {
   console.log(blocks);
+}
+
+function onFilesAdded(files, success=null, error=null) {
+  if (success) {
+    success.call(null, {url: files[0].preview});
+    console.log('Success');
+  }
 }
 
 class Container extends React.Component {
@@ -53,7 +64,8 @@ class Container extends React.Component {
           availableBlocks={Blocks}
           EmbedTypes={EmbedTypes}
           splitter="<p><br></p>"
-          getBlocks={this.getBlocks} />
+          getBlocks={this.getBlocks}
+          onFilesAdded={onFilesAdded} />
       </div>
     );
   }

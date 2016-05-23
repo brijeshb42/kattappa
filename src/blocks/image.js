@@ -24,47 +24,15 @@ class BlockImage extends React.Component {
   }
 
   handleImage(files) {
-    var UploadUrl = this.props.UploadUrl;
-    var self = this;
-    var file = files[0];
-    if(file.type.indexOf("image/") !== 0) {
-      alert("Provide a valid image file.");
-      return;
-    }
-    var newContent = {};
-    newContent.subtext = this.props.content.subtext;
-    if(UploadUrl !== "") {
-      var data = new FormData();
-      data.append("image", file);
-      fetch(UploadUrl, {
-        method: 'POST',
-        credentials: 'same-origin',
-        body: data
-      }).then(function(response) {
-        if(response.status >= 200 && response.status < 300) {
-          return response.json();
-        } else {
-          var error = new Error(response.statusText);
-          error.response = response;
-          throw error;
-        }
-      }).then(function(json) {
-        if(json.type && json.type === "success") {
-          if(self.props.onContentChanged) {
-            newContent.url = json.message;
-            self.props.onContentChanged(self.props.position, newContent);
-          }
-        } else {
-          alert('Could not upload.');
-        }
-      }).catch(function(error) {
-        console.error(error);
-        alert('Error while uploading. Retry.');
-      });
-    } else if(this.props.onContentChanged){
-      newContent.url = file.preview;
-      this.props.onContentChanged(this.props.position, newContent);
-    }
+    const newContent = this.props.content;
+    this.props.onFilesAdded(files, (url) => {
+      if (url && url !== '') {
+        newContent.url = data.url;
+        this.props.onContentChanged(this.props.position, newContent);
+      }
+    }, (err) => {
+      alert('Error while uploading files.');
+    });
   }
 
   changeItem(key, e) {
@@ -131,7 +99,10 @@ class BlockImage extends React.Component {
 
 BlockImage.defaultProps = {
   UploadUrl: '',
-  message: 'Or Drop image here or click to add.'
+  message: 'Or Drop image here or click to add.',
+  onFilesAdded: (files) => {
+    console.log(files);
+  }
 };
 
 let Image = {

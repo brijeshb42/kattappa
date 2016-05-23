@@ -1,9 +1,9 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var MediumEditor = require('medium-editor');
-var Keys = require('../utils/keys');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import MediumEditor from 'medium-editor';
+import Keys from '../utils/keys';
 
-var options = {
+const options = {
     toolbar: {
         buttons: [
           'bold',
@@ -32,11 +32,74 @@ var options = {
     }
 };
 
-module.exports = React.createClass({
-  displayName: 'MediumEditor',
 
-  placeCaretAtEnd: function() {
-    var el = this.dom;
+export default class Medium extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      content: this.props.content
+    };
+
+    this.dom = null;
+    this._updated = false;
+
+    this.change = this.change.bind(this);
+    this.placeCaretAtEnd = this.placeCaretAtEnd.bind(this);
+    this.captureReturn = this.captureReturn.bind(this);
+  }
+
+  componentDidMount() {
+    var _this = this;
+
+    var dom = ReactDOM.findDOMNode(this);
+    this.dom = dom;
+    var options = this.props.options;
+    options.cleanTags = ['meta', 'span'];
+    this.medium = new MediumEditor(dom, options);
+    window.medium = this.medium;
+
+    if(this.props.enterCapture) {
+      this.medium.subscribe('editableKeyup', this.captureReturn);
+      this.medium.subscribe('editableInput', (e) => {
+        this._updated = true;
+        this.change(dom.innerHTML.replace('<p><br></p>', ''));
+      });
+    } else {
+      this.medium.subscribe('editableInput', (e) => {
+        this._updated = true;
+        this.change(dom.innerHTML);
+      });
+    }
+
+    if(this.state.content === "") {
+      this.placeCaretAtEnd();
+    }
+  }
+
+  componentWillUnmount() {
+    this.medium.destroy();
+    this.dom = null;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.content !== this.state.content && !this._updated) {
+      this.setState({ content: nextProps.content });
+    }
+
+    if (this._updated) this._updated = false;
+  }
+
+  shouldComponentUpdate(nextProps){
+    return false;
+  }
+
+  change(text) {
+    if (this.props.onContentChanged) this.props.onContentChanged(text);
+  }
+
+  placeCaretAtEnd() {
+    const el = this.dom;
     el.focus();
     if (typeof window.getSelection != "undefined"
             && typeof document.createRange != "undefined") {
@@ -52,24 +115,9 @@ module.exports = React.createClass({
         textRange.collapse(false);
         textRange.select();
     }
-  },
+  }
 
-  getInitialState: function getInitialState() {
-    return {
-      content: this.props.content
-    };
-  },
-
-  getDefaultProps: function getDefaultProps() {
-    return {
-      tag: 'div',
-      className: 'katap-medium-editor markdown-body',
-      options: options,
-      enterCapture: false
-    };
-  },
-
-  captureReturn: function captureReturn(e) {
+  captureReturn(e) {
     if(e.which === Keys.ENTER) {
       e.preventDefault();
       if(this.props.captureReturn) {
@@ -78,65 +126,20 @@ module.exports = React.createClass({
         this.props.onContentChanged(this.dom.innerHTML.replace('<p><br></p>', ''));
       }
     }
-  },
-
-  componentDidMount: function componentDidMount() {
-    var _this = this;
-
-    var dom = ReactDOM.findDOMNode(this);
-    this.dom = dom;
-    var options = this.props.options;
-    options.cleanTags = ['meta', 'span'];
-    this.medium = new MediumEditor(dom, options);
-    if(this.props.enterCapture) {
-      this.medium.subscribe('editableKeyup', this.captureReturn);
-      this.medium.subscribe('editableInput', function (e) {
-        _this._updated = true;
-        _this.change(dom.innerHTML.replace('<p><br></p>', ''));
-      });
-    } else {
-      this.medium.subscribe('editableInput', function (e) {
-        _this._updated = true;
-        _this.change(dom.innerHTML);
-      });
-    }
-
-    if(this.state.content === "") {
-      this.placeCaretAtEnd();
-    }
-  },
-
-  componentWillUnmount: function componentWillUnmount() {
-    this.medium.destroy();
-  },
-
-  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-    if (nextProps.content !== this.state.content && !this._updated) {
-      this.setState({ content: nextProps.content });
-    }
-
-    if (this._updated) this._updated = false;
-  },
-
-  shouldComponentUpdate: function shouldComponentUpdate(nextProps){
-    return false;
-  },
-
-  render: function render() {
-    return React.createElement(this.props.tag, {
-      className: this.props.className,
-      contentEditable: true,
-      ref: 'mediumeditor',
-      dangerouslySetInnerHTML: { __html: this.state.content }
-    });
-  },
-
-  change: function change(text /*, pasted=false*/) {
-    // let finalText = text;
-    // if (pasted) {
-    //   finalText = cleanup(text);
-    //   console.log(finalText);
-    // }
-    if (this.props.onContentChanged) this.props.onContentChanged(text);
   }
-});
+
+  render() {
+    return (
+      <div ref="mediumeditor"
+        className="katap-medium-editor markdown-body"
+        options={this.props.options}
+        dangerouslySetInnerHTML={{__html: this.state.content}}
+        contentEditable />
+    );
+  }
+}
+
+MediumEditor.defaultProps = {
+  options: options,
+  enterCapture: false
+};

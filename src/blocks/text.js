@@ -1,5 +1,6 @@
 import React from 'react';
 
+import TextComponent from '../components/medium';
 import options from '../utils/editoroptions';
 
 class BlockText extends React.Component {
@@ -26,7 +27,7 @@ class BlockText extends React.Component {
   }
 
   render() {
-    var TextComponent = this.props.rteBlock;
+    // var TextComponent = this.props.rteBlock;
     return (
       <div className="katap-block katap-text">
         <div className="katap-toolbar-wrapper katap-clearfix">

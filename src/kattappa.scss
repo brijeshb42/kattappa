@@ -15,6 +15,7 @@ $quill-border-color: #1987C7;
 }
 .katap-container {
     margin-bottom: 10px;
+    position: relative;
 
     .katap-markdown-body {
         outline: none;
@@ -106,8 +107,11 @@ $quill-border-color: #1987C7;
 }
 
 .katap-control-toolbar {
-    overflow: auto;
+    // position: absolute;
+    // overflow: auto;
     opacity: 0;
+    z-index: 1;
+    // right: 0;
 }
 
 .katap-embed {
@@ -196,6 +200,10 @@ $quill-border-color: #1987C7;
     margin-top: 20px;
     padding-bottom: 60px;
     font-size: 1.1em;
+}
+
+.katap-block {
+    position: relative;
 }
 
 .katap-toolbar {

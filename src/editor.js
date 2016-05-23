@@ -20,6 +20,7 @@ export default class Editor extends React.Component {
     this.state = {
       blocks: [],
     };
+
     this.handleBlockAction = this.handleBlockAction.bind(this);
     this.getBlocks = this.getBlocks.bind(this);
     this.addBlock = this.addBlock.bind(this);
@@ -35,10 +36,6 @@ export default class Editor extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    // if(newProps.availableBlocks) {
-
-    // }
-    console.log(newProps);
     this.refreshBlocks();
   }
 
@@ -49,22 +46,22 @@ export default class Editor extends React.Component {
   }
 
   splitBlock(position) {
-    var splitter = this.props.splitter;
-    var blocks = this.state.blocks;
-    var currentBlock = blocks[position];
+    const splitter = this.props.splitter;
+    const blocks = this.state.blocks;
+    const currentBlock = blocks[position];
     if(currentBlock.type !== Blocks.text.Name || currentBlock.data.indexOf(splitter) < 0) {
       return;
     }
-    var stringsTmp = currentBlock.data.split(splitter);
-    var strings = [];
+    const stringsTmp = currentBlock.data.split(splitter);
+    const strings = [];
     stringsTmp.forEach((str) => {
       if(str !== "") {
         strings.push(str);
       }
     });
     blocks.splice(position, 1);
-    var pos = position;
-    var newBlock = {};
+    let pos = position;
+    let newBlock = {};
     strings.forEach(function(str) {
       newBlock = {
         type: Blocks.text.Name,
@@ -76,7 +73,6 @@ export default class Editor extends React.Component {
     this.setState({
       blocks: blocks
     });
-    //console.log(strings);
   }
 
   handleBlockAction(action, position) {
@@ -145,6 +141,7 @@ export default class Editor extends React.Component {
     this.setState({
       blocks: newBlocks
     });
+    // this.props.onChange(position, content);
   }
 
   getToolbar(index) {
@@ -180,15 +177,15 @@ export default class Editor extends React.Component {
         <div key={block.key} className="katap-container">
           {self.getToolbar(index)}
           <Block
-            ref={"block"+index} position={index}
+            ref={"block"+index}
+            position={index}
             content={block.data}
             addBlock={self.addBlock}
             onContentChanged={self.contentChange}
             UploadUrl={self.props.UploadUrl}
             EmbedTypes={self.props.EmbedTypes}
             splitBlock={self.splitBlock}
-            rteBlock={self.props.rteBlock} 
-            />
+            {...self.props} />
           <Toolbar position={index} addBlock={self.addBlock} availableBlocks={Blocks} />
         </div>
       );

@@ -45,12 +45,13 @@ body {
     }
 }
 
-.katap-control-toolbar {
-    float: right;
-    display: inline-block;
-}
+// .katap-control-toolbar {
+//     float: right;
+//     display: inline-block;
+// }
 
 .medium-editor-placeholder:after {
     font-style: normal;
     color: #eee;
+    margin: 0;
 }

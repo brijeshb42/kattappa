@@ -1,13 +1,13 @@
 import React from 'react';
+
 import Action from './utils/action';
 import BlockControl from './components/blockcontrol';
 import Toolbar from './components/toolbar';
 import {uuid} from './utils';
+import Blocks from './blocks';
+import EmbedTypes from './blocks/embeds';
 
-var Blocks = require('./blocks');
-var EmbedTypes = require('./blocks/embeds');
-var RteBlock = require('./components/medium');
-var splitterString = '<p>==</p>';
+const splitterString = '<p>==</p>';
 
 var initialState = {
   blocks: []
@@ -220,6 +220,5 @@ Editor.defaultProps = {
     return [];
   },
   UploadUrl: '',
-  rteBlock: RteBlock,
   splitter: splitterString
 };

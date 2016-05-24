@@ -6,13 +6,9 @@ class Vine extends BaseEmbed {
   constructor(props) {
     super(props);
     this.loadExternalScript = this.loadExternalScript.bind(this);
-    //this.extraHandler = this.extraHandler.bind(this)
   }
 
   loadExternalScript() {
-    if(typeof window === 'undefined') {
-      return;
-    }
     var scriptUrl = this.props.scriptUrl;
     var tag = document.createElement('script');
     tag.src = scriptUrl;

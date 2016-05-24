@@ -43,16 +43,21 @@ class Container extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      blocks: []
+    };
+
     this.save = this.save.bind(this);
     this.getBlocks = this.getBlocks.bind(this);
+    this.onChange = (blocks) => this.setState({ blocks });
   }
 
   getBlocks() {
-    return initBlock;
+    return this.state.blocks;
   }
 
   save() {
-    console.log(this.refs.kattappa.getBlocks());
+    console.log(this.state.blocks);
   }
 
   render() {
@@ -61,6 +66,8 @@ class Container extends React.Component {
         <button onClick={this.save}>Save</button>
         <Editor
           ref="kattappa"
+          blocks={this.state.blocks}
+          onChange={this.onChange}
           availableBlocks={Blocks}
           EmbedTypes={EmbedTypes}
           splitter="<p><br></p>"

@@ -36,12 +36,6 @@ class Droppable extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     e.dataTransfer.dropEffect = 'copy';
-    // var effectAllowed = e.dataTransfer.effectAllowed;
-    // if (effectAllowed === 'all' || effectAllowed === 'uninitialized') {
-    //   this.setState({
-    //     className: 'katap-drop-active'
-    //   });
-    // }
     if (this.props.onDragOver) {
       this.props.onDragOver(e);
     }

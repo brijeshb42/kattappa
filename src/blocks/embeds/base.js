@@ -20,10 +20,6 @@ class BaseEmbed extends React.Component {
     this.extraHandler();
   }
 
-  extraHandler() {
-
-  }
-
   showPreview() {
     this.setState({
       preview: !this.state.preview
@@ -34,7 +30,6 @@ class BaseEmbed extends React.Component {
     var match;
     match = this.props.regex.exec(this.props.url);
     this.props.regex.lastIndex = 0;
-    //console.log(this.props.regex);
     if(!match) {
       this.props.checkContent(false);
       this.setState({
@@ -63,5 +58,3 @@ BaseEmbed.defaultProps = {
 };
 
 export default BaseEmbed;
-
-//https?:\/\/www\.facebook\.com\/(?:[^\/]{0,})\/videos\/vb\.(?:[0-9]{0,})\/([0-9]{0,}).*

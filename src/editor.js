@@ -17,9 +17,6 @@ export default class Editor extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      blocks: [],
-    };
 
     this.handleBlockAction = this.handleBlockAction.bind(this);
     this.getBlocks = this.getBlocks.bind(this);
@@ -27,28 +24,13 @@ export default class Editor extends React.Component {
     this.contentChange = this.contentChange.bind(this);
     this.getToolbar = this.getToolbar.bind(this);
     this.renderBlocks = this.renderBlocks.bind(this);
-    this.refreshBlocks = this.refreshBlocks.bind(this);
     this.splitBlock = this.splitBlock.bind(this);
-  }
-
-  componentDidMount() {
-    this.refreshBlocks();
-  }
-
-  componentWillReceiveProps(newProps) {
-    this.refreshBlocks();
-  }
-
-  refreshBlocks() {
-    this.setState({
-      blocks: this.props.getBlocks()
-    });
   }
 
   splitBlock(position) {
     const splitter = this.props.splitter;
-    const blocks = this.state.blocks;
-    const currentBlock = blocks[position];
+    const newBlocks = this.props.blocks;
+    const currentBlock = newBlocks[position];
     if(currentBlock.type !== Blocks.text.Name || currentBlock.data.indexOf(splitter) < 0) {
       return;
     }
@@ -59,7 +41,7 @@ export default class Editor extends React.Component {
         strings.push(str);
       }
     });
-    blocks.splice(position, 1);
+    newBlocks.splice(position, 1);
     let pos = position;
     let newBlock = {};
     strings.forEach(function(str) {
@@ -68,15 +50,13 @@ export default class Editor extends React.Component {
         data: str,
         key: uuid()
       };
-      blocks.splice(pos++, 0, newBlock)
+      newBlocks.splice(pos++, 0, newBlock)
     });
-    this.setState({
-      blocks: blocks
-    });
+    this.props.onChange(newBlocks);
   }
 
   handleBlockAction(action, position) {
-    var newBlocks = this.state.blocks;
+    var newBlocks = this.props.blocks;
     var Blocks = this.props.availableBlocks;
     if(action === Action.REMOVE) {
       if(Blocks[newBlocks[position].type].isEmpty(newBlocks[position].data) || confirm('Are you sure?')) {
@@ -89,33 +69,27 @@ export default class Editor extends React.Component {
     } else if(action === Action.DOWN) {
       newBlocks.splice(position , 2, newBlocks[position + 1], newBlocks[position]);
     }
-    this.setState({
-      blocks: newBlocks
-    });
+    this.props.onChange(newBlocks);
   }
 
   getBlocks() {
-    if(!this.state.blocks) {
-      this.setState({
-        blocks: this.props.getBlocks()
-      });
-      return this.props.getBlocks();
-    }
-    return this.state.blocks;
+    console.warn('This function will be deprecated in the next version.');
+    return this.props.blocks;
   }
 
   addBlock(type, position) {
-    if(position < -1 || position > this.state.blocks.length) {
+    const blocks = this.props.blocks;
+    if(position < -1 || position > blocks.length) {
       return;
     }
-    const newBlocks = this.state.blocks;
+    const newBlocks = this.props.blocks;
     const Blocks = this.props.availableBlocks;
     if(!Blocks[type]) {
       return;
     }
     if(Blocks[type].maximumBlocks !== 0) {
       let blocksOfType = 0;
-      this.state.blocks.forEach((block, index) => {
+      blocks.forEach((block, index) => {
         if(block.type === type) {
           blocksOfType++;
         }
@@ -130,18 +104,13 @@ export default class Editor extends React.Component {
       key: uuid()
     };
     newBlocks.splice(position + 1, 0, newBlock);
-    this.setState({
-      blocks: newBlocks
-    });
+    this.props.onChange(newBlocks);
   }
 
   contentChange(position, content) {
-    var newBlocks = this.state.blocks;
+    var newBlocks = this.props.blocks;
     newBlocks[position].data = content;
-    this.setState({
-      blocks: newBlocks
-    });
-    // this.props.onChange(position, content);
+    this.props.onChange(newBlocks);
   }
 
   getToolbar(index) {
@@ -150,13 +119,13 @@ export default class Editor extends React.Component {
         blockAction={this.handleBlockAction}
         position={index}
         className="katap-control-toolbar katap-clearfix"
-        length={this.state.blocks.length} />
+        length={this.props.blocks.length} />
     );
   }
 
   renderBlocks() {
     var self = this;
-    var blocks = this.props.blocks || this.state.blocks;
+    var blocks = this.props.blocks;
     const Blocks = this.props.availableBlocks;
     if(blocks.length < 1) {
       return (
@@ -194,7 +163,7 @@ export default class Editor extends React.Component {
   }
 
   render() {
-    if(this.state.blocks.length > 0) {
+    if(this.props.blocks.length > 0) {
       return (
         <div className='katap-listing'>
           <Toolbar

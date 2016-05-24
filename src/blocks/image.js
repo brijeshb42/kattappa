@@ -27,7 +27,7 @@ class BlockImage extends React.Component {
     const newContent = this.props.content;
     this.props.onFilesAdded(files, (url) => {
       if (url && url !== '') {
-        newContent.url = data.url;
+        newContent.url = url;
         this.props.onContentChanged(this.props.position, newContent);
       }
     }, (err) => {

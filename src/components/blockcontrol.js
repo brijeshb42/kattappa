@@ -10,7 +10,6 @@ class BlockControl extends React.Component {
   }
 
   handleClick(e) {
-    //console.log(e);
     var nodes = Array.prototype.slice.call(e.currentTarget.children);
     var index = nodes.indexOf(e.target);
     if(index < 0) {

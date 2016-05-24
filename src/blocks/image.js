@@ -3,9 +3,8 @@ import React from 'react';
 import Droppable from '../components/droppable';
 import Keys from '../utils/keys';
 import {UrlRegex} from '../utils';
-require('isomorphic-fetch');
+import 'isomorphic-fetch';
 
-var UploadUrl = '';
 
 class BlockImage extends React.Component {
 
@@ -59,11 +58,18 @@ class BlockImage extends React.Component {
     }
   }
 
+  imageLoaded(e) {
+    if (e.target.src.indexOf('blob:') === 0) {
+      URL.revokeObjectURL(e.target.src);      
+    }
+  }
+
   render() {
     var content = this.props.content;
-    if(!content || content.url === "") {
-      return (
-        <div className="katap-block katap-image">
+    return (
+      <div className="katap-block katap-image">
+      {(!content || content.url === '') ? (
+        <div>
           <input
             ref="img"
             type="text"
@@ -74,11 +80,9 @@ class BlockImage extends React.Component {
             <p>{this.props.message}</p>
           </Droppable>
         </div>
-      );
-    } else {
-      return (
-        <div className="katap-block katap-image">
-          <img src={content.url} />
+      ) : (
+        <div>
+          <img src={content.url} onLoad={this.imageLoaded} />
           <input
             type="text"
             className="katap-image-subtext"
@@ -92,13 +96,26 @@ class BlockImage extends React.Component {
             onChange={this.changeItem.bind(this, 'hyperlink')}
             value={content.hyperlink} />
         </div>
-      );
-    }
+      )}
+      </div>
+    );
+    // if(!content || content.url === "") {
+    //   return (
+    //     <div className="katap-block katap-image">
+          
+    //     </div>
+    //   );
+    // } else {
+    //   return (
+    //     <div className="katap-block katap-image">
+          
+    //     </div>
+    //   );
+    // }
   }
 }
 
 BlockImage.defaultProps = {
-  UploadUrl: '',
   message: 'Or Drop image here or click to add.',
   onFilesAdded: (files) => {
     console.log(files);

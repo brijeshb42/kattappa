@@ -73,7 +73,7 @@ export default class Medium extends React.Component {
     }
 
     if(this.state.content === "") {
-      this.placeCaretAtEnd();
+      setTimeout(this.placeCaretAtEnd, 0);
     }
   }
 

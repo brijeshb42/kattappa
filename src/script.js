@@ -33,7 +33,7 @@ function onSave(blocks) {
 
 function onFilesAdded(files, success=null, error=null) {
   if (success) {
-    success.call(null, {url: files[0].preview});
+    success.call(null, files[0].preview);
     console.log('Success');
   }
 }

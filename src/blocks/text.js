@@ -27,7 +27,6 @@ class BlockText extends React.Component {
   }
 
   render() {
-    // var TextComponent = this.props.rteBlock;
     return (
       <div className="katap-block katap-text">
         <div className="katap-toolbar-wrapper katap-clearfix">

@@ -20,6 +20,8 @@ class BaseEmbed extends React.Component {
     this.extraHandler();
   }
 
+  extraHandler() {}
+
   showPreview() {
     this.setState({
       preview: !this.state.preview

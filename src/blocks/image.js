@@ -3,7 +3,6 @@ import React from 'react';
 import Droppable from '../components/droppable';
 import Keys from '../utils/keys';
 import {UrlRegex} from '../utils';
-import 'isomorphic-fetch';
 
 
 class BlockImage extends React.Component {

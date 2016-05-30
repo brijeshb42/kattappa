@@ -184,14 +184,6 @@ if (env === ENV_PROD) {
         commonjs: 'medium-editor',
         amd: 'medium-editor'
       }
-    },
-    {
-      'isomorphic-fetch': {
-        root: 'fetch',
-        commonjs2: 'isomorphic-fetch',
-        commonjs: 'isomorphic-fetch',
-        amd: 'isomorphic-fetch'
-      }
     }
   ];
 }

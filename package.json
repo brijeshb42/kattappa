@@ -1,6 +1,6 @@
 {
   "name": "kattappa",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, Instagram, Vine, Vimeo etc)",
   "main": "./lib/index.js",
   "scripts": {
@@ -43,6 +43,7 @@
     "babel-preset-react": "^6.5.0",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "imports-loader": "^0.6.5",
     "node-sass": "^3.7.0",
     "react-hot-loader": "^1.3.0",
     "sass-loader": "^3.2.0",

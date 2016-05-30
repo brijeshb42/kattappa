@@ -33,7 +33,7 @@ const options = {
 };
 
 
-export default class Medium extends React.Component {
+export default class MediumComponent extends React.Component {
   constructor(props) {
     super(props);
 
@@ -139,7 +139,7 @@ export default class Medium extends React.Component {
   }
 }
 
-MediumEditor.defaultProps = {
+MediumComponent.defaultProps = {
   options: options,
   enterCapture: false
 };

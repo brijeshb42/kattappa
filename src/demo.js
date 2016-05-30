@@ -7,12 +7,20 @@ import './style.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Kattappa from './index';
+import Kattappa from './';
 
 var initBlock = [{
   type: "text",
-  data: '',
+  data: 'Hello World',
   key: Kattappa.uuid()
+}, {
+  type: "image",
+  key: Kattappa.uuid(),
+  data: {
+    url: "http://www.nutritionsecrets.com/wp-content/uploads/2015/04/Feature3_image2_vitD.jpg",
+    subtext: "nutritionsecrets.com",
+    hyperlink: "",
+  }
 }];
 
 const { Blocks, Editor } = Kattappa;
@@ -44,7 +52,7 @@ class Container extends React.Component {
     super(props);
 
     this.state = {
-      blocks: []
+      blocks: initBlock,
     };
 
     this.save = this.save.bind(this);
@@ -63,7 +71,7 @@ class Container extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.save}>Save</button>
+        <button onClick={this.save}>console.log</button>
         <Editor
           ref="kattappa"
           blocks={this.state.blocks}

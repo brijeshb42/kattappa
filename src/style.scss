@@ -1,10 +1,51 @@
 body {
     font-size: 16px;
+    padding-top: 40px;
+}
+
+.github-fork-ribbon:before {
+    background-color: #090;
+}
+.editor-action {
+    bottom: 5px;
+    top: auto;
+}
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    background: #eee;
+    z-index: 100;
+    color: #555;
+    font-family: Hoefler Text,Georgia,serif;
+    font-size: 1.2em;
+}
+
+a {
+    color: #08c;
+}
+
+.menu h2 {
+    margin: 0;
 }
 
 #editor-content {
     max-width: 600px;
     margin: 0 auto;
+}
+
+button {
+    background: none;
+    border: none;
+    background-color: #eee;
+    border-color: 1px solid #ccc;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 
@@ -44,11 +85,6 @@ body {
         margin-top: 10px;
     }
 }
-
-// .katap-control-toolbar {
-//     float: right;
-//     display: inline-block;
-// }
 
 .medium-editor-placeholder:after {
     font-style: normal;

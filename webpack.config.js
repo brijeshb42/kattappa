@@ -63,7 +63,7 @@ function getPlugins(env) {
     plugins.push(vendorPlugin);
     plugins.push(new webpack.NoErrorsPlugin());
   } else {
-    plugins.push(new ExtractTextPlugin('style.css'));
+    plugins.push(new ExtractTextPlugin(libraryName + '-style.css'));
     plugins.push(hashJsonPlugin);
     plugins.push(new webpack.optimize.DedupePlugin());
     plugins.push(new webpack.optimize.UglifyJsPlugin({
@@ -87,14 +87,14 @@ function getEntry(env) {
   var entries = [];
   if (env === ENV_PROD) {
     entry = {};
-    entry.style = ['./kattappa.scss'];
+    // entry[libraryName+'-style'] = ['./kattappa.scss'];
   } else  {
     entries.push('webpack-dev-server/client?http://localhost:8080/');
     entries.push('webpack/hot/only-dev-server');
-    entry.script = ['./script'];
   }
   entries.push('./index');
   entry[libraryName] = entries;
+  entry.demo = ['./demo'];
   return entry;
 }
 
@@ -115,8 +115,12 @@ function getLoaders(env) {
   if (env === ENV_PROD ) {
     loaders.push({
       test: /(\.css|\.scss)$/,
-      loader: ExtractTextPlugin.extract("css?sourceMap!sass?sourceMap")
+      loader: ExtractTextPlugin.extract("css?sourceMap!sass?sourceMap"),
     });
+    // loaders.push({
+    //   test: require.resolve("kattappa"),
+    //   loader: "imports?this=>window",
+    // });
   } else {
     loaders.push({
       test: /(\.css|\.scss)$/,

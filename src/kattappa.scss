@@ -204,6 +204,16 @@ $quill-border-color: #1987C7;
 
 .katap-block {
     position: relative;
+
+    input[type=text] {
+        width: 100%;
+        border: 1px solid #ddd;
+
+        &:focus {
+            outline: none;
+            border-color: #08c;
+        }
+    }
 }
 
 .katap-toolbar {

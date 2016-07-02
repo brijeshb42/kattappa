@@ -18,7 +18,7 @@ let UL = {
   Icon: '',
   Empty: function() {
     return [{
-      content: '',
+      content: '<p><br></p>',
       key: uuid()
     }];
   },

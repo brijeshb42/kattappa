@@ -86,7 +86,7 @@ let OL = {
   Icon: '',
   Empty: function() {
     return [{
-      content: '',
+      content: '<p><br></p>',
       key: uuid()
     }];
   },

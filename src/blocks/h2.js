@@ -32,7 +32,7 @@ let H2 = {
   React: BlockH2,
   Icon: '',
   Empty: function() {
-    return '';
+    return '<p><br></p>';
   },
   maximumBlocks: 0,
   Description: 'Heading',

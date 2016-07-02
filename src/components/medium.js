@@ -72,7 +72,7 @@ export default class MediumComponent extends React.Component {
       });
     }
 
-    if(this.state.content === "") {
+    if(this.state.content === '' || this.state.content === '<p><br></p>') {
       setTimeout(this.placeCaretAtEnd, 0);
     }
   }

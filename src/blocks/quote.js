@@ -57,7 +57,7 @@ let Quote = {
   Icon: '',
   Empty: function() {
     return {
-      content: '',
+      content: '<p><br></p>',
       credit: ''
     };
   },

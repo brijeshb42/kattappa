@@ -50,7 +50,7 @@ let Text = {
   React: BlockText,
   Icon: '',
   Empty: function() {
-    return '';
+    return '<p><br></p>';
   },
   maximumBlocks: 0,
   Description: 'Text',

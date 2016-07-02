@@ -89,7 +89,7 @@ class Facebook extends BaseEmbed {
 
 Facebook.defaultProps = {
   url: '',
-  regex: /https?:\/\/www\.facebook\.com\/(.*)\/(videos|posts|photos)\/.*/gi,
+  regex: /https?:\/\/www\.facebook\.com\/(?:.*)\/(videos|posts|photos)\/(\d+).*/gi,
   scriptUrl: '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3'
 };
 

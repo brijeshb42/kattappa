@@ -11,9 +11,10 @@ import Kattappa from './';
 
 var initBlock = [{
   type: "text",
-  data: 'Hello World',
+  data: '<p>Hello World</p>',
   key: Kattappa.uuid()
-}, {
+},
+/*{
   type: "image",
   key: Kattappa.uuid(),
   data: {
@@ -21,7 +22,8 @@ var initBlock = [{
     subtext: "nutritionsecrets.com",
     hyperlink: "",
   }
-}];
+}*/
+];
 
 const { Blocks, Editor } = Kattappa;
 

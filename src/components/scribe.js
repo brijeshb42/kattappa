@@ -1,39 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MediumEditor from 'medium-editor';
+import Scribe from 'scribe-editor';
+import pluginCurlyQuotes from 'scribe-plugin-curly-quotes';
+import pluginSanitizer from 'scribe-plugin-sanitizer';
+import pluginNewlineToHTML from 'scribe-plugin-formatter-plain-text-convert-new-lines-to-html';
+import pluginSemanticEl from 'scribe-plugin-formatter-html-ensure-semantic-elements';
+
+import { sanitizerTags } from './scribe-options';
 import Keys from '../utils/keys';
 
-const options = {
-    toolbar: {
-        buttons: [
-          'bold',
-          'italic',
-          'underline',
-          'anchor',
-          'strikethrough'
-        ]
-    },
-    autoLink: false,
-    imageDragging: false,
-    placeholder: {
-        text: 'Write your story...',
-        hideOnClick: false,
-    },
-    paste: {
-      forcePlainText: true,
-      cleanPastedHTML: true,  
-      cleanReplacements: [[/<!--[^>]*-->/gi, '']],
-      cleanAttrs: ['class', 'dir', 'style', ],
-      cleanTags: ['label', 'meta', 'aside', 'span']
-    },
-    disableExtraSpaces: true,
-    extensions: {
-      imageDragging: {}
-    }
-};
+export default class ScribeEditor extends React.Component {
 
-
-export default class MediumComponent extends React.Component {
   constructor(props) {
     super(props);
 
@@ -41,6 +18,7 @@ export default class MediumComponent extends React.Component {
       content: this.props.content
     };
 
+    this.scribe = null;
     this.dom = null;
     this._updated = false;
 
@@ -50,35 +28,41 @@ export default class MediumComponent extends React.Component {
   }
 
   componentDidMount() {
-    var _this = this;
+    this.dom = ReactDOM.findDOMNode(this);
+    this.scribe = new Scribe(this.dom);
+    this.scribe.use(pluginNewlineToHTML());
+    this.scribe.use(pluginCurlyQuotes());
+    this.scribe.use(pluginSanitizer(sanitizerTags));
+    this.scribe.use(pluginSemanticEl());
 
-    var dom = ReactDOM.findDOMNode(this);
-    this.dom = dom;
-    var options = this.props.options;
-    options.cleanTags = ['meta', 'span'];
-    this.medium = new MediumEditor(dom, options);
+    // this.scribe.el.addEventListener('keydown', this.captureReturn);
 
-    if(this.props.enterCapture) {
-      this.medium.subscribe('editableKeyup', this.captureReturn);
-      this.medium.subscribe('editableInput', (e) => {
-        this._updated = true;
-        this.change(dom.innerHTML.replace('<p><br></p>', ''));
-      });
-    } else {
-      this.medium.subscribe('editableInput', (e) => {
-        this._updated = true;
-        this.change(dom.innerHTML);
-      });
-    }
+    // if(this.props.enterCapture) {
+    //   this.scribe.subscribe('editableKeyup', this.captureReturn);
+    //   this.medium.subscribe('editableInput', (e) => {
+    //     this._updated = true;
+    //     this.change(dom.innerHTML.replace('<p><br></p>', ''));
+    //   });
+    // } else {
+    //   this.medium.subscribe('editableInput', (e) => {
+    //     this._updated = true;
+    //     this.change(dom.innerHTML);
+    //   });
+    // }
+    this.scribe.on('scribe:content-changed', () => {
+      this.change(this.scribe.getHTML());
+    });
 
-    if(this.state.content === '' || this.state.content === '<p><br></p>') {
-      setTimeout(this.placeCaretAtEnd, 0);
-    }
+    // window.scribe = this.scribe;
+
+    this.placeCaretAtEnd();
   }
 
   componentWillUnmount() {
-    this.medium.destroy();
+    // this.scribe.el.removeEventListener('keydown', this.captureReturn);
+    this.scribe.destroy();
     this.dom = null;
+    this.scribe = null;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -117,19 +101,20 @@ export default class MediumComponent extends React.Component {
   }
 
   captureReturn(e) {
+    console.log(e);
     if(e.which === Keys.ENTER) {
       e.preventDefault();
       if(this.props.captureReturn) {
         this.props.captureReturn();
-        this.dom.innerHTML = this.dom.innerHTML.replace('<p><br></p>', '');
-        this.props.onContentChanged(this.dom.innerHTML.replace('<p><br></p>', ''));
+        // this.dom.innerHTML = this.dom.innerHTML.replace('<p><br></p>', '');
+        // this.props.onContentChanged(this.dom.innerHTML.replace('<p><br></p>', ''));
       }
     }
   }
 
   render() {
     return (
-      <div ref="mediumeditor"
+      <div ref="scribeeditor"
         className="katap-medium-editor markdown-body"
         options={this.props.options}
         dangerouslySetInnerHTML={{__html: this.state.content}}
@@ -137,8 +122,3 @@ export default class MediumComponent extends React.Component {
     );
   }
 }
-
-MediumComponent.defaultProps = {
-  options: options,
-  enterCapture: false
-};

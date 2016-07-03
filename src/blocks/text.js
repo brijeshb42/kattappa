@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TextComponent from '../components/medium';
+import TextComponent from '../components/scribe';
 import options from '../utils/editoroptions';
 
 class BlockText extends React.Component {
@@ -13,7 +13,7 @@ class BlockText extends React.Component {
   }
 
   captureReturn() {
-    this.props.addBlock("text", this.props.position);
+    this.props.addBlock(Text.Name, this.props.position);
   }
 
   onContentChanged(content) {

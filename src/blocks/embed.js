@@ -22,7 +22,7 @@ let Embed = {
   maximumBlocks: 0,
   Description: 'Embed',
   isEmpty: function(content) {
-    return (content === '');
+    return (content.url === '');
   },
   EmbedTypes: Types
 };
@@ -48,6 +48,7 @@ class BlockEmbed extends React.Component {
     this.onDragEnter = this.onDragEnter.bind(this);
     this.onDragOver = this.onDragOver.bind(this);
     this.onDragLeave = this.onDragLeave.bind(this);
+    this.onFocus = this.onFocus.bind(this);
   }
 
   getClassName() {
@@ -93,6 +94,15 @@ class BlockEmbed extends React.Component {
       this.refs.input.focus();
     }
     this.checkUrls(this.props.content.url, true);
+    this.onFocus();
+  }
+
+  componentWillUnmount() {
+    this.props.setCurrentBlock(this.props.position - 1);
+  }
+
+  onFocus() {
+    this.props.setCurrentBlock(this.props.position);
   }
 
   checkContent(ok, msg) {
@@ -171,6 +181,7 @@ class BlockEmbed extends React.Component {
           {this.renderBlock()}
           <input
             type="text"
+            onFocus={this.onFocus}
             placeholder="Embed subtext"
             onChange={this.changeSubtext}
             value={content.subtext} />
@@ -189,7 +200,8 @@ class BlockEmbed extends React.Component {
             ref="input"
             type="text"
             placeholder="Enter URL and press enter"
-            onKeyUp={this.handleUrl} />
+            onKeyUp={this.handleUrl}
+            onFocus={this.onFocus} />
           <p>Supported embeds: {Object.keys(this.props.EmbedTypes).join(', ')}</p>
         </div>
       );

@@ -5,8 +5,9 @@ import pluginCurlyQuotes from 'scribe-plugin-curly-quotes';
 import pluginSanitizer from 'scribe-plugin-sanitizer';
 import pluginNewlineToHTML from 'scribe-plugin-formatter-plain-text-convert-new-lines-to-html';
 import pluginSemanticEl from 'scribe-plugin-formatter-html-ensure-semantic-elements';
+import pluginSmartLists from 'scribe-plugin-smart-lists';
 
-import { sanitizerTags } from './scribe-options';
+import { baseOptions } from './scribe-options';
 import Keys from '../utils/keys';
 
 export default class ScribeEditor extends React.Component {
@@ -30,36 +31,35 @@ export default class ScribeEditor extends React.Component {
   componentDidMount() {
     this.dom = ReactDOM.findDOMNode(this);
     this.scribe = new Scribe(this.dom);
+    if (!this.props.inline) {
+      this.scribe.use(pluginSmartLists());
+    }
     this.scribe.use(pluginNewlineToHTML());
     this.scribe.use(pluginCurlyQuotes());
-    this.scribe.use(pluginSanitizer(sanitizerTags));
+    this.scribe.use(pluginSanitizer(this.props.options));
     this.scribe.use(pluginSemanticEl());
 
-    // this.scribe.el.addEventListener('keydown', this.captureReturn);
-
-    // if(this.props.enterCapture) {
-    //   this.scribe.subscribe('editableKeyup', this.captureReturn);
-    //   this.medium.subscribe('editableInput', (e) => {
-    //     this._updated = true;
-    //     this.change(dom.innerHTML.replace('<p><br></p>', ''));
-    //   });
-    // } else {
-    //   this.medium.subscribe('editableInput', (e) => {
-    //     this._updated = true;
-    //     this.change(dom.innerHTML);
-    //   });
-    // }
+    if(this.props.inline || this.props.enterCapture) {
+      this.scribe.el.addEventListener('keydown', this.captureReturn);
+    }
     this.scribe.on('scribe:content-changed', () => {
       this.change(this.scribe.getHTML());
     });
 
-    // window.scribe = this.scribe;
+    this.scribe.setContent(this.state.content);
+
+    if (this.props.onFocus) {
+      this.scribe.el.addEventListener('focus', this.props.onFocus);
+    }
 
     this.placeCaretAtEnd();
+    window.scribe = this.scribe;
   }
 
   componentWillUnmount() {
-    // this.scribe.el.removeEventListener('keydown', this.captureReturn);
+    if(this.props.inline || this.props.enterCapture) {
+      this.scribe.el.removeEventListener('keydown', this.captureReturn);
+    }
     this.scribe.destroy();
     this.dom = null;
     this.scribe = null;
@@ -101,13 +101,12 @@ export default class ScribeEditor extends React.Component {
   }
 
   captureReturn(e) {
-    console.log(e);
-    if(e.which === Keys.ENTER) {
-      e.preventDefault();
+    if(e.which == Keys.ENTER) {
+      if (this.props.inline || this.props.enterCapture) {
+        e.preventDefault();
+      }
       if(this.props.captureReturn) {
         this.props.captureReturn();
-        // this.dom.innerHTML = this.dom.innerHTML.replace('<p><br></p>', '');
-        // this.props.onContentChanged(this.dom.innerHTML.replace('<p><br></p>', ''));
       }
     }
   }
@@ -117,8 +116,13 @@ export default class ScribeEditor extends React.Component {
       <div ref="scribeeditor"
         className="katap-medium-editor markdown-body"
         options={this.props.options}
-        dangerouslySetInnerHTML={{__html: this.state.content}}
         contentEditable />
     );
   }
 }
+
+
+ScribeEditor.defaultProps = {
+  options: baseOptions,
+  inline: false,
+};

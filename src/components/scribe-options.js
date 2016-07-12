@@ -1,4 +1,4 @@
-export const sanitizerTags = {
+export const baseOptions = {
   tags: {
     p: {},
     br: false,
@@ -7,7 +7,6 @@ export const sanitizerTags = {
     i: {},
     em: {},
     strike: {},
-    blockquote: {},
     ol: {},
     ul: {},
     li: {},
@@ -16,4 +15,25 @@ export const sanitizerTags = {
     h3: {},
     u: {}
   }
+};
+
+
+export const baseTextOptions = Object.assign({}, baseOptions, {
+  tags: Object.assign({}, baseOptions.tags, {
+    blockquote: {},
+  })
+});
+
+
+export const baseInlineOptions = {
+  tags: {
+    br: false,
+    b: {},
+    strong: {},
+    em: {},
+    i: {},
+    u: {},
+    a: {},
+    strike: {},
+  },
 };

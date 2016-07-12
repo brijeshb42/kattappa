@@ -7,7 +7,7 @@ class Toolbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
+      visible: true,
     };
     this.toggleState = this.toggleState.bind(this);
     this.addBlock = this.addBlock.bind(this);
@@ -19,31 +19,32 @@ class Toolbar extends React.Component {
     if(index < 0) {
       return;
     }
-    this.setState({
-      visible: !this.state.visible
-    });
-    if(!this.state.visible || index === 0) {
-    } else {
-      this.props.addBlock(nodes[index].getAttribute('title'), this.props.position);
-    }
+    this.props.addBlock(nodes[index].getAttribute('title'), this.props.position);
+    // this.setState({
+    //   visible: !this.state.visible
+    // });
+    // if(!this.state.visible || index === 0) {
+    // } else {
+    //   this.props.addBlock(nodes[index].getAttribute('title'), this.props.position);
+    // }
   }
 
   addBlock(type, position) {
-    this.props.addBlock()
+    this.props.addBlock(type);
   }
 
   render() {
     var self = this;
     var Blocks = this.props.availableBlocks;
-    if(!this.state.visible) {
-      return (
-        <div
-          className="katap-toolbar"
-          onClick={this.toggleState}>
-          <button title="Add block">+</button>
-        </div>
-      );
-    }
+    // if(!this.state.visible) {
+    //   return (
+    //     <div
+    //       className="katap-toolbar"
+    //       onClick={this.toggleState}>
+    //       <button title="Add block">+</button>
+    //     </div>
+    //   );
+    // }
     return (
       <div
         className="katap-toolbar"

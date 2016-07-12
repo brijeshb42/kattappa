@@ -2,9 +2,26 @@ import React from 'react';
 
 class BlockHR extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.setPosition = this.setPosition.bind(this);
+  }
+
+  componentDidMount() {
+    this.setPosition();
+  }
+
+  componentWillUnmount() {
+    this.props.setCurrentBlock(this.props.position - 1);
+  }
+
+  setPosition() {
+    this.props.setCurrentBlock(this.props.position);
+  }
+
   render() {
     return (
-      <hr className="katap-block katap-hr" />
+      <hr className="katap-block katap-hr" onClick={this.setPosition} />
     );
   }
 

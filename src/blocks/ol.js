@@ -14,6 +14,19 @@ class BlockOL extends React.Component {
     this.addItem = this.addItem.bind(this);
     this.handleItemRemove = this.handleItemRemove.bind(this);
     this.renderListItem = this.renderListItem.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.setCurrentBlock(this.props.position);
+  }
+
+  componentWillUnmount() {
+    this.props.setCurrentBlock(this.props.position - 1);
+  }
+
+  onFocus() {
+    this.props.setCurrentBlock(this.props.position);
   }
 
   onContentChanged(position, content) {
@@ -38,9 +51,6 @@ class BlockOL extends React.Component {
   }
 
   handleItemRemove(action, position) {
-    // if(this.props.content.length < 2) {
-    //   return;
-    // }
     var content = this.props.content;
     content.splice(position, 1);
     if(this.props.onContentChanged) {
@@ -64,6 +74,7 @@ class BlockOL extends React.Component {
             position={index}
             content={item.content}
             addItem={self.addItem}
+            onFocus={self.onFocus}
             onContentChanged={self.onContentChanged} />
         </li>
       );

@@ -68,6 +68,7 @@ class Container extends React.Component {
 
   save() {
     console.log(this.state.blocks);
+    console.log(this.refs.kattappa.currentBlock);
   }
 
   render() {

@@ -52,6 +52,9 @@ class Droppable extends React.Component {
   }
 
   onClick() {
+    if (this.props.onFocus) {
+      this.props.onFocus();
+    }
     var fileInput = this.refs.input;
     fileInput.value = null;
     fileInput.click();

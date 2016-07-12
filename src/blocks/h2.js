@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MediumComponent from '../components/medium';
+import TextComponent from '../components/scribe';
 import options from '../utils/editoroptions';
 import BlockText from './text';
 
@@ -14,12 +14,12 @@ class BlockH2 extends BlockText.React {
   render() {
     return (
       <h2 className="katap-block katap-h2">
-        <MediumComponent
-          //showToolbar={false}
+        <TextComponent
           options={options}
           content={this.props.content}
+          enterCapture
           captureReturn={this.captureReturn}
-          enterCapture={true}
+          onFocus={this.onFocus}
           onContentChanged={this.onContentChanged} />
       </h2>
     );

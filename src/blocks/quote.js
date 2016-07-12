@@ -1,8 +1,8 @@
 import React from 'react';
 
-import options from '../utils/editoroptions';
+import { baseOptions } from '../utils/editoroptions';
 import BlockText from './text';
-import TextComponent from '../components/medium';
+import TextComponent from '../components/scribe';
 
 class BlockQuote extends BlockText.React {
 
@@ -37,12 +37,14 @@ class BlockQuote extends BlockText.React {
       <blockquote className="katap-block katap-text">
         <TextComponent
           content={this.props.content.content}
-          options={options}
+          options={ baseOptions }
+          onFocus={this.onFocus}
           onContentChanged={this.onContentChanged} />
         <input
           className="katap-blockquote-credit"
           type="text"
           placeholder="Credit"
+          onFocus={this.onFocus}
           onChange={this.onCreditChange}
           value={this.props.content.credit} />
       </blockquote>
@@ -73,3 +75,11 @@ BlockQuote.defaultProps = {
 };
 
 export default Quote;
+
+/*
+
+        <TextComponent
+          content={this.props.content.credit}
+          onChange={this.onCreditChange}
+          inline
+          enterCapture />*/

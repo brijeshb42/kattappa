@@ -65,6 +65,11 @@ $quill-border-color: #1987C7;
             margin: 0;
             margin-bottom: 10px;
         }
+
+        ul, ol {
+            padding: 0;
+            padding-left: 20px;
+        }
     }
 }
 
@@ -102,6 +107,7 @@ $quill-border-color: #1987C7;
 
         &:focus {
             outline: 1px solid #ccc;
+            border-color: #08c;
         }
     }
 }
@@ -232,6 +238,7 @@ $quill-border-color: #1987C7;
 
         &:focus {
             outline: none;
+            border-color: #08c;
         }
     }
 }

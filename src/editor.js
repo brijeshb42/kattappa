@@ -9,22 +9,28 @@ import EmbedTypes from './blocks/embeds';
 
 const splitterString = '<p>==</p>';
 
-var initialState = {
-  blocks: []
-};
 
 export default class Editor extends React.Component {
 
   constructor(props) {
     super(props);
 
+    this.currentBlock = -1;
+
     this.handleBlockAction = this.handleBlockAction.bind(this);
     this.getBlocks = this.getBlocks.bind(this);
     this.addBlock = this.addBlock.bind(this);
+    this.addNewBlock = this.addNewBlock.bind(this);
     this.contentChange = this.contentChange.bind(this);
     this.getToolbar = this.getToolbar.bind(this);
     this.renderBlocks = this.renderBlocks.bind(this);
     this.splitBlock = this.splitBlock.bind(this);
+    this.setCurrentBlock = this.setCurrentBlock.bind(this);
+  }
+
+  setCurrentBlock(index) {
+    if (index === -1) {}
+    this.currentBlock = index;
   }
 
   splitBlock(position) {
@@ -61,13 +67,19 @@ export default class Editor extends React.Component {
     if(action === Action.REMOVE) {
       if(Blocks[newBlocks[position].type].isEmpty(newBlocks[position].data) || confirm('Are you sure?')) {
         newBlocks.splice(position, 1);
+        this.currentBlock = position - 1;
+        if (this.currentBlock === -1 && newBlocks.length > 0) {
+          this.currentBlock = 0;
+        }
       } else {
         return;
       }
     } else if(action === Action.UP) {
       newBlocks.splice(position - 1, 2, newBlocks[position], newBlocks[position-1]);
+      this.currentBlock = position - 1;
     } else if(action === Action.DOWN) {
       newBlocks.splice(position , 2, newBlocks[position + 1], newBlocks[position]);
+      this.currentBlock = position + 1;
     }
     this.props.onChange(newBlocks);
   }
@@ -75,6 +87,10 @@ export default class Editor extends React.Component {
   getBlocks() {
     console.warn('This function will be deprecated in the next version.');
     return this.props.blocks;
+  }
+
+  addNewBlock(type) {
+    this.addBlock(type, this.currentBlock);
   }
 
   addBlock(type, position) {
@@ -154,11 +170,12 @@ export default class Editor extends React.Component {
             UploadUrl={self.props.UploadUrl}
             EmbedTypes={self.props.EmbedTypes}
             splitBlock={self.splitBlock}
+            setCurrentBlock={self.setCurrentBlock}
             {...self.props} />
-          <Toolbar position={index} addBlock={self.addBlock} availableBlocks={Blocks} />
         </div>
       );
     });
+    // <Toolbar position={index} addBlock={self.addBlock} availableBlocks={Blocks} />
     return rndr;
   }
 
@@ -168,7 +185,7 @@ export default class Editor extends React.Component {
         <div className='katap-listing'>
           <Toolbar
             position={-1}
-            addBlock={this.addBlock}
+            addBlock={this.addNewBlock}
             availableBlocks={this.props.availableBlocks} />
           {this.renderBlocks()}
         </div>

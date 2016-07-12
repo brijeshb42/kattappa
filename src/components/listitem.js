@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MediumComponent from './medium';
-import options from '../utils/editoroptions';
+import TextComponent from './scribe';
+import { baseInlineOptions } from './scribe-options';
 
 export default class LI extends React.Component {
 
@@ -25,11 +25,13 @@ export default class LI extends React.Component {
 
   render() {
     return (
-      <MediumComponent
+      <TextComponent
         content={this.props.content}
+        options={baseInlineOptions}
+        enterCapture
+        inline
+        onFocus={this.props.onFocus}
         captureReturn={this.captureReturn}
-        enterCapture={true}
-        options={options}
         onContentChanged={this.onContentChanged} />
     );
   }

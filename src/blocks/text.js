@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TextComponent from '../components/scribe';
-import options from '../utils/editoroptions';
+import { baseTextOptions } from '../components/scribe-options';
 
 class BlockText extends React.Component {
 
@@ -10,9 +10,23 @@ class BlockText extends React.Component {
     this.captureReturn = this.captureReturn.bind(this);
     this.onContentChanged = this.onContentChanged.bind(this);
     this.splitBlock = this.splitBlock.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.setCurrentBlock(this.props.position);
+  }
+
+  componentWillUnmount() {
+    this.props.setCurrentBlock(this.props.position - 1);
+  }
+
+  onFocus() {
+    this.props.setCurrentBlock(this.props.position);
   }
 
   captureReturn() {
+    console.log('cap ret');
     this.props.addBlock(Text.Name, this.props.position);
   }
 
@@ -38,7 +52,8 @@ class BlockText extends React.Component {
         </div>
         <TextComponent
           content={this.props.content}
-          options={options}
+          options={baseTextOptions}
+          onFocus={this.onFocus}
           onContentChanged={this.onContentChanged} />
       </div>
     );

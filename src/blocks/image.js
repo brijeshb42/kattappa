@@ -12,6 +12,7 @@ class BlockImage extends React.Component {
     this.handleImage = this.handleImage.bind(this);
     this.changeItem = this.changeItem.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.onFocus = this.onFocus.bind(this);
   }
 
   componentDidMount() {
@@ -19,6 +20,11 @@ class BlockImage extends React.Component {
     if(!content || content.url === "") {
       this.refs.img.focus();
     }
+    this.onFocus();
+  }
+
+  onFocus() {
+    this.props.setCurrentBlock(this.props.position);
   }
 
   handleImage(files) {
@@ -72,26 +78,33 @@ class BlockImage extends React.Component {
           <input
             ref="img"
             type="text"
+            onFocus={this.onFocus}
             placeholder="Paste URL of image and press enter"
             onKeyDown={this.handleKeyPress} />
           <Droppable
+            onFocus={this.onFocus}
             onDrop={this.handleImage}>
             <p>{this.props.message}</p>
           </Droppable>
         </div>
       ) : (
         <div>
-          <img src={content.url} onLoad={this.imageLoaded} />
+          <img
+            src={content.url}
+            onLoad={this.imageLoaded}
+            onClick={this.onFocus} />
           <input
             type="text"
             className="katap-image-subtext"
             placeholder="Image subtext"
+            onFocus={this.onFocus}
             onChange={this.changeItem.bind(this, 'subtext')}
             value={content.subtext} />
           <input
             type="text"
             className="katap-image-subtext"
             placeholder="Hyperlink"
+            onFocus={this.onFocus}
             onChange={this.changeItem.bind(this, 'hyperlink')}
             value={content.hyperlink} />
         </div>

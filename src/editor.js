@@ -6,6 +6,8 @@ import Toolbar from './components/toolbar';
 import {uuid} from './utils';
 import Blocks from './blocks';
 import EmbedTypes from './blocks/embeds';
+import Keys from './utils/keys';
+import * as OP from './utils/blocks';
 
 const splitterString = '<p>==</p>';
 
@@ -18,6 +20,7 @@ export default class Editor extends React.Component {
     this.currentBlock = -1;
 
     this.handleBlockAction = this.handleBlockAction.bind(this);
+    this.handleSplit = this.handleSplit.bind(this);
     this.getBlocks = this.getBlocks.bind(this);
     this.addBlock = this.addBlock.bind(this);
     this.addNewBlock = this.addNewBlock.bind(this);
@@ -26,6 +29,23 @@ export default class Editor extends React.Component {
     this.renderBlocks = this.renderBlocks.bind(this);
     this.splitBlock = this.splitBlock.bind(this);
     this.setCurrentBlock = this.setCurrentBlock.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleSplit);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleSplit);
+  }
+
+  handleSplit(e) {
+    if (e.which == Keys.ESC) {
+      this.handleBlockAction(Action.REMOVE, this.currentBlock, true);
+    } else if (e.altKey && e.ctrlKey && e.which === Keys.S) {
+      console.log('splitter');
+      this.splitBlock(this.currentBlock);
+    }
   }
 
   setCurrentBlock(index) {
@@ -61,11 +81,15 @@ export default class Editor extends React.Component {
     this.props.onChange(newBlocks);
   }
 
-  handleBlockAction(action, position) {
+  handleBlockAction(action, position, implicit=false) {
     var newBlocks = this.props.blocks;
     var Blocks = this.props.availableBlocks;
     if(action === Action.REMOVE) {
-      if(Blocks[newBlocks[position].type].isEmpty(newBlocks[position].data) || confirm('Are you sure?')) {
+      const isEmpty = Blocks[newBlocks[position].type].isEmpty(newBlocks[position].data);
+      if (implicit && !isEmpty) {
+        return;
+      }
+      if(isEmpty || confirm('Are you sure?')) {
         newBlocks.splice(position, 1);
         this.currentBlock = position - 1;
         if (this.currentBlock === -1 && newBlocks.length > 0) {
@@ -90,7 +114,10 @@ export default class Editor extends React.Component {
   }
 
   addNewBlock(type) {
-    this.addBlock(type, this.currentBlock);
+    const blocks = this.props.blocks;
+    const Blocks = this.props.availableBlocks;
+    const newBlocks = OP.addBlock(blocks, this.currentBlock, Blocks, type, this.currentBlock, this.props.splitter);
+    this.props.onChange(newBlocks);
   }
 
   addBlock(type, position) {
@@ -151,7 +178,7 @@ export default class Editor extends React.Component {
           availableBlocks={Blocks} />
       );
     }
-    var rndr = blocks.map(function(block, index) {
+    var rndr = blocks.map((block, index) => {
 
       var Block = Blocks[block.type].React;
       if(!Blocks[block.type]) {

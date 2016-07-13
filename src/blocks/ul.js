@@ -15,7 +15,7 @@ class BlockUL extends OL.React {
 let UL = {
   Name: 'ul',
   React: BlockUL,
-  Icon: '',
+  Icon: 'list-ul',
   Empty: function() {
     return [{
       content: '<p><br></p>',

@@ -36,6 +36,7 @@
     "scribe-plugin-curly-quotes": "^1.0.1",
     "scribe-plugin-formatter-html-ensure-semantic-elements": "^1.0.1",
     "scribe-plugin-formatter-plain-text-convert-new-lines-to-html": "^0.1.1",
+    "scribe-plugin-placeholder": "^0.1.0",
     "scribe-plugin-sanitizer": "^0.1.10",
     "scribe-plugin-smart-lists": "^0.1.8",
     "scribe-plugin-toolbar": "^1.0.0"

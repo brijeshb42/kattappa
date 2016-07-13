@@ -30,14 +30,14 @@ class BlockHR extends React.Component {
 let HR = {
   Name: 'hr',
   React: BlockHR,
-  Icon: '',
+  Icon: 'ellipsis-h',
   Empty: function() {
-    return '';
+    return '-';
   },
   maximumBlocks: 0,
   Description: 'Break',
   isEmpty: function(content) {
-    return true;
+    return content !== '-';
   }
 };
 

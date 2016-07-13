@@ -9,53 +9,32 @@ class Toolbar extends React.Component {
     this.state = {
       visible: true,
     };
-    this.toggleState = this.toggleState.bind(this);
+    // this.toggleState = this.toggleState.bind(this);
     this.addBlock = this.addBlock.bind(this);
   }
 
-  toggleState(e) {
-    var nodes = Array.prototype.slice.call(e.currentTarget.children);
-    var index = nodes.indexOf(e.target);
-    if(index < 0) {
-      return;
-    }
-    this.props.addBlock(nodes[index].getAttribute('title'), this.props.position);
-    // this.setState({
-    //   visible: !this.state.visible
-    // });
-    // if(!this.state.visible || index === 0) {
-    // } else {
-    //   this.props.addBlock(nodes[index].getAttribute('title'), this.props.position);
-    // }
-  }
+  // add(type) {
+  //   // console.log(e);
+  //   // const node = e.target;
+  //   this.props.addBlock(type, this.props.position);
+  // }
 
-  addBlock(type, position) {
+  addBlock(type) {
     this.props.addBlock(type);
   }
 
   render() {
     var self = this;
     var Blocks = this.props.availableBlocks;
-    // if(!this.state.visible) {
-    //   return (
-    //     <div
-    //       className="katap-toolbar"
-    //       onClick={this.toggleState}>
-    //       <button title="Add block">+</button>
-    //     </div>
-    //   );
-    // }
     return (
-      <div
-        className="katap-toolbar"
-        onClick={this.toggleState}>
-        <button title="Close">&times;</button>
-        {Object.keys(Blocks).map(function(typ, pos) {
+      <div className="katap-toolbar">
+        {Object.keys(Blocks).map((typ, pos) => {
           return (
             <button
-              title={typ}
-              key={pos}>
-              {Blocks[typ].Description}
+              title={Blocks[typ].Description}
+              key={typ}
+              onClick={() => this.addBlock(typ)}>
+              <i className={"fa fa-lg fa-" + Blocks[typ].Icon} />
             </button>
           );
         })}

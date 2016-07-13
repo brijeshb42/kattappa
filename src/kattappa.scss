@@ -57,6 +57,10 @@ $quill-border-color: #1987C7;
     }
 }
 
+.katap-list {
+    padding-left: 10px;
+}
+
 .katap-listing {
     .katap-medium-editor {
         outline: none;
@@ -113,16 +117,34 @@ $quill-border-color: #1987C7;
 }
 
 .katap-control-toolbar {
-    // position: absolute;
+    position: absolute;
     // overflow: auto;
     opacity: 0;
     z-index: 1;
-    // right: 0;
+    float: right;
+    right: 0;
+    top: -5px;
+}
+
+.katap-show-preview-btn {
+    color: #222;
+    background-color: #fff;
+    border: 1px solid #ccc;
 }
 
 .katap-embed {
     padding: 5px;
     border: 2px solid transparent;
+    background: #eee;
+    margin: 20px 0 20px 0;
+
+    .katap-embed-name {
+        background-color: #08c;
+        color: #fff;
+        display: inline-block;
+        margin-right: 10px;
+        padding: 2px 5px;
+    }
 
     &.katap-embed-dragover {
         border-color: #ABDAEC;
@@ -183,8 +205,19 @@ $quill-border-color: #1987C7;
     }
 }
 
+blockquote.katap-text {
+    margin-left: -15px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-left: 5px solid #4ca8de;
+}
+
 .katap-hr {
-    max-width: 50px;
+    max-width: 70px;
+    min-height: 5px;
+    background: #ccc;
+    border: none;
 }
 
 .katap-droppable {
@@ -223,24 +256,24 @@ $quill-border-color: #1987C7;
 }
 
 .katap-toolbar {
-    margin-left: -15px;
+    // margin-left: -15px;
     text-align: left;
 
-    button:first-child {
-        border: 1px solid #888;
-        background: #fff;
-        width: 20px;
-        border-radius: 10px;
-        height: 20px;
-        font-size: 0.6em;
-        text-align: center;
-        cursor: pointer;
+    // button:first-child {
+    //     border: 1px solid #888;
+    //     background: #fff;
+    //     width: 20px;
+    //     border-radius: 10px;
+    //     height: 20px;
+    //     font-size: 0.6em;
+    //     text-align: center;
+    //     cursor: pointer;
 
-        &:focus {
-            outline: none;
-            border-color: #08c;
-        }
-    }
+    //     &:focus {
+    //         outline: none;
+    //         border-color: #08c;
+    //     }
+    // }
 }
 
 .katap-item {
@@ -282,15 +315,18 @@ $quill-border-color: #1987C7;
 
 .katap-image {
     padding: 10px;
+    margin: 20px 0 20px 0;
+    background: #e7f5ff;
     text-align: center;
     img {
         display: block;
         max-width: 100%;
+        margin: 0 auto;
     }
     input[type="text"] {
         border: 1px solid #08c;
         box-sizing: border-box;
-        margin-top: 5px;
+        margin-top: 1px;
         width: 100%;
     }
 }

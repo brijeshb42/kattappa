@@ -94,7 +94,7 @@ class BlockOL extends React.Component {
 let OL = {
   Name: 'ol',
   React: BlockOL,
-  Icon: '',
+  Icon: 'list-ol',
   Empty: function() {
     return [{
       content: '<p><br></p>',

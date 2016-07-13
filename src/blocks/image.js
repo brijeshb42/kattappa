@@ -72,7 +72,7 @@ class BlockImage extends React.Component {
   render() {
     var content = this.props.content;
     return (
-      <div className="katap-block katap-image">
+      <div className="katap-block katap-image" onClick={this.onFocus}>
       {(!content || content.url === '') ? (
         <div>
           <input
@@ -137,7 +137,7 @@ BlockImage.defaultProps = {
 let Image = {
   Name: 'image',
   React: BlockImage,
-  Icon: '',
+  Icon: 'image',
   Empty: () => ({
     url: '',
     subtext: '',

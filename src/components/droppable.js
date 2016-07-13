@@ -30,6 +30,7 @@ class Droppable extends React.Component {
 
   componentDidMount() {
     this.refs.droppable.focus();
+    // this.refs.input.click();
   }
 
   onDragOver(e) {

@@ -43,13 +43,6 @@ class BlockText extends React.Component {
   render() {
     return (
       <div className="katap-block katap-text">
-        <div className="katap-toolbar-wrapper katap-clearfix">
-          <button
-            className="katap-splitter"
-            onClick={this.splitBlock}
-            title="Click to split this block. Content should be separated by a new line."
-          >&lt;/&gt;</button>
-        </div>
         <TextComponent
           content={this.props.content}
           options={baseTextOptions}
@@ -63,7 +56,7 @@ class BlockText extends React.Component {
 let Text = {
   Name: 'text',
   React: BlockText,
-  Icon: '',
+  Icon: 'text-height',
   Empty: function() {
     return '<p><br></p>';
   },

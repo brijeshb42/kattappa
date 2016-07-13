@@ -30,7 +30,7 @@ class BlockH2 extends BlockText.React {
 let H2 = {
   Name: 'h2',
   React: BlockH2,
-  Icon: '',
+  Icon: 'header',
   Empty: function() {
     return '<p><br></p>';
   },

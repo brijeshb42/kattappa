@@ -12,7 +12,7 @@ function getDomain(link) {
 
 let Embed = {
   Name: 'embed',
-  Icon: '',
+  Icon: 'code',
   Empty: function() {
     return {
       url: '',
@@ -177,7 +177,7 @@ class BlockEmbed extends React.Component {
     let content = this.props.content;
     if(this.state.loaded) {
       return (
-        <div className="katap-block">
+        <div className="katap-block katap-embed">
           {this.renderBlock()}
           <input
             type="text"
@@ -202,7 +202,9 @@ class BlockEmbed extends React.Component {
             placeholder="Enter URL and press enter"
             onKeyUp={this.handleUrl}
             onFocus={this.onFocus} />
-          <p>Supported embeds: {Object.keys(this.props.EmbedTypes).join(', ')}</p>
+          <p>
+            <span>Supported embeds:</span>
+            {Object.keys(this.props.EmbedTypes).map(embed => (<span key={embed} className="katap-embed-name">{embed}</span>))}</p>
         </div>
       );
     }

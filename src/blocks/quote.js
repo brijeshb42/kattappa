@@ -56,7 +56,7 @@ class BlockQuote extends BlockText.React {
 let Quote = {
   Name: 'quote',
   React: BlockQuote,
-  Icon: '',
+  Icon: 'quote-left',
   Empty: function() {
     return {
       content: '<p><br></p>',

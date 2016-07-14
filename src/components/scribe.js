@@ -68,13 +68,17 @@ export default class ScribeEditor extends React.Component {
     }
     this.scribe.on('scribe:content-changed', () => {
       if (isEditorEmpty(this.scribe)) {
-        this.setState({
-          placeholder: true,
-        });
+        if (!this.state.placeholder) {
+          this.setState({
+            placeholder: true,
+          });
+        }
       } else {
-        this.setState({
-          placeholder: false,
-        });        
+        if (this.state.placeholder) {
+          this.setState({
+            placeholder: false,
+          });
+        }                
       }
       this.props.onContentChanged(this.scribe.getHTML());
     });
@@ -272,7 +276,7 @@ export default class ScribeEditor extends React.Component {
           onKeyUp={this.onSelect}
           onMouseUp={this.onSelect}
           contentEditable />
-        { this.state.placeholder ? <div className="scribe-plugin-placeholder" style={{ top: 0, left: 2 }}>Write your story...</div>: null }
+        { this.state.placeholder ? <div className="scribe-plugin-placeholder" style={{ top: 0, left: 2 }}>{this.props.placeholder}</div>: null }
       </div>
     );
   }
@@ -282,4 +286,5 @@ export default class ScribeEditor extends React.Component {
 ScribeEditor.defaultProps = {
   options: baseOptions,
   inline: false,
+  placeholder: 'Write your story...',
 };

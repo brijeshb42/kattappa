@@ -31,11 +31,12 @@ export default class LI extends React.Component {
       <TextComponent
         content={this.props.content}
         options={baseInlineOptions}
-        enterCapture
-        inline
         onFocus={this.props.onFocus}
         captureReturn={this.captureReturn}
-        onContentChanged={this.onContentChanged} />
+        onContentChanged={this.onContentChanged}
+        placeholder="Add a list item..."
+        enterCapture
+        inline />
     );
   }
 }

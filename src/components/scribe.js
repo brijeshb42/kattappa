@@ -7,7 +7,12 @@ import pluginNewlineToHTML from 'scribe-plugin-formatter-plain-text-convert-new-
 import pluginSemanticEl from 'scribe-plugin-formatter-html-ensure-semantic-elements';
 import pluginSmartLists from 'scribe-plugin-smart-lists';
 
-import { baseOptions, toolbarButtons, linkCommand, placeholderPlugin } from './scribe-options';
+import {
+  baseOptions,
+  toolbarButtons,
+  linkCommand,
+  isEditorEmpty,
+} from './scribe-options';
 import Keys from '../utils/keys';
 
 
@@ -19,6 +24,7 @@ export default class ScribeEditor extends React.Component {
     this.state = {
       showToolbar: false,
       showLinkInput: false,
+      placeholder: true,
     };
 
     this.scribe = null;
@@ -55,12 +61,21 @@ export default class ScribeEditor extends React.Component {
     this.scribe.use(pluginCurlyQuotes());
     this.scribe.use(pluginSanitizer(this.props.options));
     this.scribe.use(pluginSemanticEl());
-    this.scribe.use(placeholderPlugin('Write your story...', ReactDOM.findDOMNode(this)));
+    // this.scribe.use(placeholderPlugin('Write your story...', ReactDOM.findDOMNode(this)));
 
     if(this.props.inline || this.props.enterCapture) {
       this.scribe.el.addEventListener('keydown', this.captureReturn);
     }
     this.scribe.on('scribe:content-changed', () => {
+      if (isEditorEmpty(this.scribe)) {
+        this.setState({
+          placeholder: true,
+        });
+      } else {
+        this.setState({
+          placeholder: false,
+        });        
+      }
       this.props.onContentChanged(this.scribe.getHTML());
     });
 
@@ -92,7 +107,7 @@ export default class ScribeEditor extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState){
-    if (nextState.showToolbar !== this.state.showToolbar || nextState.showLinkInput !== this.state.showLinkInput) {
+    if (nextState.showToolbar !== this.state.showToolbar || nextState.showLinkInput !== this.state.showLinkInput || nextState.placeholder != this.state.placeholder) {
       return true;
     }
     return false;
@@ -257,6 +272,7 @@ export default class ScribeEditor extends React.Component {
           onKeyUp={this.onSelect}
           onMouseUp={this.onSelect}
           contentEditable />
+        { this.state.placeholder ? <div className="scribe-plugin-placeholder" style={{ top: 0, left: 2 }}>Write your story...</div>: null }
       </div>
     );
   }

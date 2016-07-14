@@ -21,27 +21,22 @@ $quill-border-color: #1987C7;
         outline: none;
     }
 
+    .katap-h2 {
+        font-size: 1.2em;
+    }
+
     .katap-h2, .katap-h3, .katap-h4 {
         margin: 0;
+        font-weight: bold;
     }
 
     .katap-h2 {
-        .katap-medium-editor {
-            font-size: 1.5em;
-            outline: none;
-        }
+        // .katap-medium-editor {
+        //     font-size: 1.5em;
+        //     outline: none;
+        // }
         p {
             margin: 0;
-        }
-    }
-    .katap-h3 {
-        .ql-editor {
-            font-size: 2.5em;
-        }
-    }
-    .katap-h4 {
-        .ql-editor {
-            font-size: 2em;
         }
     }
 
@@ -64,6 +59,7 @@ $quill-border-color: #1987C7;
 .katap-listing {
     .katap-medium-editor {
         outline: none;
+        position: relative;
 
         p {
             margin: 0;
@@ -74,6 +70,25 @@ $quill-border-color: #1987C7;
             padding: 0;
             padding-left: 20px;
         }
+    }
+}
+
+.katap-scribe-container {
+    position: relative;
+}
+
+.katap-scribe-toolbar {
+    position: absolute;
+    z-index: 1;
+    background: #222;
+    padding: 2px;
+    // font-size: 1.1em;
+    border-radius: 2px;
+
+    button {
+        background: transparent;
+        color: #fff;
+        padding: 5px 10px;
     }
 }
 
@@ -114,6 +129,11 @@ $quill-border-color: #1987C7;
             border-color: #08c;
         }
     }
+}
+
+.katap-list-block-control {
+    position: relative;
+    z-index: 1;
 }
 
 .katap-control-toolbar {
@@ -187,7 +207,7 @@ $quill-border-color: #1987C7;
 .katap-text {
 
     .katap-medium-editor {
-        font-size: 1.1em;
+        // font-size: 1.1em;
 
         a {
             color: #f1622b;
@@ -238,7 +258,7 @@ blockquote.katap-text {
     color: #222;
     margin-top: 20px;
     padding-bottom: 60px;
-    font-size: 1.1em;
+    // font-size: 1.1em;
 }
 
 .katap-block {
@@ -290,13 +310,19 @@ blockquote.katap-text {
 }
 
 .katap-blockquote-credit {
+    display: block;
     box-sizing: border-box;
     width: 100%;
     height: 30px;
-    font-size: 1em;
+    // font-size: 1em;
 
     &:focus {
         outline: 1px solid $quill-border-color;
+    }
+
+    &:before {
+        content: '-';
+        display: inline-block;
     }
 }
 

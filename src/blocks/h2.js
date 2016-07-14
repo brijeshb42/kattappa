@@ -13,7 +13,7 @@ class BlockH2 extends BlockText.React {
 
   render() {
     return (
-      <h2 className="katap-block katap-h2">
+      <div className="katap-block katap-h2">
         <TextComponent
           options={options}
           content={this.props.content}
@@ -21,7 +21,7 @@ class BlockH2 extends BlockText.React {
           captureReturn={this.captureReturn}
           onFocus={this.onFocus}
           onContentChanged={this.onContentChanged} />
-      </h2>
+      </div>
     );
   }
 

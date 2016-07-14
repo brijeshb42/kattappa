@@ -7,25 +7,9 @@ import pluginNewlineToHTML from 'scribe-plugin-formatter-plain-text-convert-new-
 import pluginSemanticEl from 'scribe-plugin-formatter-html-ensure-semantic-elements';
 import pluginSmartLists from 'scribe-plugin-smart-lists';
 
-import { baseOptions } from './scribe-options';
+import { baseOptions, toolbarButtons, linkCommand, placeholderPlugin } from './scribe-options';
 import Keys from '../utils/keys';
 
-const toolbarButtons = [{
-  command: 'bold',
-  icon: 'bold',
-}, {
-  command: 'italic',
-  icon: 'italic',
-}, {
-  command: 'underline',
-  icon: 'underline',
-}, {
-  command: 'link',
-  icon: 'link',
-}, {
-  command: 'strikeThrough',
-  icon: 'strikethrough',
-}];
 
 export default class ScribeEditor extends React.Component {
 
@@ -40,16 +24,24 @@ export default class ScribeEditor extends React.Component {
     this.scribe = null;
     this.dom = null;
     this._updated = false;
+    this.tempRange = null;
 
-    this.change = this.change.bind(this);
+    // this.change = this.change.bind(this);
     this.placeCaretAtEnd = this.placeCaretAtEnd.bind(this);
     this.captureReturn = this.captureReturn.bind(this);
     this.handleCommand = this.handleCommand.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this._onSelect = this._onSelect.bind(this);
+    this.handleLink = this.handleLink.bind(this);
+    // this.onChangeLink = this.onChangeLink.bind(this);
 
-    // this.onBlur = () => this.setState({ showToolbar: false, showLinkInput: false });
-    this.onBlur = () => {};
+    this.onBlur = () => {
+      if (this.state.showLinkInput) {
+        return;
+      }
+      this.setState({ showToolbar: false, showLinkInput: false })
+    };
+    // this.onBlur = () => {};
   }
 
   componentDidMount() {
@@ -58,16 +50,18 @@ export default class ScribeEditor extends React.Component {
     if (!this.props.inline) {
       this.scribe.use(pluginSmartLists());
     }
+    this.scribe.use(linkCommand());
     this.scribe.use(pluginNewlineToHTML());
     this.scribe.use(pluginCurlyQuotes());
     this.scribe.use(pluginSanitizer(this.props.options));
     this.scribe.use(pluginSemanticEl());
+    this.scribe.use(placeholderPlugin('Write your story...', ReactDOM.findDOMNode(this)));
 
     if(this.props.inline || this.props.enterCapture) {
       this.scribe.el.addEventListener('keydown', this.captureReturn);
     }
     this.scribe.on('scribe:content-changed', () => {
-      this.change(this.scribe.getHTML());
+      this.props.onContentChanged(this.scribe.getHTML());
     });
 
     this.scribe.setContent(this.props.content);
@@ -85,9 +79,12 @@ export default class ScribeEditor extends React.Component {
     if(this.props.inline || this.props.enterCapture) {
       this.scribe.el.removeEventListener('keydown', this.captureReturn);
     }
+    this.scribe.el.removeEventListener('focus', this.props.onFocus);
+    this.scribe.el.removeEventListener('blur', this.onBlur);
     this.scribe.destroy();
     this.dom = null;
     this.scribe = null;
+    this.tempRange = null;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -121,28 +118,9 @@ export default class ScribeEditor extends React.Component {
       if (left + toolbarBoundary.width > parentBoundary.width) {
         toolbar.style.right = '0px';
       } else {
-        toolbar.style.left = left + 'px';
+        toolbar.style.left = (left + widthDiff / 2) + 'px';
       }
     }
-  }
-
-  change(text) {
-    if (this.props.onContentChanged) this.props.onContentChanged(text);
-  }
-
-  handleCommand(cmd) {
-    if (cmd === 'link') {
-      if (this.state.showLinkInput) {
-        this.setState({ showLinkInput: false });
-      } else {
-        this.setState({ showLinkInput: true });
-      }
-      return;
-    }
-    // console.log(command);
-    const command = this.scribe.getCommand(cmd);
-    console.log(command);
-    command.execute(cmd);
   }
 
   placeCaretAtEnd() {
@@ -193,19 +171,84 @@ export default class ScribeEditor extends React.Component {
     }, 0)
   }
 
+  handleLink(e) {
+    if (e.which === Keys.ESC) {
+      e.stopPropagation();
+      this.setState({
+        showLinkInput: false,
+        showToolbar: true,
+      }, () => {
+        const selection = new this.scribe.api.Selection();
+        this.scribe.el.focus();
+        selection.selection.removeAllRanges();
+        selection.selection.addRange(this.tempRange);
+      });
+    } else if (e.which === Keys.ENTER) {
+      e.preventDefault();
+      e.stopPropagation();
+      const link = e.target.value;
+      const selection = new this.scribe.api.Selection();
+      this.scribe.el.focus();
+      selection.selection.removeAllRanges();
+      selection.selection.addRange(this.tempRange);
+      if (link.length < 1) {
+        const command = this.scribe.getCommand('unlink');
+        command.execute('unlink');
+        this.setState({
+          showLinkInput: false,
+          showToolbar: true,
+        });
+      } else {
+        // this.addLink(link);
+        const command = this.scribe.getCommand('setLink');
+        command.execute(link);
+        this.setState({
+          showLinkInput: false,
+          showToolbar: true,
+        });
+      }
+    }
+  }
+
+  handleCommand(cmd) {
+    if (cmd === 'link') {
+      if (this.state.showLinkInput) {
+        this.setState({ showLinkInput: false, showToolbar: true, });
+      } else {
+        const command = this.scribe.getCommand('setLink');
+        const currentLink = command.getCurrentLink();
+        this.setState({ showLinkInput: true, showToolbar: true}, () => {
+          this.tempRange = new this.scribe.api.Selection().range;
+          setTimeout(() => {
+            this.refs.linkinput.focus();
+            this.refs.linkinput.value = currentLink;
+          }, 0);
+        });
+      }
+    } else {
+      const command = this.scribe.getCommand(cmd);
+      command.execute(cmd);
+    }
+  }
+
   render() {
     return (
       <div className="katap-scribe-container">
         { this.state.showToolbar ? (
           <div className="katap-scribe-toolbar" ref="toolbar">
-            {toolbarButtons.map(btn => (
+            { !this.state.showLinkInput ? toolbarButtons.map(btn => (
               <button key={btn.command} title={btn.command} onMouseDown={() => this.handleCommand(btn.command)}>
                 <i className={"fa fa-" + btn.icon} />
               </button>
-            ))}
-            { this.state.showLinkInput ? (
-              <input ref="linkinput" type="text" className="katap-scribe-link-input" />
-            ) : null }
+            )) : (
+              <input
+                ref="linkinput"
+                type="text"
+                className="katap-scribe-link-input"
+                placeholder="Paste and ENTER"
+                onKeyDown={this.handleLink} />
+            )
+          }
           </div>
         ) : null }
         <div ref="scribeeditor"

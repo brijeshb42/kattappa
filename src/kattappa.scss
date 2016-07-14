@@ -209,9 +209,9 @@ $quill-border-color: #1987C7;
     .katap-medium-editor {
         // font-size: 1.1em;
 
-        a {
-            color: #f1622b;
-        }
+        // a {
+        //     color: #f1622b;
+        // }
 
         &:focus {
             outline: none;
@@ -273,6 +273,35 @@ blockquote.katap-text {
             border-color: #08c;
         }
     }
+
+    input.katap-scribe-link-input {
+        width: 98%;
+        background: #222;
+        color: #fff;
+        border: none;
+        margin: 5px;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::-webkit-input-placeholder {
+           color: #eee;
+        }
+
+        &:-moz-placeholder { /* Firefox 18- */
+           color: #eee;  
+        }
+
+        &::-moz-placeholder {  /* Firefox 19+ */
+           color: #eee;  
+        }
+
+        &:-ms-input-placeholder {  
+           color: #eee;  
+        }
+    }
+
 }
 
 .katap-toolbar {
@@ -363,3 +392,8 @@ blockquote.katap-text {
     }
 }
 
+.scribe-plugin-placeholder {
+    position: absolute;
+    color: #9e9e9e;
+    pointer-events: none;
+}

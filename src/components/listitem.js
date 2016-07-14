@@ -12,6 +12,9 @@ export default class LI extends React.Component {
   }
 
   captureReturn() {
+    if (this.props.content === '' || this.props.content === '<p><br></p>') {
+      return;
+    }
     if(this.props.addItem) {
       this.props.addItem(this.props.position);
     }

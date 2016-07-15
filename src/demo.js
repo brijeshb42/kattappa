@@ -6,6 +6,7 @@ import './style.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import throttle from 'lodash.debounce';
 
 import Kattappa from './';
 
@@ -53,9 +54,25 @@ class Container extends React.Component {
       blocks: initBlock,
     };
 
+    this.toolbar = null;
+    this.editor = null;
+    this.toolbarNode = null;
+
     this.save = this.save.bind(this);
     this.getBlocks = this.getBlocks.bind(this);
     this.onChange = (blocks) => this.setState({ blocks });
+    this.handleScroll = throttle(this.handleScroll.bind(this), 20, {
+      leading: false,
+      trailing: true,
+    });
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   getBlocks() {
@@ -65,6 +82,34 @@ class Container extends React.Component {
   save() {
     console.log(this.state.blocks);
     console.log(this.refs.kattappa.currentBlock);
+  }
+
+  handleScroll(e) {
+    if (!this.toolbar) {
+      this.toolbar = this.refs.kattappa.refs.toolbar;
+      this.toolbarNode = ReactDOM.findDOMNode(this.toolbar);
+      this.editor = ReactDOM.findDOMNode(this);
+      window.toolbar = this.toolbarNode;
+    }
+    const toolbarBoundary = this.toolbarNode.getBoundingClientRect();
+    if (toolbarBoundary.top - 39 < window.scrollY - toolbarBoundary.height) {
+      if (this.toolbarNode.style.left === '0px') {
+        return;
+      }
+      this.editor.style.paddingTop = toolbarBoundary.height + 'px';
+      this.toolbarNode.style.position = 'fixed';
+      this.toolbarNode.style.width = toolbarBoundary.width + 'px';
+      this.toolbarNode.style.top =  '39px';
+      this.toolbarNode.style.left =  toolbarBoundary.left +  'px';
+      this.toolbarNode.style.right =  '0px';
+    } else {
+      // if (this.editor.style.paddingTop !== '') {
+      //   return;
+      // }
+      console.log(window.scrollY, toolbarBoundary);
+      this.editor.style.paddingTop = '0px';
+      this.toolbarNode.removeAttribute('style');
+    }
   }
 
   render() {

@@ -52,15 +52,20 @@ button {
 
 
 .katap-toolbar /*,.katap-control-toolbar*/ {
+
+    z-index: 2;
+    padding: 5px 0;
     
     text-align: center;
+    background-color: #b1e7ff;
 
     button {
         background: none;
         background-color: #eee;
+        border-radius: 2px;
         color: #222;
         cursor: pointer;
-        border: 1px solid #ccc;
+        border: 1px solid #08c;
         margin-right: 4px;
         margin-bottom: 2px;
         font-size: 0.8em;

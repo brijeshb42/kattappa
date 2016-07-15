@@ -6,28 +6,23 @@ import Blocks from '../blocks/';
 class Toolbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      visible: true,
-      fixed: false,
-    };
-    this.addBlock = this.addBlock.bind(this);
   }
 
-  addBlock(type) {
-    this.props.addBlock(type);
+  shouldComponentUpdate(nextProps, nextState) {
+    return (this.state.fixed !== nextState.fixed)
   }
 
   render() {
     var self = this;
     var Blocks = this.props.availableBlocks;
     return (
-      <div className={"katap-toolbar" + (this.state.fixed ? ' katap-toolbar-fixed': '')}>
+      <div className="katap-toolbar">
         {Object.keys(Blocks).map((typ, pos) => {
           return (
             <button
               title={Blocks[typ].Description}
               key={typ}
-              onClick={() => this.addBlock(typ)}>
+              onClick={() => this.props.addBlock(typ)}>
               <i className={"fa fa-lg fa-" + Blocks[typ].Icon} />
             </button>
           );

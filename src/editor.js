@@ -171,14 +171,9 @@ export default class Editor extends React.Component {
     var blocks = this.props.blocks;
     const Blocks = this.props.availableBlocks;
     if(blocks.length < 1) {
-      return (
-        <Toolbar
-          position={0}
-          addBlock={this.addBlock}
-          availableBlocks={Blocks} />
-      );
+      return null;
     }
-    var rndr = blocks.map((block, index) => {
+    const rndr = blocks.map((block, index) => {
 
       var Block = Blocks[block.type].React;
       if(!Blocks[block.type]) {
@@ -202,24 +197,16 @@ export default class Editor extends React.Component {
         </div>
       );
     });
-    // <Toolbar position={index} addBlock={self.addBlock} availableBlocks={Blocks} />
     return rndr;
   }
 
   render() {
-    if(this.props.blocks.length > 0) {
-      return (
-        <div className='katap-listing'>
-          <Toolbar
-            position={-1}
-            addBlock={this.addNewBlock}
-            availableBlocks={this.props.availableBlocks} />
-          {this.renderBlocks()}
-        </div>
-      );
-    }
     return (
       <div className='katap-listing'>
+        <Toolbar
+          ref="toolbar"
+          addBlock={this.addNewBlock}
+          availableBlocks={this.props.availableBlocks} />
         {this.renderBlocks()}
       </div>
     );

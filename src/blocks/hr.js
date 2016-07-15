@@ -1,23 +1,8 @@
 import React from 'react';
 
-class BlockHR extends React.Component {
+import BaseBlock from './base';
 
-  constructor(props) {
-    super(props);
-    this.setPosition = this.setPosition.bind(this);
-  }
-
-  componentDidMount() {
-    this.setPosition();
-  }
-
-  componentWillUnmount() {
-    this.props.setCurrentBlock(this.props.position - 1);
-  }
-
-  setPosition() {
-    this.props.setCurrentBlock(this.props.position);
-  }
+class BlockHR extends BaseBlock {
 
   render() {
     return (
@@ -32,12 +17,12 @@ let HR = {
   React: BlockHR,
   Icon: 'ellipsis-h',
   Empty: function() {
-    return '-';
+    return '';
   },
   maximumBlocks: 0,
   Description: 'Break',
   isEmpty: function(content) {
-    return content !== '-';
+    return true;
   }
 };
 

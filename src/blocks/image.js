@@ -1,18 +1,18 @@
 import React from 'react';
 
+import BaseBlock from './base';
 import Droppable from '../components/droppable';
 import Keys from '../utils/keys';
 import {UrlRegex} from '../utils';
 
 
-class BlockImage extends React.Component {
+class BlockImage extends BaseBlock {
 
   constructor(props) {
     super(props);
     this.handleImage = this.handleImage.bind(this);
     this.changeItem = this.changeItem.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.onFocus = this.onFocus.bind(this);
   }
 
   componentDidMount() {
@@ -20,11 +20,7 @@ class BlockImage extends React.Component {
     if(!content || content.url === "") {
       this.refs.img.focus();
     }
-    this.onFocus();
-  }
-
-  onFocus() {
-    this.props.setCurrentBlock(this.props.position);
+    this.setPosition();
   }
 
   handleImage(files) {
@@ -111,19 +107,6 @@ class BlockImage extends React.Component {
       )}
       </div>
     );
-    // if(!content || content.url === "") {
-    //   return (
-    //     <div className="katap-block katap-image">
-          
-    //     </div>
-    //   );
-    // } else {
-    //   return (
-    //     <div className="katap-block katap-image">
-          
-    //     </div>
-    //   );
-    // }
   }
 }
 

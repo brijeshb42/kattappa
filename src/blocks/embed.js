@@ -1,9 +1,10 @@
 import React from 'react';
 import url from 'url';
-import {UrlRegex} from '../utils';
-import Keys from '../utils/keys';
 
-var Types = require('./embeds');
+import BaseBlock from './base';
+import { UrlRegex } from '../utils';
+import Keys from '../utils/keys';
+import Types from './embeds';
 
 function getDomain(link) {
   var a = url.parse(link);
@@ -27,10 +28,11 @@ let Embed = {
   EmbedTypes: Types
 };
 
-class BlockEmbed extends React.Component {
+class BlockEmbed extends BaseBlock {
 
   constructor(props) {
     super(props);
+
     this.state = {
       loaded: false,
       domain: '',
@@ -48,7 +50,14 @@ class BlockEmbed extends React.Component {
     this.onDragEnter = this.onDragEnter.bind(this);
     this.onDragOver = this.onDragOver.bind(this);
     this.onDragLeave = this.onDragLeave.bind(this);
-    this.onFocus = this.onFocus.bind(this);
+  }
+
+  componentDidMount() {
+    if(this.props.content.url === '') {
+      this.refs.input.focus();
+    }
+    this.checkUrls(this.props.content.url, true);
+    this.setPosition();
   }
 
   getClassName() {
@@ -87,22 +96,6 @@ class BlockEmbed extends React.Component {
     if(event.keyCode === Keys.ENTER) {
       this.checkUrls(event.target.value, false);
     }
-  }
-
-  componentDidMount() {
-    if(this.props.content.url === '') {
-      this.refs.input.focus();
-    }
-    this.checkUrls(this.props.content.url, true);
-    this.onFocus();
-  }
-
-  componentWillUnmount() {
-    this.props.setCurrentBlock(this.props.position - 1);
-  }
-
-  onFocus() {
-    this.props.setCurrentBlock(this.props.position);
   }
 
   checkContent(ok, msg) {
@@ -194,7 +187,8 @@ class BlockEmbed extends React.Component {
           onDragEnter={this.onDragEnter}
           onDragOver={this.onDragOver}
           onDragLeave={this.onDragLeave}
-          onDrop={this.onDrop}>
+          onDrop={this.onDrop}
+          onClick={this.onFocus}>
           <p>Drop links here or paste below</p>
           <input
             ref="input"

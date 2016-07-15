@@ -8,27 +8,29 @@ export const addBlock = (blocks, currentBlockPosition, BlockList, type, position
   if (!BlockList[type]) {
     return blocks;
   }
-  const currentBlock = blocks[currentBlockPosition];
-  if (currentBlock.type === 'text' && type === 'text') {
-    return blocks;
-  }
-  if (BlockList[currentBlock.type].isEmpty(currentBlock.data)) {
-    if (type === currentBlock.type) {
+  if (currentBlockPosition >= 0) {
+    const currentBlock = blocks[currentBlockPosition];
+    if (currentBlock.type === 'text' && type === 'text') {
       return blocks;
     }
-    blocks.splice(position, 1);
-    position--;
-  }
-  if (currentBlock.type === BlockList.text.Name && currentBlock.data.indexOf(splitter) >= 0) {
-    const splitBlocks = splitSingleBlock(currentBlock, splitter);
-    if (splitBlocks !== null) {
+    if (currentBlock.type !== BlockList.hr.Name && BlockList[currentBlock.type].isEmpty(currentBlock.data)) {
+      if (type === currentBlock.type) {
+        return blocks;
+      }
       blocks.splice(position, 1);
-      let pos = position;
-      splitBlocks.forEach(block => {
-        blocks.splice(pos++, 0, block);
-      });
+      position--;
     }
-  }
+    if (currentBlock.type === BlockList.text.Name && currentBlock.data.indexOf(splitter) >= 0) {
+      const splitBlocks = splitSingleBlock(currentBlock, splitter);
+      if (splitBlocks !== null) {
+        blocks.splice(position, 1);
+        let pos = position;
+        splitBlocks.forEach(block => {
+          blocks.splice(pos++, 0, block);
+        });
+      }
+    }
+  }  
   if (BlockList[type].maximumBlocks !== 0) {
     let blocksOfType = 0;
     blocks.forEach((block, index) => {

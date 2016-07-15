@@ -8,16 +8,10 @@ class Toolbar extends React.Component {
     super(props);
     this.state = {
       visible: true,
+      fixed: false,
     };
-    // this.toggleState = this.toggleState.bind(this);
     this.addBlock = this.addBlock.bind(this);
   }
-
-  // add(type) {
-  //   // console.log(e);
-  //   // const node = e.target;
-  //   this.props.addBlock(type, this.props.position);
-  // }
 
   addBlock(type) {
     this.props.addBlock(type);
@@ -27,7 +21,7 @@ class Toolbar extends React.Component {
     var self = this;
     var Blocks = this.props.availableBlocks;
     return (
-      <div className="katap-toolbar">
+      <div className={"katap-toolbar" + (this.state.fixed ? ' katap-toolbar-fixed': '')}>
         {Object.keys(Blocks).map((typ, pos) => {
           return (
             <button

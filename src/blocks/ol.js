@@ -1,32 +1,19 @@
 import React from 'react';
 
+import BaseBlock from './base';
 import Action from '../utils/action';
 import LI from '../components/listitem';
 import BlockControl from '../components/blockcontrol';
 import {uuid} from '../utils';
 
 
-class BlockOL extends React.Component {
+class BlockOL extends BaseBlock {
 
   constructor(props) {
     super(props);
-    this.onContentChanged = this.onContentChanged.bind(this);
     this.addItem = this.addItem.bind(this);
     this.handleItemRemove = this.handleItemRemove.bind(this);
     this.renderListItem = this.renderListItem.bind(this);
-    this.onFocus = this.onFocus.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.setCurrentBlock(this.props.position);
-  }
-
-  componentWillUnmount() {
-    this.props.setCurrentBlock(this.props.position - 1);
-  }
-
-  onFocus() {
-    this.props.setCurrentBlock(this.props.position);
   }
 
   onContentChanged(position, content) {

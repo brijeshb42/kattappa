@@ -9,7 +9,7 @@ class Toolbar extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return (this.state.fixed !== nextState.fixed)
+    return false;
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TextComponent from '../components/scribe';
-import options from '../utils/editoroptions';
+import { baseInlineOptions } from '../utils/editoroptions';
 import BlockText from './text';
 
 
@@ -15,7 +15,7 @@ class BlockH2 extends BlockText.React {
     return (
       <div className="katap-block katap-h2">
         <TextComponent
-          options={options}
+          options={baseInlineOptions}
           content={this.props.content}
           enterCapture
           captureReturn={this.captureReturn}

@@ -178,14 +178,6 @@ if (env === ENV_PROD) {
       }
     },
     {
-      'medium-editor': {
-        root: 'MediumEditor',
-        commonjs2: 'medium-editor',
-        commonjs: 'medium-editor',
-        amd: 'medium-editor'
-      }
-    },
-    {
       'immutable': {
         root: 'Immutable',
         commonjs2: 'immutable',

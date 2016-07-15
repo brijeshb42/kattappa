@@ -78,10 +78,10 @@ function getPlugins(env) {
 
 function getEntry(env) {
   var entry = {
-    'vendor-base': ['es6-promise', 'isomorphic-fetch', 'medium-editor'],
     'vendor-react': [
       'react',
       'react-dom',
+      'immutable',
     ]
   };
   var entries = [];

@@ -5,13 +5,17 @@
 A block based Rich Text editor.
 
 It uses:
-* [ReactJS](http://facebook.github.io/react/) for its UI.
-* [medium-editor](https://github.com/yabwe/medium-editor) for rich text editing support.
+
+- [ReactJS](http://facebook.github.io/react/) for its UI.
+- [scribe](https://github.com/guardian/scribe) for rich text editing support.
 
 ### Installation
-* For `browserify` users:
+* For `browserify/webpack` users:
     * `npm install kattappa`.
-    * `var Kattappa = require('kattappa');`
+    * In es5:
+        - `var Kattappa = require('kattappa');`
+    * In es6:
+        - `import Kattappa from 'kattappa'`
 
 
 * Or Download the latest release [here](https://github.com/brijeshb42/kattappa/releases/latest).

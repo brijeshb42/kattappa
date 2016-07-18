@@ -9,7 +9,7 @@ var ENV_DEV = 'development';
 var ENV_PROD = 'production';
 var ENV_TEST = 'test';
 
-var BUILD_DIR = path.resolve(__dirname, 'dist');
+var BUILD_DIR = path.resolve(__dirname, 'lib');
 var APP_DIR = path.resolve(__dirname, 'src');
 
 var env = process.env.NODE_ENV || ENV_DEV;
@@ -42,7 +42,7 @@ var commonsPlugin = new webpack.optimize.CommonsChunkPlugin({
 });
 
 var vendorPlugin = new webpack.optimize.CommonsChunkPlugin({
-  names: ['vendor-base', 'vendor-react'],
+  names: ['vendor-react'],
   minChunks: Infinity,
   filename: '[name].js',
   children: true
@@ -58,7 +58,7 @@ var hashJsonPlugin = function() {
 
 function getPlugins(env) {
   var plugins = [definePlugin];
-  if (env !== ENV_PROD) {
+  if (!isProd) {
     plugins.push(commonsPlugin);
     plugins.push(vendorPlugin);
     plugins.push(new webpack.NoErrorsPlugin());
@@ -87,14 +87,16 @@ function getEntry(env) {
   var entries = [];
   if (env === ENV_PROD) {
     entry = {};
-    // entry[libraryName+'-style'] = ['./kattappa.scss'];
+    entry[libraryName+'-style'] = ['./kattappa.scss'];
   } else  {
     entries.push('webpack-dev-server/client?http://localhost:8080/');
     entries.push('webpack/hot/only-dev-server');
   }
   entries.push('./index');
   entry[libraryName] = entries;
-  entry.demo = ['./demo'];
+  if (!isProd) {
+    entry.demo = ['./demo'];    
+  }
   return entry;
 }
 

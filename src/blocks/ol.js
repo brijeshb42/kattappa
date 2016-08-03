@@ -24,14 +24,17 @@ class BlockOL extends BaseBlock {
   }
 
   addItem(position) {
+    console.log(position);
     if(position < 0 || position >= this.props.content.length) {
       return;
     }
     var content = this.props.content;
-    content.push({
+    const newListItem = {
       content: '',
       key: uuid()
-    });
+    };
+    content.splice(position + 1, 0, newListItem);
+    // content.push();
     if(this.props.onContentChanged) {
       this.props.onContentChanged(this.props.position, content);
     }

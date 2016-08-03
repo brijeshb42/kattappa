@@ -9,21 +9,23 @@ class BlockText extends BaseBlock {
   constructor(props) {
     super(props);
     this.captureReturn = this.captureReturn.bind(this);
-    this.splitBlock = this.splitBlock.bind(this);
   }
 
   captureReturn() {
     this.props.addBlock(Text.Name, this.props.position);
   }
 
-  splitBlock(e) {
-    this.props.splitBlock(this.props.position);
+  splitBlockAtCurrentCursorPosition() {
+    return this.refs.text.splitAtCursor();
+    // console.log(this.props.content);
+    // return this.props.content;
   }
 
   render() {
     return (
       <div className="katap-block katap-text" onClick={this.onFocus}>
         <TextComponent
+          ref="text"
           content={this.props.content}
           options={baseTextOptions}
           onFocus={this.onFocus}

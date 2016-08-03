@@ -250,6 +250,12 @@ export default class ScribeEditor extends React.Component {
     }
   }
 
+  splitAtCursor() {
+    const cmd = this.scribe.getCommand('insertHTML');
+    cmd.execute(this.scribe._htmlFormatterFactory.format('<p><br></p>'));
+    return this.scribe.getHTML();
+  }
+
   render() {
     return (
       <div className="katap-scribe-container">
@@ -272,7 +278,6 @@ export default class ScribeEditor extends React.Component {
         ) : null }
         <div ref="scribeeditor"
           className="katap-medium-editor markdown-body"
-          options={this.props.options}
           onKeyUp={this.onSelect}
           onMouseUp={this.onSelect}
           contentEditable />

@@ -36,6 +36,7 @@ class BlockQuote extends BlockText.React {
     return (
       <blockquote className="katap-block katap-text">
         <TextComponent
+          ref="text"
           content={this.props.content.content}
           options={ baseOptions }
           onFocus={this.onFocus}

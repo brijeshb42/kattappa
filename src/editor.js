@@ -116,8 +116,8 @@ export default class Editor extends React.Component {
   addNewBlock(type) {
     const blocks = this.props.blocks;
     const Blocks = this.props.availableBlocks;
-    const newBlocks = OP.addBlock(blocks, this.currentBlock, Blocks, type, this.currentBlock, this.props.splitter);
-    this.props.onChange(newBlocks);
+    const newBlocks = OP.addBlock(blocks, this.currentBlock, Blocks, type, this.currentBlock, this.props.splitter, this.refs, this.props.onChange);
+    // this.props.onChange(newBlocks);
   }
 
   addBlock(type, position) {

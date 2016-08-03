@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
     "npm": "./node_modules/.bin/babel ./src -d lib --ignore 'demo.js'",
-    "dev": "./node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 8080 --devtool eval --content-base dist/ --progress --colors --hot"
+    "dev": "./node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 8080 --devtool eval --content-base lib/ --progress --colors --hot"
   },
   "repository": {
     "type": "git",

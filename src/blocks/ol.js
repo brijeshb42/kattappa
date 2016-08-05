@@ -28,8 +28,8 @@ class BlockOL extends React.Component {
       return;
     }
     var content = this.props.content;
-    content.push({
-      content: '',
+    content.splice(position + 1, 0, {
+      content: '<p><br></p>',
       key: uuid()
     });
     if(this.props.onContentChanged) {

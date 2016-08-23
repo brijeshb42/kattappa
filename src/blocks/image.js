@@ -12,6 +12,7 @@ class BlockImage extends React.Component {
     this.handleImage = this.handleImage.bind(this);
     this.changeItem = this.changeItem.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.imageLoaded = this.imageLoaded.bind(this);
   }
 
   componentDidMount() {
@@ -44,7 +45,7 @@ class BlockImage extends React.Component {
   handleKeyPress(e) {
     if(e.which === Keys.ENTER) {
       if(UrlRegex.test(e.target.value)) {
-        var newContent = {};
+        const newContent = {};
         newContent.subtext = this.props.content.subtext;
         newContent.url = e.target.value;
         if(this.props.onContentChanged) {
@@ -58,8 +59,14 @@ class BlockImage extends React.Component {
   }
 
   imageLoaded(e) {
+    console.log(e.target.naturalWidth);
     if (e.target.src.indexOf('blob:') === 0) {
-      URL.revokeObjectURL(e.target.src);      
+      URL.revokeObjectURL(e.target.src);
+    } else {
+      const newContent = this.props.content;
+      newContent.width = e.target.naturalWidth;
+      newContent.height = e.target.naturalHeight;
+      this.props.onContentChanged(this.props.position, newContent);
     }
   }
 
@@ -98,19 +105,6 @@ class BlockImage extends React.Component {
       )}
       </div>
     );
-    // if(!content || content.url === "") {
-    //   return (
-    //     <div className="katap-block katap-image">
-          
-    //     </div>
-    //   );
-    // } else {
-    //   return (
-    //     <div className="katap-block katap-image">
-          
-    //     </div>
-    //   );
-    // }
   }
 }
 
@@ -128,7 +122,7 @@ let Image = {
   Empty: () => ({
     url: '',
     subtext: '',
-    hyperlink: ''
+    hyperlink: '',
   }),
   maximumBlocks: 0,
   Description: 'Image',

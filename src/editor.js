@@ -162,7 +162,8 @@ export default class Editor extends React.Component {
         blockAction={this.handleBlockAction}
         position={index}
         className="katap-control-toolbar katap-clearfix"
-        length={this.props.blocks.length} />
+        length={this.props.blocks.length}
+      />
     );
   }
 
@@ -188,6 +189,7 @@ export default class Editor extends React.Component {
             position={index}
             content={block.data}
             addBlock={self.addBlock}
+            blockAction={this.handleBlockAction}
             onContentChanged={self.contentChange}
             UploadUrl={self.props.UploadUrl}
             EmbedTypes={self.props.EmbedTypes}
@@ -206,7 +208,8 @@ export default class Editor extends React.Component {
         <Toolbar
           ref="toolbar"
           addBlock={this.addNewBlock}
-          availableBlocks={this.props.availableBlocks} />
+          availableBlocks={this.props.availableBlocks}
+        />
         {this.renderBlocks()}
       </div>
     );

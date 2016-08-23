@@ -10,11 +10,11 @@ export const baseOptions = {
     ol: {},
     ul: {},
     li: {},
-    a: { href: true, target: true },
+    a: { href: true, target: true, },
     h2: {},
     h3: {},
-    u: {}
-  }
+    u: {},
+  },
 };
 
 

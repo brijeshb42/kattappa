@@ -43,6 +43,10 @@ class BlockOL extends BaseBlock {
   handleItemRemove(action, position) {
     var content = this.props.content;
     content.splice(position, 1);
+    if (content.length < 1) {
+      this.props.blockAction(Action.REMOVE, this.props.position);
+      return;
+    }
     if(this.props.onContentChanged) {
       this.props.onContentChanged(this.props.position, content);
     }

@@ -9,10 +9,10 @@ import UL from './ul';
 
 module.exports = {
   text: Text,
+  h2: H2,
   image: Image,
   embed: Embed,
   quote: Quote,
-  h2: H2,
   ol: OL,
   ul: UL,
   hr: HR

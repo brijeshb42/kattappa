@@ -261,11 +261,25 @@ export default class ScribeEditor extends React.Component {
       <div className="katap-scribe-container">
         { this.state.showToolbar ? (
           <div className="katap-scribe-toolbar" ref="toolbar">
-            { !this.state.showLinkInput ? toolbarButtons.map(btn => (
-              <button key={btn.command} title={btn.command} onMouseDown={() => this.handleCommand(btn.command)}>
-                <i className={"fa fa-" + btn.icon} />
-              </button>
-            )) : (
+            { !this.state.showLinkInput ? toolbarButtons.map(btn => {
+              const _scribe = this.scribe;
+              let className = 'katap-inline-toolbar-btn katap-inline-btn' + btn.command;
+              if (_scribe !== null) {
+                const command = scribe.getCommand(btn.command);
+                // const selection = new scribe.api.Selection();
+                // console.log(selection.range);
+                // console.log(selection, command);
+                if (/*selection.range &&*/ command.queryState(btn.command)) {
+                  className += ' katap-inline-btn-is-active';
+                }
+              }
+              console.log(className);
+              return (
+                <button className={className} key={btn.command} title={btn.command} onMouseDown={() => this.handleCommand(btn.command)}>
+                  <i className={"fa fa-" + btn.icon} />
+                </button>
+              );
+            }) : (
               <input
                 ref="linkinput"
                 type="text"

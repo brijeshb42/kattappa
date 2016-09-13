@@ -20,7 +20,9 @@ class BlockH2 extends BlockText.React {
           enterCapture
           captureReturn={this.captureReturn}
           onFocus={this.onFocus}
-          onContentChanged={this.onContentChanged} />
+          onContentChanged={this.onContentChanged}
+          placeholder="Heading..."
+        />
       </div>
     );
   }

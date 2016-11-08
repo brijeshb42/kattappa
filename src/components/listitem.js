@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MediumComponent from './medium';
+import TextComponent from './scribe';
 import options from '../utils/editoroptions';
 
 export default class LI extends React.Component {
@@ -25,7 +25,7 @@ export default class LI extends React.Component {
 
   render() {
     return (
-      <MediumComponent
+      <TextComponent
         content={this.props.content}
         captureReturn={this.captureReturn}
         enterCapture={true}

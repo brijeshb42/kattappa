@@ -1,7 +1,7 @@
 import React from 'react';
 
-import TextComponent from '../components/medium';
-import options from '../utils/editoroptions';
+import TextComponent from '../components/scribe';
+import { baseOptions } from '../components/scribe-options';
 
 class BlockText extends React.Component {
 
@@ -38,7 +38,8 @@ class BlockText extends React.Component {
         </div>
         <TextComponent
           content={this.props.content}
-          options={options}
+          options={baseOptions}
+          placeholder="Write your story..."
           onContentChanged={this.onContentChanged} />
       </div>
     );
@@ -48,7 +49,7 @@ class BlockText extends React.Component {
 let Text = {
   Name: 'text',
   React: BlockText,
-  Icon: '',
+  Icon: 'text-height',
   Empty: function() {
     return '<p><br></p>';
   },

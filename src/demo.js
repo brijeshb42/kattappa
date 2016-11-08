@@ -11,7 +11,7 @@ import Kattappa from './';
 
 var initBlock = [{
   type: "text",
-  data: 'Hello World',
+  data: '<p>Hello World</p>',
   key: Kattappa.uuid()
 }, {
   type: "image",

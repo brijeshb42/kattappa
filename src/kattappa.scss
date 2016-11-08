@@ -1,3 +1,299 @@
+// $quill-border-color: #1987C7;
+
+// .katap-clearfix {
+//     &:after { 
+//         content: " ";
+//         display: block; 
+//         height: 0; 
+//         clear: both;
+//     }
+// }
+
+// .katap-savebtn {
+//     background: #fff;
+//     border: 1px solid #0088cc;
+// }
+// .katap-container {
+//     margin-bottom: 10px;
+//     position: relative;
+
+//     .katap-markdown-body {
+//         outline: none;
+//     }
+
+//     .katap-h2, .katap-h3, .katap-h4 {
+//         margin: 0;
+//     }
+
+//     .katap-h2 {
+//         .katap-medium-editor {
+//             font-size: 1.5em;
+//             outline: none;
+//         }
+//         p {
+//             margin: 0;
+//         }
+//     }
+//     .katap-h3 {
+//         .ql-editor {
+//             font-size: 2.5em;
+//         }
+//     }
+//     .katap-h4 {
+//         .ql-editor {
+//             font-size: 2em;
+//         }
+//     }
+
+//     blockquote {
+//         margin: 0;
+//         border-left: 5px solid #eee;
+//     }
+
+//     &:hover {
+//         .katap-control-toolbar {
+//             opacity: 1;
+//         }
+//     }
+// }
+
+// .katap-listing {
+//     .katap-medium-editor {
+//         outline: none;
+
+//         p {
+//             margin: 0;
+//             margin-bottom: 10px;
+//         }
+//     }
+// }
+
+// .katap-list {
+
+//     li {
+//         margin-bottom: 10px;
+//     }
+// }
+
+// .katap-toolbar-wrapper {
+
+//     .katap-splitter {
+//         background: none;
+//         border: 1px solid #eee;
+//         color: #eee;
+//     }
+// }
+
+// .katap-control-toolbar, .katap-list-block-control {
+//     //overflow: auto;
+//     //opacity: 0;
+
+//     button {
+//         float: right;
+//         background: #fff;
+//         border: 1px solid #888;
+//         color: #222;
+//         height: 20px;
+//         border-radius: 10px;
+//         font-size: 0.6em;
+//         margin-right: 2px;
+//         text-align: center;
+//         width: 20px;
+
+//         &:focus {
+//             outline: 1px solid #ccc;
+//         }
+//     }
+// }
+
+// .katap-control-toolbar {
+//     // position: absolute;
+//     // overflow: auto;
+//     opacity: 0;
+//     z-index: 1;
+//     // right: 0;
+// }
+
+// .katap-embed {
+//     padding: 5px;
+//     border: 2px solid transparent;
+
+//     &.katap-embed-dragover {
+//         border-color: #ABDAEC;
+//     }
+ 
+//     p {
+//         word-break: break-all;
+//         text-transform: capitalize;
+//     }
+//     input[type=text] {
+//         border: 1px solid #ccc;
+//         box-sizing: border-box;
+//         width: 100%;
+
+//         &:focus {
+//             border-color: #08c;
+//             outline: none;
+//         }
+//     }
+//     iframe {
+//         width: 100%;
+//     }
+//     &.katap-instagram {
+//         iframe {
+//             min-height: 400px;
+//         }
+//     }
+//     &.katap-facebook {
+//         text-align: center;
+//     }
+//     &.katap-twitter {
+//         iframe {
+//             margin-left: auto!important;
+//             margin-right: auto!important;
+//             min-height: 0!important;
+//         }
+//     }
+// }
+
+// .katap-text {
+
+//     .katap-medium-editor {
+//         font-size: 1.1em;
+
+//         a {
+//             color: #f1622b;
+//         }
+
+//         &:focus {
+//             outline: none;
+//         }
+//         blockquote {
+//             border-left: 3px solid #333;
+//             padding: 10px;
+//             margin: 10px 0;
+//             font-style: italic;
+//         }
+//     }
+// }
+
+// .katap-hr {
+//     max-width: 50px;
+// }
+
+// .katap-droppable {
+//     background: #CCF9C2;
+//     border: 5px solid transparent;
+//     cursor: pointer;
+//     font-size: 2em;
+//     line-height: 40px;
+//     margin: 5px;
+//     text-align: center;
+
+//     &.katap-drop-active {
+//         border-color: #0098B3;
+//     }
+// }
+
+// .katap-listing {
+//     color: #222;
+//     margin-top: 20px;
+//     padding-bottom: 60px;
+//     font-size: 1.1em;
+// }
+
+// .katap-block {
+//     position: relative;
+
+//     input[type=text] {
+//         width: 100%;
+//         border: 1px solid #ddd;
+
+//         &:focus {
+//             outline: none;
+//             border-color: #08c;
+//         }
+//     }
+// }
+
+// .katap-toolbar {
+//     margin-left: -15px;
+//     text-align: left;
+
+//     button:first-child {
+//         border: 1px solid #888;
+//         background: #fff;
+//         width: 20px;
+//         border-radius: 10px;
+//         height: 20px;
+//         font-size: 0.6em;
+//         text-align: center;
+//         cursor: pointer;
+
+//         &:focus {
+//             outline: none;
+//         }
+//     }
+// }
+
+// .katap-item {
+//     margin-bottom: 5px;
+//     min-height: 30px;
+
+//     .placeholder {
+//         color: #ccc;
+//     }
+
+//     &:focus {
+//         outline: none;
+//     }
+// }
+
+// .katap-blockquote-credit {
+//     box-sizing: border-box;
+//     width: 100%;
+//     height: 30px;
+//     font-size: 1em;
+
+//     &:focus {
+//         outline: 1px solid $quill-border-color;
+//     }
+// }
+
+// .katap-div {
+//     min-height: 40px;
+//     padding-top: 5px;
+
+//     &:focus {
+//         outline: none;
+//     }
+// }
+
+// .katap-default {
+//     position: relative;
+// }
+
+// .katap-image {
+//     padding: 10px;
+//     text-align: center;
+//     img {
+//         display: block;
+//         max-width: 100%;
+//     }
+//     input[type="text"] {
+//         border: 1px solid #08c;
+//         box-sizing: border-box;
+//         margin-top: 5px;
+//         width: 100%;
+//     }
+// }
+
+// .katap-list-block-control {
+//     button {
+//         float: right;
+//     }
+// }
+
 $quill-border-color: #1987C7;
 
 .katap-clearfix {
@@ -14,34 +310,29 @@ $quill-border-color: #1987C7;
     border: 1px solid #0088cc;
 }
 .katap-container {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     position: relative;
 
     .katap-markdown-body {
         outline: none;
     }
 
+    .katap-h2 {
+        font-size: 1.2em;
+    }
+
     .katap-h2, .katap-h3, .katap-h4 {
         margin: 0;
+        font-weight: bold;
     }
 
     .katap-h2 {
-        .katap-medium-editor {
-            font-size: 1.5em;
-            outline: none;
-        }
+        // .katap-medium-editor {
+        //     font-size: 1.5em;
+        //     outline: none;
+        // }
         p {
             margin: 0;
-        }
-    }
-    .katap-h3 {
-        .ql-editor {
-            font-size: 2.5em;
-        }
-    }
-    .katap-h4 {
-        .ql-editor {
-            font-size: 2em;
         }
     }
 
@@ -57,13 +348,46 @@ $quill-border-color: #1987C7;
     }
 }
 
+.katap-list {
+    padding-left: 10px;
+}
+
 .katap-listing {
     .katap-medium-editor {
         outline: none;
+        position: relative;
 
         p {
             margin: 0;
             margin-bottom: 10px;
+        }
+
+        ul, ol {
+            padding: 0;
+            padding-left: 20px;
+        }
+    }
+}
+
+.katap-scribe-container {
+    position: relative;
+}
+
+.katap-scribe-toolbar {
+    position: absolute;
+    z-index: 1;
+    background: #222;
+    padding: 2px;
+    // font-size: 1.1em;
+    border-radius: 2px;
+
+    button {
+        background: transparent;
+        color: #fff;
+        padding: 5px 10px;
+
+        .katap-btn-is-active {
+            color: green;
         }
     }
 }
@@ -102,21 +426,45 @@ $quill-border-color: #1987C7;
 
         &:focus {
             outline: 1px solid #ccc;
+            border-color: #08c;
         }
     }
 }
 
+.katap-list-block-control {
+    position: relative;
+    z-index: 1;
+}
+
 .katap-control-toolbar {
-    // position: absolute;
+    position: absolute;
     // overflow: auto;
     opacity: 0;
     z-index: 1;
-    // right: 0;
+    float: right;
+    right: 0;
+    top: -5px;
+}
+
+.katap-show-preview-btn {
+    color: #222;
+    background-color: #fff;
+    border: 1px solid #ccc;
 }
 
 .katap-embed {
     padding: 5px;
     border: 2px solid transparent;
+    background: #eee;
+    margin: 20px 0 20px 0;
+
+    .katap-embed-name {
+        background-color: #08c;
+        color: #fff;
+        display: inline-block;
+        margin-right: 10px;
+        padding: 2px 5px;
+    }
 
     &.katap-embed-dragover {
         border-color: #ABDAEC;
@@ -159,26 +507,37 @@ $quill-border-color: #1987C7;
 .katap-text {
 
     .katap-medium-editor {
-        font-size: 1.1em;
+        // font-size: 1.1em;
 
-        a {
-            color: #f1622b;
-        }
+        // a {
+        //     color: #f1622b;
+        // }
 
         &:focus {
             outline: none;
         }
         blockquote {
-            border-left: 3px solid #333;
+            border-left: 3px solid #4ca8de;
             padding: 10px;
             margin: 10px 0;
-            font-style: italic;
+            // font-style: italic;
         }
     }
 }
 
+blockquote.katap-text {
+    margin-left: -15px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-left: 5px solid #4ca8de;
+}
+
 .katap-hr {
-    max-width: 50px;
+    max-width: 70px;
+    min-height: 5px;
+    background: #ccc;
+    border: none;
 }
 
 .katap-droppable {
@@ -199,7 +558,7 @@ $quill-border-color: #1987C7;
     color: #222;
     margin-top: 20px;
     padding-bottom: 60px;
-    font-size: 1.1em;
+    // font-size: 1.1em;
 }
 
 .katap-block {
@@ -214,26 +573,59 @@ $quill-border-color: #1987C7;
             border-color: #08c;
         }
     }
-}
 
-.katap-toolbar {
-    margin-left: -15px;
-    text-align: left;
-
-    button:first-child {
-        border: 1px solid #888;
-        background: #fff;
-        width: 20px;
-        border-radius: 10px;
-        height: 20px;
-        font-size: 0.6em;
-        text-align: center;
-        cursor: pointer;
+    input.katap-scribe-link-input {
+        width: 98%;
+        background: #222;
+        color: #fff;
+        border: none;
+        margin: 5px;
 
         &:focus {
             outline: none;
         }
+
+        &::-webkit-input-placeholder {
+           color: #eee;
+        }
+
+        &:-moz-placeholder { /* Firefox 18- */
+           color: #eee;  
+        }
+
+        &::-moz-placeholder {  /* Firefox 19+ */
+           color: #eee;  
+        }
+
+        &:-ms-input-placeholder {  
+           color: #eee;  
+        }
     }
+
+}
+
+.katap-toolbar {
+    // margin-left: -15px;
+
+    // button:first-child {
+    //     border: 1px solid #888;
+    //     background: #fff;
+    //     width: 20px;
+    //     border-radius: 10px;
+    //     height: 20px;
+    //     font-size: 0.6em;
+    //     text-align: center;
+    //     cursor: pointer;
+
+    //     &:focus {
+    //         outline: none;
+    //         border-color: #08c;
+    //     }
+    // }
+
+    // button {
+    //     border: none;
+    // }
 }
 
 .katap-item {
@@ -250,13 +642,19 @@ $quill-border-color: #1987C7;
 }
 
 .katap-blockquote-credit {
+    display: block;
     box-sizing: border-box;
     width: 100%;
     height: 30px;
-    font-size: 1em;
+    // font-size: 1em;
 
     &:focus {
         outline: 1px solid $quill-border-color;
+    }
+
+    &:before {
+        content: '-';
+        display: inline-block;
     }
 }
 
@@ -275,15 +673,18 @@ $quill-border-color: #1987C7;
 
 .katap-image {
     padding: 10px;
+    margin: 20px 0 20px 0;
+    background: #e7f5ff;
     text-align: center;
     img {
         display: block;
         max-width: 100%;
+        margin: 0 auto;
     }
     input[type="text"] {
         border: 1px solid #08c;
         box-sizing: border-box;
-        margin-top: 5px;
+        margin-top: 1px;
         width: 100%;
     }
 }
@@ -294,3 +695,8 @@ $quill-border-color: #1987C7;
     }
 }
 
+.scribe-plugin-placeholder {
+    position: absolute;
+    color: #9e9e9e;
+    pointer-events: none;
+}

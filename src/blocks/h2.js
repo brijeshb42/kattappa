@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MediumComponent from '../components/medium';
-import options from '../utils/editoroptions';
+import ScribeComponent from '../components/scribe';
+import { baseInlineOptions } from '../components/scribe-options';
 import BlockText from './text';
 
 
@@ -14,12 +14,13 @@ class BlockH2 extends BlockText.React {
   render() {
     return (
       <h2 className="katap-block katap-h2">
-        <MediumComponent
+        <ScribeComponent
           //showToolbar={false}
-          options={options}
+          options={baseInlineOptions}
           content={this.props.content}
           captureReturn={this.captureReturn}
-          enterCapture={true}
+          enterCapture
+          inline
           onContentChanged={this.onContentChanged} />
       </h2>
     );

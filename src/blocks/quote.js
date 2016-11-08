@@ -1,8 +1,8 @@
 import React from 'react';
 
-import options from '../utils/editoroptions';
+import { baseTextOptions } from '../components/scribe-options';
 import BlockText from './text';
-import TextComponent from '../components/medium';
+import TextComponent from '../components/scribe';
 
 class BlockQuote extends BlockText.React {
 
@@ -37,7 +37,7 @@ class BlockQuote extends BlockText.React {
       <blockquote className="katap-block katap-text">
         <TextComponent
           content={this.props.content.content}
-          options={options}
+          options={baseTextOptions}
           onContentChanged={this.onContentChanged} />
         <input
           className="katap-blockquote-credit"

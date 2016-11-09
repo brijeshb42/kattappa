@@ -1,6 +1,6 @@
 import React from 'react';
 
-import options from '../utils/editoroptions';
+import getConfig from '../utils/editoroptions';
 import BlockText from './text';
 import TextComponent from '../components/medium';
 
@@ -8,6 +8,7 @@ class BlockQuote extends BlockText.React {
 
   constructor(props) {
     super(props);
+    this.options = getConfig();
     this.onContentChanged = this.onContentChanged.bind(this);
     this.onCreditChange = this.onCreditChange.bind(this);
   }
@@ -36,8 +37,8 @@ class BlockQuote extends BlockText.React {
     return (
       <blockquote className="katap-block katap-text">
         <TextComponent
+          options={this.options}
           content={this.props.content.content}
-          options={options}
           onContentChanged={this.onContentChanged} />
         <input
           className="katap-blockquote-credit"

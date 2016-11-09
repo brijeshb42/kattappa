@@ -1,12 +1,13 @@
 import React from 'react';
 
 import MediumComponent from './medium';
-import options from '../utils/editoroptions';
+import getConfig from '../utils/editoroptions';
 
 export default class LI extends React.Component {
 
   constructor(props) {
     super(props);
+    this.options = getConfig();
     this.captureReturn = this.captureReturn.bind(this);
     this.onContentChanged = this.onContentChanged.bind(this);
   }
@@ -29,7 +30,7 @@ export default class LI extends React.Component {
         content={this.props.content}
         captureReturn={this.captureReturn}
         enterCapture={true}
-        options={options}
+        options={this.options}
         onContentChanged={this.onContentChanged} />
     );
   }

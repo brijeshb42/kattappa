@@ -2,35 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MediumEditor from 'medium-editor';
 import Keys from '../utils/keys';
-
-const options = {
-    toolbar: {
-        buttons: [
-          'bold',
-          'italic',
-          'underline',
-          'anchor',
-          'strikethrough'
-        ]
-    },
-    autoLink: false,
-    imageDragging: false,
-    placeholder: {
-        text: 'Write your story...',
-        hideOnClick: false,
-    },
-    paste: {
-      forcePlainText: true,
-      cleanPastedHTML: true,  
-      cleanReplacements: [[/<!--[^>]*-->/gi, '']],
-      cleanAttrs: ['class', 'dir', 'style', ],
-      cleanTags: ['label', 'meta', 'aside', 'span']
-    },
-    disableExtraSpaces: true,
-    extensions: {
-      imageDragging: {}
-    }
-};
+import getConfig from '../utils/editoroptions';
 
 
 export default class MediumComponent extends React.Component {
@@ -38,7 +10,7 @@ export default class MediumComponent extends React.Component {
     super(props);
 
     this.state = {
-      content: this.props.content
+      content: props.content,
     };
 
     this.dom = null;
@@ -47,6 +19,7 @@ export default class MediumComponent extends React.Component {
     this.change = this.change.bind(this);
     this.placeCaretAtEnd = this.placeCaretAtEnd.bind(this);
     this.captureReturn = this.captureReturn.bind(this);
+    this.handleBeforeInput = this.handleBeforeInput.bind(this);
   }
 
   componentDidMount() {
@@ -55,9 +28,11 @@ export default class MediumComponent extends React.Component {
     var dom = ReactDOM.findDOMNode(this);
     this.dom = dom;
     var options = this.props.options;
-    options.cleanTags = ['meta', 'span'];
+    console.log(options);
     this.medium = new MediumEditor(dom, options);
-    window.medium = this.medium;
+    // this.medium.setContent(this.state.content);
+
+    this.medium.subscribe('editableKeydown', this.handleBeforeInput);
 
     if(this.props.enterCapture) {
       this.medium.subscribe('editableKeyup', this.captureReturn);
@@ -80,6 +55,7 @@ export default class MediumComponent extends React.Component {
   componentWillUnmount() {
     this.medium.destroy();
     this.dom = null;
+    this.medium = null;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -92,6 +68,34 @@ export default class MediumComponent extends React.Component {
 
   shouldComponentUpdate(nextProps){
     return false;
+  }
+
+  handleBeforeInput(e) {
+    if (e.ctrlKey || e.metaKey || e.altKey || e.keyCode !== 222) {
+      return;
+    };
+    e.preventDefault();
+    const sel = MediumEditor.selection.getSelectionRange(this.medium.options.ownerDocument);
+    if (sel.collapsed && sel.startOffset === sel.endOffset) {
+      let pastable = '';
+      const nodeText = sel.startContainer.textContent.replace(/\u00a0/g, " ");
+      if (sel.startContainer.textContent === '' || sel.startOffset === 0 || nodeText[sel.startOffset - 1] === ' ') {
+        if (e.shiftKey) {
+          pastable = '“';
+        } else {
+          pastable = '‘';
+        }
+      } else if (nodeText[sel.startOffset - 1] !== ' ') {
+        if (e.shiftKey) {
+          pastable = '”';
+        } else {
+          pastable = '’';
+        }
+      } else {
+        pastable = '‘';
+      }
+      this.medium.pasteHTML(pastable);
+    }
   }
 
   change(text) {
@@ -140,6 +144,6 @@ export default class MediumComponent extends React.Component {
 }
 
 MediumComponent.defaultProps = {
-  options: options,
+  options: getConfig(),
   enterCapture: false
 };

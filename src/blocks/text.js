@@ -1,12 +1,13 @@
 import React from 'react';
 
 import TextComponent from '../components/medium';
-import options from '../utils/editoroptions';
+import getConfig from '../utils/editoroptions';
 
 class BlockText extends React.Component {
 
   constructor(props) {
     super(props);
+    this.options = getConfig();
     this.captureReturn = this.captureReturn.bind(this);
     this.onContentChanged = this.onContentChanged.bind(this);
     this.splitBlock = this.splitBlock.bind(this);
@@ -38,7 +39,7 @@ class BlockText extends React.Component {
         </div>
         <TextComponent
           content={this.props.content}
-          options={options}
+          options={this.options}
           onContentChanged={this.onContentChanged} />
       </div>
     );

@@ -1,13 +1,14 @@
 import React from 'react';
 
 import MediumComponent from '../components/medium';
-import options from '../utils/editoroptions';
+import getConfig from '../utils/editoroptions';
 import BlockText from './text';
 
 
 class BlockH2 extends BlockText.React {
 
   captureReturn() {
+    this.options = getConfig();
     this.props.addBlock("text", this.props.position);
   }
 
@@ -16,7 +17,7 @@ class BlockH2 extends BlockText.React {
       <h2 className="katap-block katap-h2">
         <MediumComponent
           //showToolbar={false}
-          options={options}
+          options={this.options}
           content={this.props.content}
           captureReturn={this.captureReturn}
           enterCapture={true}

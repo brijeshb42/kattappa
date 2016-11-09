@@ -1,9 +1,10 @@
 {
   "name": "kattappa",
-  "version": "0.5.5",
+  "version": "0.6.0",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, Instagram, Vine, Vimeo etc)",
   "main": "./lib/index.js",
   "scripts": {
+    "prepublish": "npm run npm",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
     "npm": "./node_modules/.bin/babel ./src -d lib --ignore 'demo.js'",

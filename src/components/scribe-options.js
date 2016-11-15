@@ -51,6 +51,9 @@ export const toolbarButtons = [{
 }, {
   command: 'link',
   icon: 'link',
+}, {
+  command: 'h3',
+  icon: 'header',
 }];
 
 

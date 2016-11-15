@@ -1,14 +1,13 @@
 import React from 'react';
 
-import getConfig from '../utils/editoroptions';
+import { baseOptions } from '../components/scribe-options';
 import BlockText from './text';
-import TextComponent from '../components/medium';
+import TextComponent from '../components/scribe';
 
 class BlockQuote extends BlockText.React {
 
   constructor(props) {
     super(props);
-    this.options = getConfig();
     this.onContentChanged = this.onContentChanged.bind(this);
     this.onCreditChange = this.onCreditChange.bind(this);
   }
@@ -37,7 +36,7 @@ class BlockQuote extends BlockText.React {
     return (
       <blockquote className="katap-block katap-text">
         <TextComponent
-          options={this.options}
+          options={baseOptions}
           content={this.props.content.content}
           onContentChanged={this.onContentChanged} />
         <input

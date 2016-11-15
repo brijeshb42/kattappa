@@ -31,10 +31,15 @@ export default class Editor extends React.Component {
     const splitter = this.props.splitter;
     const newBlocks = this.props.blocks;
     const currentBlock = newBlocks[position];
-    if(currentBlock.type !== Blocks.text.Name || currentBlock.data.indexOf(splitter) < 0) {
+
+    if(currentBlock.type !== Blocks.text.Name) {
       return;
     }
-    const stringsTmp = currentBlock.data.split(splitter);
+
+    const splitterRegex = /((?:\<[a-zA-Z\d]{1,}\>){1,2}\<br\>(?:\<\/[a-zA-Z\d]{1,}\>){1,2})/gi;
+    const stringsFix = currentBlock.data.replace(splitterRegex, splitter);
+    const stringsTmp = stringsFix.split(splitter);
+
     const strings = [];
     stringsTmp.forEach((str) => {
       if(str !== "") {
@@ -53,6 +58,7 @@ export default class Editor extends React.Component {
       newBlocks.splice(pos++, 0, newBlock)
     });
     this.props.onChange(newBlocks);
+
   }
 
   handleBlockAction(action, position) {

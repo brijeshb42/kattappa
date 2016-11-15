@@ -1,6 +1,6 @@
 {
   "name": "kattappa",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, Instagram, Vine, Vimeo etc)",
   "main": "./lib/index.js",
   "scripts": {
@@ -31,7 +31,14 @@
     "html-janitor": "^2.0.2",
     "medium-editor": "^5.22.1",
     "react": "^0.14.6",
-    "react-dom": "^0.14.6"
+    "react-dom": "^0.14.6",
+    "scribe-editor": "^3.2.0",
+    "scribe-plugin-curly-quotes": "^1.0.1",
+    "scribe-plugin-formatter-html-ensure-semantic-elements": "^1.0.1",
+    "scribe-plugin-formatter-plain-text-convert-new-lines-to-html": "^0.1.1",
+    "scribe-plugin-heading-command": "^0.1.0",
+    "scribe-plugin-sanitizer": "^0.1.10",
+    "scribe-plugin-smart-lists": "^0.1.8"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",

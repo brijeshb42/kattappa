@@ -1,27 +1,28 @@
 import React from 'react';
 
-import MediumComponent from '../components/medium';
-import getConfig from '../utils/editoroptions';
+import TextComponent from '../components/scribe';
+// import getConfig from '../utils/editoroptions';
+import { baseInlineOptions } from '../components/scribe-options';
 import BlockText from './text';
 
 
 class BlockH2 extends BlockText.React {
 
   captureReturn() {
-    this.options = getConfig();
     this.props.addBlock("text", this.props.position);
   }
 
   render() {
     return (
       <h2 className="katap-block katap-h2">
-        <MediumComponent
+        <TextComponent
           //showToolbar={false}
-          options={this.options}
+          options={baseInlineOptions}
           content={this.props.content}
           captureReturn={this.captureReturn}
-          enterCapture={true}
-          onContentChanged={this.onContentChanged} />
+          onContentChanged={this.onContentChanged}
+          placeholder="Heading"
+          enterCapture />
       </h2>
     );
   }

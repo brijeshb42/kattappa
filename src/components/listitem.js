@@ -1,13 +1,12 @@
 import React from 'react';
 
-import MediumComponent from './medium';
-import getConfig from '../utils/editoroptions';
+import TextComponent from './scribe';
+import { baseInlineOptions } from './scribe-options';
 
 export default class LI extends React.Component {
 
   constructor(props) {
     super(props);
-    this.options = getConfig();
     this.captureReturn = this.captureReturn.bind(this);
     this.onContentChanged = this.onContentChanged.bind(this);
   }
@@ -26,12 +25,13 @@ export default class LI extends React.Component {
 
   render() {
     return (
-      <MediumComponent
+      <TextComponent
         content={this.props.content}
         captureReturn={this.captureReturn}
-        enterCapture={true}
-        options={this.options}
-        onContentChanged={this.onContentChanged} />
+        enterCapture
+        options={baseInlineOptions}
+        onContentChanged={this.onContentChanged}
+        placeholder="Add list item..." />
     );
   }
 }

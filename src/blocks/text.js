@@ -1,7 +1,8 @@
 import React from 'react';
 
-import TextComponent from '../components/medium';
+import TextComponent from '../components/scribe';
 import getConfig from '../utils/editoroptions';
+import { baseTextOptions } from '../components/scribe-options';
 
 class BlockText extends React.Component {
 
@@ -39,7 +40,7 @@ class BlockText extends React.Component {
         </div>
         <TextComponent
           content={this.props.content}
-          options={this.options}
+          options={baseTextOptions}
           onContentChanged={this.onContentChanged} />
       </div>
     );

@@ -95,10 +95,8 @@ export default class ScribeEditor extends React.Component {
     this.scribe.el.addEventListener('blur', this.onBlur);
 
     if (this.props.content.length < 12) {
-      console.log(this.props.content);
       this.placeCaretAtEnd();
     }
-    window.scribe = this.scribe;
     this.scribe.el.addEventListener('keydown', this.handleLinkShortcut);
   }
 
@@ -250,6 +248,7 @@ export default class ScribeEditor extends React.Component {
 
   handleLinkShortcut(e) {
     if (e.which === 75 && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
       this.handleCommand('link');
     }
   }
@@ -272,7 +271,6 @@ export default class ScribeEditor extends React.Component {
       }
     } else {
       const command = this.scribe.getCommand(cmd);
-      console.log(command);
       command.execute(cmd);
     }
   }

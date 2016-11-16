@@ -36,14 +36,13 @@ export default class ScribeEditor extends React.Component {
 
     this.scrollY = -1;
 
-    // this.change = this.change.bind(this);
     this.placeCaretAtEnd = this.placeCaretAtEnd.bind(this);
     this.captureReturn = this.captureReturn.bind(this);
     this.handleCommand = this.handleCommand.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this._onSelect = this._onSelect.bind(this);
     this.handleLink = this.handleLink.bind(this);
-    // this.onChangeLink = this.onChangeLink.bind(this);
+    this.handleLinkShortcut = this.handleLinkShortcut.bind(this);
 
     this.onBlur = () => {
       if (this.state.showLinkInput) {
@@ -51,7 +50,6 @@ export default class ScribeEditor extends React.Component {
       }
       this.setState({ showToolbar: false, showLinkInput: false })
     };
-    // this.onBlur = () => {};
   }
 
   componentDidMount() {
@@ -101,12 +99,14 @@ export default class ScribeEditor extends React.Component {
       this.placeCaretAtEnd();
     }
     window.scribe = this.scribe;
+    this.scribe.el.addEventListener('keydown', this.handleLinkShortcut);
   }
 
   componentWillUnmount() {
     if(this.props.inline || this.props.enterCapture) {
       this.scribe.el.removeEventListener('keydown', this.captureReturn);
     }
+    this.scribe.el.removeEventListener('keydown', this.handleLinkShortcut);
     this.scribe.el.removeEventListener('focus', this.props.onFocus);
     this.scribe.el.removeEventListener('blur', this.onBlur);
     this.scribe.destroy();
@@ -181,7 +181,7 @@ export default class ScribeEditor extends React.Component {
     }
   }
 
-  _onSelect(e) {
+  _onSelect() {
     const selection = window.getSelection();
     const str = selection.toString();
     if (str.length < 1) {
@@ -195,7 +195,7 @@ export default class ScribeEditor extends React.Component {
 
   onSelect(e) {
     setTimeout(() => {
-      this._onSelect(e);
+      this._onSelect();
     }, 0)
   }
 
@@ -245,6 +245,12 @@ export default class ScribeEditor extends React.Component {
           showToolbar: true,
         });
       }
+    }
+  }
+
+  handleLinkShortcut(e) {
+    if (e.which === 75 && (e.ctrlKey || e.metaKey)) {
+      this.handleCommand('link');
     }
   }
 

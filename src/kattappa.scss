@@ -216,6 +216,7 @@ $quill-border-color: #1987C7;
     border: 2px solid transparent;
     background: #eee;
     margin: 20px 0 20px 0;
+    margin-bottom: 1px;
 
     .katap-embed-name {
         background-color: #08c;
@@ -330,6 +331,16 @@ blockquote.katap-text {
         &:focus {
             outline: none;
             border-color: #08c;
+        }
+    }
+
+    .katap-embed-inp-container {
+        label {
+            margin: 0 5px;
+        }
+        input[type=text] {
+            width: auto;
+            display: inline;
         }
     }
 

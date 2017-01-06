@@ -28,7 +28,7 @@ const janitorConfig = {
 
 const janitor = new HTMLJanitor(janitorConfig);
 
-function dumbToSmartQuotes(str) {
+export function dumbToSmartQuotes(str) {
   str = str.replace(/([a-zA-Z0-9.,?!;:\'\"])\"/g, '$1”');
   str = str.replace(/\"/g, '“');
   str = str.replace(/=“(.*?)”/g, '="$1"')

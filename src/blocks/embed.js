@@ -16,7 +16,8 @@ let Embed = {
   Empty: function() {
     return {
       url: '',
-      subtext: ''
+      subtext: '',
+      meta: {},
     };
   },
   maximumBlocks: 0,
@@ -44,6 +45,7 @@ class BlockEmbed extends React.Component {
     this.checkContent = this.checkContent.bind(this);
     this.renderBlock = this.renderBlock.bind(this);
     this.changeSubtext = this.changeSubtext.bind(this);
+    this.updateMeta = this.updateMeta.bind(this);
     this.onDrop = this.onDrop.bind(this);
     this.onDragEnter = this.onDragEnter.bind(this);
     this.onDragOver = this.onDragOver.bind(this);
@@ -97,7 +99,7 @@ class BlockEmbed extends React.Component {
 
   checkContent(ok, msg) {
     if(ok && this.props.onContentChanged) {
-      var newData = this.props.content;
+      const newData = this.props.content;
       newData.url = this.state.url;
       this.props.onContentChanged(this.props.position, newData);
     } else {
@@ -107,13 +109,17 @@ class BlockEmbed extends React.Component {
 
   changeSubtext(e) {
     if(this.props.onContentChanged) {
-      var newContent = {
-        url: this.props.content.url,
-        subtext: e.target.value
-      };
+      const newContent = this.props.content;
+      newContent.subtext = e.target.value;
       //console.log(newContent);
       this.props.onContentChanged(this.props.position, newContent);
     }
+  }
+
+  updateMeta(newMeta) {
+    const newContent = this.props.content;
+    newContent.meta = newMeta;
+    this.props.onContentChanged(this.props.position, newContent);
   }
 
   onDragEnter(e) {
@@ -159,7 +165,8 @@ class BlockEmbed extends React.Component {
       <EmbedType
         url={this.state.url}
         checkContent={this.checkContent}
-        content={this.props.content} />
+        content={this.props.content}
+        updateMeta={this.updateMeta} />
     );
   }
 

@@ -32,6 +32,7 @@
     "medium-editor": "^5.22.1",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
+    "react-spreadsheet-component": "^0.5.1",
     "scribe-editor": "^3.2.0",
     "scribe-plugin-curly-quotes": "^1.0.1",
     "scribe-plugin-formatter-html-ensure-semantic-elements": "^1.0.1",

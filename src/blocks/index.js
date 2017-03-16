@@ -6,6 +6,7 @@ import OL from './ol';
 import Quote from './quote';
 import Text from './text';
 import UL from './ul';
+import Table from './table';
 
 module.exports = {
   text: Text,
@@ -15,5 +16,6 @@ module.exports = {
   h2: H2,
   ol: OL,
   ul: UL,
-  hr: HR
+  hr: HR,
+  table: Table,
 };

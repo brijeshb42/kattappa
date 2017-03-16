@@ -169,6 +169,9 @@ export default class ScribeEditor extends React.Component {
   }
 
   captureReturn(e) {
+    if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
+      return;
+    }
     if(e.which == Keys.ENTER) {
       if (this.props.inline || this.props.enterCapture) {
         e.preventDefault();

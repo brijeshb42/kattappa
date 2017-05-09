@@ -11,7 +11,6 @@ module.exports = {
   Blocks,
   uuid,
   BaseEmbed,
-  MediumComponent,
   DroppableComponent,
   UrlRegex,
   ScribeComponent,

@@ -39,7 +39,6 @@ class Youtube extends BaseEmbed {
         return (
           <div className="katap-embed katap-youtube">
             <p>Youtube Video - <a href={this.props.url} target="_blank">{this.props.url}</a></p>
-            {this.renderInput()}
             <button className="katap-show-preview-btn" onClick={this.showPreview}>Preview</button>
           </div>
         );
@@ -60,7 +59,6 @@ class Youtube extends BaseEmbed {
           width={580}
           height={320}
           allowFullScreen={true} />
-        {this.renderInput()}
         </div>
       );
     }

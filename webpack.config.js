@@ -42,7 +42,7 @@ var commonsPlugin = new webpack.optimize.CommonsChunkPlugin({
 });
 
 var vendorPlugin = new webpack.optimize.CommonsChunkPlugin({
-  names: ['vendor-base', 'vendor-react'],
+  names: ['vendor-react'],
   minChunks: Infinity,
   filename: '[name].js',
   children: true
@@ -78,7 +78,6 @@ function getPlugins(env) {
 
 function getEntry(env) {
   var entry = {
-    'vendor-base': ['medium-editor'],
     'vendor-react': [
       'react',
       'react-dom',

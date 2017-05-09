@@ -1,14 +1,12 @@
 import React from 'react';
 
 import TextComponent from '../components/scribe';
-import getConfig from '../utils/editoroptions';
 import { baseTextOptions } from '../components/scribe-options';
 
 class BlockText extends React.Component {
 
   constructor(props) {
     super(props);
-    this.options = getConfig();
     this.captureReturn = this.captureReturn.bind(this);
     this.onContentChanged = this.onContentChanged.bind(this);
     this.splitBlock = this.splitBlock.bind(this);

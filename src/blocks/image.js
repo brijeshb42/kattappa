@@ -59,7 +59,6 @@ class BlockImage extends React.Component {
   }
 
   imageLoaded(e) {
-    console.log(e.target.naturalWidth);
     if (e.target.src.indexOf('blob:') === 0) {
       URL.revokeObjectURL(e.target.src);
     } else {

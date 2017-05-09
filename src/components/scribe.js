@@ -183,12 +183,11 @@ export default class ScribeEditor extends React.Component {
   }
 
   _onSelect() {
-    const selection = window.getSelection();
-    const str = selection.toString();
-    if (str.length < 1) {
-      if (this.state.showToolbar) {
-        this.setState({ showToolbar: false, showLinkInput: false, });
-      }
+    const selection = new this.scribe.api.Selection();
+    // const selection = window.getSelection();
+    // const str = selection.toString();
+    if (selection.range.collapsed || this.state.showToolbar) {
+      this.setState({ showToolbar: false, showLinkInput: false, });
     } else {
       this.setState({ showToolbar: true, showLinkInput: false, });
     }
@@ -252,7 +251,10 @@ export default class ScribeEditor extends React.Component {
   handleLinkShortcut(e) {
     if (e.which === 75 && (e.ctrlKey || e.metaKey)) {
       e.preventDefault();
-      this.handleCommand('link');
+      const selection = new this.scribe.api.Selection();
+      if (!selection.range.collapsed) {
+        this.handleCommand('link');
+      }
     }
   }
 
@@ -292,16 +294,6 @@ export default class ScribeEditor extends React.Component {
             { !this.state.showLinkInput ? toolbarButtons.map(btn => {
               const _scribe = this.scribe;
               const className = 'katap-inline-toolbar-btn katap-inline-btn-' + btn.command;
-              // if (_scribe !== null) {
-                // const command = scribe.getCommand(btn.command);
-                // const selection = new scribe.api.Selection();
-                // console.log(selection.range);
-                // console.log(selection, command);
-                // console.log(command);
-                // if (selection.range && command.queryState()) {
-                  // className += ' katap-inline-btn-is-active';
-                // }
-              // }
               return (
                 <button className={className} key={btn.command} title={btn.command.toUpperCase()} onMouseDown={() => this.handleCommand(btn.command)}>
                   <i className={"fa fa-" + btn.icon} />

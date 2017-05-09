@@ -1,6 +1,3 @@
-import 'normalize.css/normalize.css'
-import 'medium-editor/dist/css/medium-editor.css';
-import 'medium-editor/dist/css/themes/default.css';
 import './kattappa.scss';
 import './style.scss';
 

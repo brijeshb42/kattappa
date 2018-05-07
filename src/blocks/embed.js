@@ -7,7 +7,7 @@ var Types = require('./embeds');
 
 function getDomain(link) {
   var a = url.parse(link);
-  return a.hostname;
+  return a.hostname === 'youtu.be' ? 'youtube.com' : a.hostname;
 }
 
 let Embed = {

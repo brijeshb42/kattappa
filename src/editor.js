@@ -143,10 +143,11 @@ export default class Editor extends React.Component {
     }
     var rndr = blocks.map(function(block, index) {
 
-      var Block = Blocks[block.type].React;
       if(!Blocks[block.type]) {
         return null;
       }
+
+      var Block = Blocks[block.type].React;
 
       return (
         <div key={block.key} className="katap-container">

@@ -35,6 +35,9 @@ export default class ScribeEditor extends React.Component {
     this.tempRange = null;
 
     this.scrollY = -1;
+    this.scribeeditor = null;
+    this.toolbar = null;
+    this.linkinput = null;
 
     this.placeCaretAtEnd = this.placeCaretAtEnd.bind(this);
     this.captureReturn = this.captureReturn.bind(this);
@@ -53,7 +56,7 @@ export default class ScribeEditor extends React.Component {
   }
 
   componentDidMount() {
-    this.dom = ReactDOM.findDOMNode(this.refs.scribeeditor);
+    this.dom = ReactDOM.findDOMNode(this.scribeeditor);
     this.scribe = new Scribe(this.dom);
     if (!this.props.inline) {
       this.scribe.use(pluginSmartLists());
@@ -118,7 +121,7 @@ export default class ScribeEditor extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState){
-    if (nextState.showToolbar !== this.state.showToolbar || nextState.showLinkInput !== this.state.showLinkInput || nextState.placeholder != this.state.placeholder) {
+    if (nextState.showToolbar !== this.state.showToolbar || nextState.showLinkInput !== this.state.showLinkInput || nextState.placeholder !== this.state.placeholder) {
       return true;
     }
     return false;
@@ -128,7 +131,7 @@ export default class ScribeEditor extends React.Component {
     if (!this.state.showToolbar) {
       return;
     }
-    const toolbar = this.refs.toolbar;
+    const toolbar = this.toolbar;
     const toolbarBoundary = toolbar.getBoundingClientRect();
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
@@ -172,7 +175,7 @@ export default class ScribeEditor extends React.Component {
     if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
       return;
     }
-    if(e.which == Keys.ENTER) {
+    if(e.which === Keys.ENTER) {
       if (this.props.inline || this.props.enterCapture) {
         e.preventDefault();
       }
@@ -268,9 +271,9 @@ export default class ScribeEditor extends React.Component {
         this.setState({ showLinkInput: true, showToolbar: true}, () => {
           this.tempRange = new this.scribe.api.Selection().range;
           setTimeout(() => {
-            this.refs.linkinput.focus();
-            this.refs.linkinput.select();
-            this.refs.linkinput.value = currentLink;
+            this.linkinput.current.focus();
+            this.linkinput.current.select();
+            this.linkinput.current.value = currentLink;
           }, 0);
         });
       }
@@ -290,9 +293,8 @@ export default class ScribeEditor extends React.Component {
     return (
       <div className="katap-scribe-container">
         { this.state.showToolbar ? (
-          <div className={'katap-scribe-toolbar' + (this.state.showLinkInput ? ' katap-link-inp-visible' : '')} ref="toolbar">
+          <div className={'katap-scribe-toolbar' + (this.state.showLinkInput ? ' katap-link-inp-visible' : '')} ref={(node) => {this.toolbar=node}}>
             { !this.state.showLinkInput ? toolbarButtons.map(btn => {
-              const _scribe = this.scribe;
               const className = 'katap-inline-toolbar-btn katap-inline-btn-' + btn.command;
               return (
                 <button className={className} key={btn.command} title={btn.command.toUpperCase()} onMouseDown={() => this.handleCommand(btn.command)}>
@@ -301,7 +303,7 @@ export default class ScribeEditor extends React.Component {
               );
             }) : (
               <input
-                ref="linkinput"
+                ref={(node) => {this.linkinput=node}}
                 type="text"
                 className="katap-scribe-link-input"
                 placeholder="Paste and ENTER"
@@ -311,7 +313,7 @@ export default class ScribeEditor extends React.Component {
           }
           </div>
         ) : null }
-        <div ref="scribeeditor"
+        <div ref={(node) => {this.scribeeditor=node}}
           className="katap-medium-editor markdown-body"
           onKeyUp={this.onSelect}
           onMouseUp={this.onSelect}

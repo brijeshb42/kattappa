@@ -64,7 +64,7 @@ const normalizeLink = (link) => {
   if (link.indexOf('@') >= 0) {
     return 'mailto:' + link;
   }
-  if (link.indexOf('+') == 0) {
+  if (link.indexOf('+') === 0) {
     return 'tel:' + link;
   }
   return 'http://' + link;
@@ -103,7 +103,6 @@ export const linkCommand = function () {
 
     linkPromptCommand.getCurrentLink = function() {
       const selection = new scribe.api.Selection();
-      const range = selection.range;
       const anchorNode = selection.getContaining((node) => {
         return node.nodeName === this.nodeName;
       });

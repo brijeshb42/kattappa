@@ -38,6 +38,7 @@ class BlockEmbed extends React.Component {
       url: '',
       className: ''
     };
+    this.urlInput = null;
 
     this.getClassName = this.getClassName.bind(this);
     this.checkUrls = this.checkUrls.bind(this);
@@ -74,11 +75,11 @@ class BlockEmbed extends React.Component {
         }
       }
       alert('This URL is not supported.');
-      this.refs.input.value = '';
+      this.urlInput.value = '';
     } else {
       if(!isProp) {
         alert("Enter a valid url");
-        this.refs.input.value = '';
+        this.urlInput.value = '';
       }
     }
     UrlRegex.lastIndex = 0;
@@ -92,7 +93,7 @@ class BlockEmbed extends React.Component {
 
   componentDidMount() {
     if(this.props.content.url === '') {
-      this.refs.input.focus();
+      this.urlInput.focus();
     }
     this.checkUrls(this.props.content.url, true);
   }
@@ -193,7 +194,7 @@ class BlockEmbed extends React.Component {
           onDrop={this.onDrop}>
           <p>Drop links here or paste below</p>
           <input
-            ref="input"
+            ref={(node) => {this.urlInput=node}}
             type="text"
             placeholder="Enter URL and press enter"
             onKeyUp={this.handleUrl} />

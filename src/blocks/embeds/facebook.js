@@ -68,7 +68,7 @@ class Facebook extends BaseEmbed {
       if(!this.state.preview) {
         return (
           <div className="katap-embed katap-facebook">
-            <p>Facebook - <a href={this.props.url} target="_blank">{this.props.url}</a></p>
+            <p>Facebook - <a href={this.props.url} target="_blank" rel="noopener noreferrer">{this.props.url}</a></p>
             <button className="katap-show-preview-btn" onClick={this.showPreview}>Preview</button>
           </div>
         );

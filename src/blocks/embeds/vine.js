@@ -25,7 +25,7 @@ class Vine extends BaseEmbed {
       if(!this.state.preview) {
         return (
           <div className="katap-embed katap-vine">
-            <p>Vine - <a href={this.props.url} target="_blank">{this.props.url}</a></p>
+            <p>Vine - <a href={this.props.url} target="_blank" rel="noopener noreferrer">{this.props.url}</a></p>
             <button className="katap-show-preview-btn" onClick={this.showPreview}>Preview</button>
           </div>
         );
@@ -35,6 +35,7 @@ class Vine extends BaseEmbed {
         <div className="katap-embed katap-vine">
           <iframe
             className="vine-embed"
+            title={`vine-embed-${this.state.id}`}
             src={'//vine.co/v/'+this.state.id+'/embed/postcard'}
             frameBorder={0}
             width={600}

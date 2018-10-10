@@ -4,7 +4,7 @@ import Vine from './vine';
 import Instagram from './instagram';
 import Facebook from './facebook';
 
-module.exports = {
+export default {
   youtube: Youtube,
   instagram: Instagram,
   vimeo: Vimeo,

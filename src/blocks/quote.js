@@ -13,22 +13,22 @@ class BlockQuote extends BlockText.React {
   }
 
   onContentChanged(content) {
-    var content = {
+    var modContent = {
       content: content,
       credit: this.props.content.credit
     };
     if(this.props.onContentChanged) {
-      this.props.onContentChanged(this.props.position, content);
+      this.props.onContentChanged(this.props.position, modContent);
     }
   }
 
   onCreditChange(e) {
-    var content = {
+    var modContent = {
       content: this.props.content.content,
       credit: e.target.value
     };
     if(this.props.onContentChanged) {
-      this.props.onContentChanged(this.props.position, content);
+      this.props.onContentChanged(this.props.position, modContent);
     }
   }
 

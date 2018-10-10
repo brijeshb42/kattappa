@@ -6,7 +6,7 @@ import BaseEmbed from './blocks/embeds/base';
 import ScribeComponent from './components/scribe';
 import DroppableComponent from './components/droppable';
 
-module.exports = {
+export default {
   Editor,
   Blocks,
   uuid,

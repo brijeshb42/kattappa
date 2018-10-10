@@ -5,6 +5,9 @@ class Youtube extends BaseEmbed {
   constructor(props) {
     super(props);
 
+    this.start = null;
+    this.end = null;
+
     this.onChange = this.onChange.bind(this);
     this.renderInput = this.renderInput.bind(this);
   }
@@ -14,8 +17,8 @@ class Youtube extends BaseEmbed {
       e.preventDefault();
     }
     const meta = {}
-    meta.start = this.refs.start.value;
-    meta.end = this.refs.end.value;
+    meta.start = this.start.value;
+    meta.end = this.end.value;
 
     this.props.updateMeta(meta);
   }
@@ -25,8 +28,8 @@ class Youtube extends BaseEmbed {
     return (
       <div className="katap-embed-inp-container">
         <form onSubmit={this.onChange}>
-          <label>Start Time: <input type="text" ref="start" defaultValue={meta.start || ''} /></label>
-          <label>End Time: <input type="text" ref="end" defaultValue={meta.end || ''} /></label>
+          <label>Start Time: <input type="text" ref={(node) => {this.start=node}} defaultValue={meta.start || ''} /></label>
+          <label>End Time: <input type="text" ref={(node) => {this.end=node}} defaultValue={meta.end || ''} /></label>
           <button className="katap-show-preview-btn" onClick={this.onChange}>Update</button>
         </form>
       </div>
@@ -38,7 +41,7 @@ class Youtube extends BaseEmbed {
       if(!this.state.preview) {
         return (
           <div className="katap-embed katap-youtube">
-            <p>Youtube Video - <a href={this.props.url} target="_blank">{this.props.url}</a></p>
+            <p>Youtube Video - <a href={this.props.url} target="_blank" rel="noopener noreferrer">{this.props.url}</a></p>
             <button className="katap-show-preview-btn" onClick={this.showPreview}>Preview</button>
           </div>
         );
@@ -55,6 +58,7 @@ class Youtube extends BaseEmbed {
         <div className="katap-embed katap-youtube">
         <iframe
           src={url}
+          title={`youtube-embed-${this.state.id}`}
           frameBorder={0}
           width={580}
           height={320}
@@ -70,7 +74,7 @@ class Youtube extends BaseEmbed {
 
 Youtube.defaultProps = {
   url: '',
-  regex: /^.*(?:(?:youtu\.be\/)|(?:youtube\.com)\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*)/
+  regex: /^.*(?:(?:youtu\.be\/)|(?:youtube\.com)\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*)/
 };
 
 export default Youtube;

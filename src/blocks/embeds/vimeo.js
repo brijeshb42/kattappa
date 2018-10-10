@@ -7,7 +7,7 @@ class Vimeo extends BaseEmbed {
       if(!this.state.preview) {
         return (
           <div className="katap-embed katap-vimeo">
-            <p>Vimeo - <a href={this.props.url} target="_blank">{this.props.url}</a></p>
+            <p>Vimeo - <a href={this.props.url} target="_blank" rel="noopener noreferrer">{this.props.url}</a></p>
             <button className="katap-show-preview-btn" onClick={this.showPreview}>Preview</button>
           </div>
         );
@@ -15,6 +15,7 @@ class Vimeo extends BaseEmbed {
       return (
         <div className="katap-embed katap-vimeo">
           <iframe
+            title={`vimeo-embed-${this.state.id}`}
             src={'//player.vimeo.com/video/'+this.state.id}
             frameBorder={0}
             width={580}
@@ -31,7 +32,7 @@ class Vimeo extends BaseEmbed {
 
 Vimeo.defaultProps = {
   url: '',
-  regex: /(?:http[s]?:\/\/)?(?:www.)?vimeo\.co(?:.+(?:\/)([^\/].*)+$)/
+  regex: /(?:http[s]?:\/\/)?(?:www.)?vimeo\.co(?:.+(?:\/)([^/].*)+$)/
 };
 
 export default Vimeo;

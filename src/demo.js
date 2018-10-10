@@ -70,7 +70,6 @@ class Container extends React.Component {
       <div>
         <button onClick={this.save}>console.log</button>
         <Editor
-          ref="kattappa"
           blocks={this.state.blocks}
           onChange={this.onChange}
           availableBlocks={Blocks}

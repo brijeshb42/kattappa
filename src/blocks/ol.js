@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Action from '../utils/action';
 import LI from '../components/listitem';
 import BlockControl from '../components/blockcontrol';
 import {uuid} from '../utils';
@@ -67,6 +66,7 @@ class BlockOL extends React.Component {
             onContentChanged={self.onContentChanged} />
         </li>
       );
+      return null;
     });
     return li;
   }

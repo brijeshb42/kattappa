@@ -9,6 +9,7 @@ class BlockImage extends React.Component {
 
   constructor(props) {
     super(props);
+    this.imgEl = null;
     this.handleImage = this.handleImage.bind(this);
     this.changeItem = this.changeItem.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -18,7 +19,7 @@ class BlockImage extends React.Component {
   componentDidMount() {
     var content = this.props.content;
     if(!content || content.url === "") {
-      this.refs.img.focus();
+      this.imgEl.focus();
     }
   }
 
@@ -76,7 +77,7 @@ class BlockImage extends React.Component {
       {(!content || content.url === '') ? (
         <div>
           <input
-            ref="img"
+            ref={(node) => {this.imgEl=node}}
             type="text"
             placeholder="Paste URL of image and press enter"
             onKeyDown={this.handleKeyPress} />
@@ -87,7 +88,7 @@ class BlockImage extends React.Component {
         </div>
       ) : (
         <div>
-          <img src={content.url} onLoad={this.imageLoaded} />
+          <img src={content.url} onLoad={this.imageLoaded} alt="Not loaded"/>
           <input
             type="text"
             className="katap-image-subtext"

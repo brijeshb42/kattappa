@@ -271,9 +271,9 @@ export default class ScribeEditor extends React.Component {
         this.setState({ showLinkInput: true, showToolbar: true}, () => {
           this.tempRange = new this.scribe.api.Selection().range;
           setTimeout(() => {
-            this.linkinput.current.focus();
-            this.linkinput.current.select();
-            this.linkinput.current.value = currentLink;
+            this.linkinput.focus();
+            this.linkinput.select();
+            this.linkinput.value = currentLink;
           }, 0);
         });
       }

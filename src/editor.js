@@ -9,10 +9,6 @@ import EmbedTypes from './blocks/embeds';
 
 const splitterString = '<p>==</p>';
 
-var initialState = {
-  blocks: []
-};
-
 export default class Editor extends React.Component {
 
   constructor(props) {
@@ -36,7 +32,7 @@ export default class Editor extends React.Component {
       return;
     }
 
-    const splitterRegex = /((?:\<[a-zA-Z\d]{1,}\>){1,2}\<br\>(?:\<\/[a-zA-Z\d]{1,}\>){1,2})/gi;
+    const splitterRegex = /((?:<[a-zA-Z\d]{1,}>){1,2}<br>(?:<\/[a-zA-Z\d]{1,}>){1,2})/gi;
     const stringsFix = currentBlock.data.replace(splitterRegex, splitter);
     const stringsTmp = stringsFix.split(splitter);
 
@@ -65,7 +61,7 @@ export default class Editor extends React.Component {
     var newBlocks = this.props.blocks;
     var Blocks = this.props.availableBlocks;
     if(action === Action.REMOVE) {
-      if(Blocks[newBlocks[position].type].isEmpty(newBlocks[position].data) || confirm('Are you sure?')) {
+      if(Blocks[newBlocks[position].type].isEmpty(newBlocks[position].data) || window.confirm('Are you sure?')) {
         newBlocks.splice(position, 1);
       } else {
         return;
@@ -153,7 +149,6 @@ export default class Editor extends React.Component {
         <div key={block.key} className="katap-container">
           {self.getToolbar(index)}
           <Block
-            ref={"block"+index}
             position={index}
             content={block.data}
             addBlock={self.addBlock}

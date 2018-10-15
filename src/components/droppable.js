@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class Droppable extends React.Component {
 
@@ -8,6 +7,10 @@ class Droppable extends React.Component {
     this.state = {
       className: ''
     };
+
+    this.fileEL = null;
+    this.droppable = null;
+
     this.getClassName = this.getClassName.bind(this);
     this.onDragEnter = this.onDragEnter.bind(this);
     this.onDragOver = this.onDragOver.bind(this);
@@ -29,7 +32,7 @@ class Droppable extends React.Component {
   }
 
   componentDidMount() {
-    this.refs.droppable.focus();
+    this.droppable.focus();
   }
 
   onDragOver(e) {
@@ -52,7 +55,7 @@ class Droppable extends React.Component {
   }
 
   onClick() {
-    var fileInput = this.refs.input;
+    var fileInput = this.fileEL;
     fileInput.value = null;
     fileInput.click();
   }
@@ -78,7 +81,7 @@ class Droppable extends React.Component {
   render() {
     return (
       <div
-        ref="droppable"
+        ref={(node) => {this.droppable=node}}
         style={{height: 100}}
         className={this.getClassName()}
         onDragEnter={this.onDragEnter}
@@ -87,7 +90,7 @@ class Droppable extends React.Component {
         onClick={this.onClick}
         onDrop={this.onDrop} >
         <input
-          ref="input"
+          ref={(node) => {this.fileEL=node}}
           type="file"
           style={{display: 'none'}}
           multiple={this.props.multiple}

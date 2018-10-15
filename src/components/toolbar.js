@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Action from '../utils/action';
 import Blocks from '../blocks/';
 
 class Toolbar extends React.Component {
@@ -33,7 +32,6 @@ class Toolbar extends React.Component {
   }
 
   render() {
-    var self = this;
     var Blocks = this.props.availableBlocks;
     if(!this.state.visible) {
       return (

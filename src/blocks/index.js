@@ -7,7 +7,7 @@ import Quote from './quote';
 import Text from './text';
 import UL from './ul';
 
-module.exports = {
+export default {
   text: Text,
   image: Image,
   embed: Embed,

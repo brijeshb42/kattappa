@@ -1,18 +1,18 @@
 {
   "name": "kattappa",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, Instagram, Vine, Vimeo etc)",
   "main": "./lib/index.js",
   "scripts": {
     "prepublish": "npm run npm",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
-    "npm": "./node_modules/.bin/babel ./src -d lib --ignore 'demo.js'",
+    "npm": "babel ./src -d lib --ignore 'demo.js'",
     "dev": "mkdir -p lib && cp index.template.html lib/index.html && ./node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 8080 --devtool eval --content-base lib/ --progress --colors --hot"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/brijeshb42/kattappa.git"
+    "url": "https://github.com/scrolltech/kattappa.git"
   },
   "keywords": [
     "kattappa",
@@ -22,12 +22,16 @@
     "rich-text"
   ],
   "author": "Brijesh Bittu <brijeshb42@gmail.com>",
+  "contributors": "Rakesh Gunduka <rakesh.gunduka@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brijeshb42/kattappa/issues"
+    "url": "https://github.com/scrolltech/kattappa/issues"
   },
-  "homepage": "https://github.com/brijeshb42/kattappa",
+  "homepage": "https://github.com/scrolltech/kattappa",
   "dependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
     "html-janitor": "^2.0.2",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
@@ -40,12 +44,9 @@
     "scribe-plugin-smart-lists": "^0.1.8"
   },
   "devDependencies": {
-    "babel-cli": "^6.11.4",
-    "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.5.0",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "imports-loader": "^0.6.5",
@@ -55,15 +56,5 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
-  },
-  "babel": {
-    "env": {
-      "production": {
-        "plugins": [
-          "transform-react-constant-elements",
-          "transform-react-inline-elements"
-        ]
-      }
-    }
   }
 }

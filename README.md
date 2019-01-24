@@ -2,7 +2,7 @@ Current development going on in [scribe](https://github.com/brijeshb42/kattappa/
 
 >Note: This project is highly under development as it is being integrated into our CMS and the APIs are not consistent and can change at anytime. New features are added (or something is removed) based on the requirements of the CMS.
 
-## Kattappa [demo](http://bitwiser.in/kattappa/)
+## Scroll Kattappa [demo](http://bitwiser.in/kattappa/)
 
 A block based Rich Text editor.
 
@@ -12,11 +12,11 @@ It uses:
 
 ### Installation
 * For `browserify` users:
-    * `npm install kattappa`.
-    * `var Kattappa = require('kattappa');`
+    * `npm install scroll-kattappa`.
+    * `var Kattappa = require('scroll-kattappa');`
 
 
-* Or Download the latest release [here](https://github.com/brijeshb42/kattappa/releases/latest).
+* Or Download the latest release [here](https://github.com/scrolltech/kattappa/releases/latest).
 
 ### Usage
 

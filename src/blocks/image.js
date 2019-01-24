@@ -98,6 +98,12 @@ class BlockImage extends React.Component {
           <input
             type="text"
             className="katap-image-subtext"
+            placeholder="Image Alt Text"
+            onChange={this.changeItem.bind(this, 'alttext')}
+            value={content.alttext} />
+          <input
+            type="text"
+            className="katap-image-subtext"
             placeholder="Hyperlink"
             onChange={this.changeItem.bind(this, 'hyperlink')}
             value={content.hyperlink} />
@@ -122,6 +128,7 @@ let Image = {
   Empty: () => ({
     url: '',
     subtext: '',
+    alttext: '',
     hyperlink: '',
   }),
   maximumBlocks: 0,

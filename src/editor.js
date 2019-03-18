@@ -146,7 +146,7 @@ export default class Editor extends React.Component {
       var Block = Blocks[block.type].React;
 
       return (
-        <div key={block.key || block.id} className="katap-container">
+        <div key={block.key || block.id || index} className="katap-container">
           {self.getToolbar(index)}
           <Block
             position={index}

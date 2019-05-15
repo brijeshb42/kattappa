@@ -1,6 +1,6 @@
 {
   "name": "scroll-kattappa",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, Instagram, Vine, Vimeo etc)",
   "main": "./lib/index.js",
   "scripts": {

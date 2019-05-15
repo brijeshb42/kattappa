@@ -202,6 +202,11 @@ class BlockEmbed extends React.Component {
             ref={(node) => {this.urlInputNode=node}}
             type="text"
             placeholder="Enter URL and press enter"
+            onChange={(event) => {
+              this.setState({
+                urlInput: event.target.value
+              })
+            }}
             onKeyUp={this.handleUrl}
             value={this.state.urlInput}
              />

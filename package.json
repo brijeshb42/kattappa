@@ -1,13 +1,12 @@
 {
   "name": "scroll-kattappa",
-  "version": "0.9.3",
+  "version": "0.9.5",
   "description": "A block based rich text editor with support of Images, embeds( Youtube, Instagram, Vine, Vimeo etc)",
   "main": "./lib/index.js",
   "scripts": {
-    "prepublish": "npm run npm",
+    "prepublish": "babel ./src -d lib --ignore 'demo.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
-    "npm": "babel ./src -d lib --ignore 'demo.js'",
     "dev": "mkdir -p lib && cp index.template.html lib/index.html && ./node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 8080 --devtool eval --content-base lib/ --progress --colors --hot"
   },
   "repository": {

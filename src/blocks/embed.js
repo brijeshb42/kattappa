@@ -36,10 +36,10 @@ class BlockEmbed extends React.Component {
       loaded: false,
       domain: '',
       url: '',
-      className: ''
+      className: '',
+      urlInput: ''
     };
-    this.urlInput = null;
-
+    this.urlInputNode = null;
     this.getClassName = this.getClassName.bind(this);
     this.checkUrls = this.checkUrls.bind(this);
     this.handleUrl = this.handleUrl.bind(this);
@@ -75,11 +75,16 @@ class BlockEmbed extends React.Component {
         }
       }
       alert('This URL is not supported.');
-      this.urlInput.value = '';
+      this.setState({
+        urlInput: ''
+      })
     } else {
       if(!isProp) {
         alert("Enter a valid url");
-        this.urlInput.value = '';
+        this.setState({
+          urlInput: ''
+        })
+
       }
     }
     UrlRegex.lastIndex = 0;
@@ -93,7 +98,7 @@ class BlockEmbed extends React.Component {
 
   componentDidMount() {
     if(this.props.content.url === '') {
-      this.urlInput.focus();
+      this.urlInputNode.focus()
     }
     this.checkUrls(this.props.content.url, true);
   }
@@ -194,10 +199,12 @@ class BlockEmbed extends React.Component {
           onDrop={this.onDrop}>
           <p>Drop links here or paste below</p>
           <input
-            ref={(node) => {this.urlInput=node}}
+            ref={(node) => {this.urlInputNode=node}}
             type="text"
             placeholder="Enter URL and press enter"
-            onKeyUp={this.handleUrl} />
+            onKeyUp={this.handleUrl}
+            value={this.state.urlInput}
+             />
           <p>Supported embeds: {Object.keys(this.props.EmbedTypes).join(', ')}</p>
         </div>
       );

@@ -36,17 +36,10 @@ var definePlugin = new webpack.DefinePlugin({
   __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false')),
   'process.env.NODE_ENV': '"' +env+ '"'
 });
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin({
-  name: 'common',
-  minChunks: 3,
-});
 
-var vendorPlugin = new webpack.optimize.CommonsChunkPlugin({
-  names: ['vendor-react'],
-  minChunks: Infinity,
-  filename: '[name].js',
-  children: true
- });
+var loaderOptionsPlugin = new webpack.LoaderOptionsPlugin({
+  debug: true
+})
 
 var hashJsonPlugin = function() {
   this.plugin("done", function(stats) {
@@ -57,19 +50,10 @@ var hashJsonPlugin = function() {
 };
 
 function getPlugins(env) {
-  var plugins = [definePlugin];
-  if (env !== ENV_PROD) {
-    plugins.push(commonsPlugin);
-    plugins.push(vendorPlugin);
-    plugins.push(new webpack.NoErrorsPlugin());
-  } else {
+  var plugins = [definePlugin, loaderOptionsPlugin];
+  if (env == ENV_PROD) {
     plugins.push(new ExtractTextPlugin(libraryName + '-style.css'));
     plugins.push(hashJsonPlugin);
-    plugins.push(new webpack.optimize.DedupePlugin());
-    plugins.push(new webpack.optimize.UglifyJsPlugin({
-      output: {comments: false},
-      mangle: true,
-    }));
     plugins.push(bannerPlugin);
   }
   return plugins;
@@ -97,42 +81,41 @@ function getEntry(env) {
   return entry;
 }
 
-function getLoaders(env) {
-  var loaders = [];
-  loaders.push({
+function getRules(env) {
+  var rules = [];
+  rules.push({
     test: /\.jsx?$/,
     include: APP_DIR,
-    loader: env !== ENV_PROD ? 'react-hot!babel' : 'babel',
+    use: 'babel-loader',
     exclude: /node_modules/
   });
 
-  loaders.push({
+  rules.push({
     test: /\.(jpe?g|png|gif|svg)$/i,
-    loader: 'file'
+    use: 'file-loader'
   });
 
   if (env === ENV_PROD ) {
-    loaders.push({
+    rules.push({
       test: /(\.css|\.scss)$/,
-      loader: ExtractTextPlugin.extract("css?sourceMap!sass?sourceMap"),
+      use: ExtractTextPlugin.extract(['css-loader?sourceMap', 'sass-loader?sourceMap']),
     });
-    // loaders.push({
+    // rules.push({
     //   test: require.resolve("kattappa"),
-    //   loader: "imports?this=>window",
+    //   use: "imports?this=>window",
     // });
   } else {
-    loaders.push({
+    rules.push({
       test: /(\.css|\.scss)$/,
-      loaders: ['style', 'css?sourceMap', 'sass?sourceMap']
+      use: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap']
     });
   }
-  return loaders;
+  return rules;
 }
 
 
 var config = {
   context: APP_DIR,
-  debug: true,
   devtool: env === ENV_PROD  ? '' : 'cheap-module-eval-source-map',
   entry: getEntry(env),
   target: 'web',
@@ -140,18 +123,20 @@ var config = {
     path: BUILD_DIR,
     publicPath: '',
     filename: '[name].js',
-    sourceMapFile: '[file].map',
+    sourceMapFilename: '[file].map',
     library: [libraryName],
     libraryTarget: 'umd'
   },
   plugins: getPlugins(env),
   module: {
-    loaders: getLoaders(env),
+    rules: getRules(env),
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    root: APP_DIR,
-    modulesDirectories: ['node_modules'],
+    extensions: ['.js', '.jsx'],
+    modules: [
+      APP_DIR,
+      "node_modules"
+    ]
   },
   devServer: {
     historyApiFallback: true
@@ -186,5 +171,25 @@ if (env === ENV_PROD) {
     }
   ];
 }
+
+// if (env !== ENV_PROD) {
+//   config.optimization = {
+//     splitChunks: {
+//       cacheGroups: {
+//         commons: {
+//           name: 'common',
+//           chunks: 'initial',
+//           minChunks: 3
+//         },
+//         vendors: {
+//           test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+//           name: 'vendor',
+//           chunks: 'all',
+//         }
+//       }
+//     },
+//     noEmitOnErrors: true
+//   }
+// }
 
 module.exports = config;

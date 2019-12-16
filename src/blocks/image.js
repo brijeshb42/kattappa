@@ -17,6 +17,7 @@ class BlockImage extends React.Component {
   }
 
   componentDidMount() {
+    if (!this.props.shouldPasteUrl) return;
     var content = this.props.content;
     if(!content || content.url === "") {
       this.imgEl.focus();
@@ -76,11 +77,14 @@ class BlockImage extends React.Component {
       <div className="katap-block katap-image">
       {(!content || content.url === '') ? (
         <div>
-          <input
-            ref={(node) => {this.imgEl=node}}
-            type="text"
-            placeholder="Paste URL of image and press enter"
-            onKeyDown={this.handleKeyPress} />
+          {
+            this.props.shouldPasteUrl
+            && <input
+              ref={(node) => {this.imgEl=node}}
+              type="text"
+              placeholder="Paste URL of image and press enter"
+              onKeyDown={this.handleKeyPress} />
+          }
           <Droppable
             onDrop={this.handleImage}>
             <p>{this.props.message}</p>
@@ -116,6 +120,7 @@ class BlockImage extends React.Component {
 
 BlockImage.defaultProps = {
   message: 'Or Drop image here or click to add.',
+  shouldPasteUrl: true,
   onFilesAdded: (files) => {
     console.log(files);
   }

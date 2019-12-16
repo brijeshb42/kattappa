@@ -145,6 +145,9 @@ export default class Editor extends React.Component {
 
       var Block = Blocks[block.type].React;
 
+      // customize block behaviour by passing props
+      var blockProps = Blocks[block.type].props
+
       return (
         <div key={block.key || block.id || index} className="katap-container">
           {self.getToolbar(index)}
@@ -156,6 +159,7 @@ export default class Editor extends React.Component {
             UploadUrl={self.props.UploadUrl}
             EmbedTypes={self.props.EmbedTypes}
             splitBlock={self.splitBlock}
+            {...blockProps}
             {...self.props} />
           <Toolbar position={index} addBlock={self.addBlock} availableBlocks={Blocks} />
         </div>
